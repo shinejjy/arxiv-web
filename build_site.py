@@ -124,7 +124,7 @@ def all_runs() -> list[dict]:
     return [parse_markdown(p) for p in latest_markdowns()]
 
 
-def build_run_detail(run: dict, home_link: str = "./", archive_link: str = "archive/") -> str:
+def build_run_detail(run: dict, home_link: str = "index.html", archive_link: str = "archive/index.html") -> str:
     counts = [f"{sec['title']} {len(sec['papers'])}" for sec in run["sections"]]
     chips = "".join(f"<span class='badge soft'>{esc(c)}</span>" for c in counts)
     parts = []
@@ -136,7 +136,7 @@ def build_run_detail(run: dict, home_link: str = "./", archive_link: str = "arch
             <h1>{esc(run.get('job_name') or 'arXiv Daily')}</h1>
             <p class='lede'>聚焦自动驾驶、机械臂 / 操控、VLA 与 VLM。适合手机快速浏览，也保留完整历史详情。</p>
             <div class='hero-badges'>
-              <a class='badge blue' href='{home_link}'>返回首页</a>
+              <a class='badge blue' href='{home_link}'>回到首页</a>
               <a class='badge violet' href='{archive_link}'>历史归档</a>
               <span class='badge green'>{run['paper_count']} 篇论文</span>
             </div>
@@ -277,7 +277,7 @@ def build_archive_page(runs: list[dict]) -> str:
       <h1>历史归档</h1>
       <p class='lede'>所有已生成的 arXiv 日报都会自动归档到这里。每次定时任务跑完后，首页和历史页都会同步更新。</p>
       <div class='hero-badges'>
-              <a class='badge blue' href='../'>回到首页</a>
+              <a class='badge blue' href='../index.html'>回到首页</a>
               <span class='badge violet'>{len(runs)} 次运行</span>
 <span class='badge green'>自动同步 GitHub</span>
       </div>
@@ -492,14 +492,14 @@ def generate_site() -> dict[str, str]:
         pages["index.html"] = render_page(
             title="arXiv 每日摘要",
             hint=f"最新：{latest.get('run_time') or '未知'}",
-            body=build_run_detail(latest, home_link='./', archive_link='archive/'),
+            body=build_run_detail(latest, home_link='./index.html', archive_link='archive/index.html'),
         )
         pages["archive/index.html"] = build_archive_page(runs)
         for run in runs:
             pages[f"runs/{run['slug']}.html"] = render_page(
                 title="arXiv 每日摘要",
                 hint=f"归档运行：{run.get('run_time') or run['slug']}",
-                body=build_run_detail(run, home_link='../', archive_link='../archive/'),
+                body=build_run_detail(run, home_link='../index.html', archive_link='../archive/index.html'),
             )
     else:
         empty_body = """
