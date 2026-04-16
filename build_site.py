@@ -18,6 +18,10 @@ ARXIV_RE = re.compile(r"^\s*-\s+\*\*arXiv:\*\*\s+(.*?)\s*$")
 TIME_RE = re.compile(r"^\s*-\s+\*\*发布时间（北京时间）：\*\*\s+(.*?)\s*$")
 TAGS_RE = re.compile(r"^\s*-\s+\*\*标签：\*\*\s+(.*?)\s*$")
 INSIGHT_RE = re.compile(r"^\s*-\s+\*\*看点：\*\*\s+(.*?)\s*$")
+SUMMARY_RE = re.compile(r"^\s*-\s+\*\*摘要总结：\*\*\s+(.*?)\s*$")
+IMPL_RE = re.compile(r"^\s*-\s+\*\*实现概率：\*\*\s+(.*?)\s*$")
+OPEN_RE = re.compile(r"^\s*-\s+\*\*开源：\*\*\s+(.*?)\s*$")
+DEPLOY_RE = re.compile(r"^\s*-\s+\*\*可部署：\*\*\s+(.*?)\s*$")
 
 
 def esc(text: str | None) -> str:
@@ -96,7 +100,7 @@ def parse_markdown(path: Path) -> dict:
         papers = data["sections"][-1]["papers"]
         pm = PAPER_RE.match(line)
         if pm:
-            current_paper = {"title": pm.group(1), "arxiv": None, "time": None, "tags": None, "insight": None}
+            current_paper = {"title": pm.group(1), "arxiv": None, "time": None, "tags": None, "insight": None, "summary": None, "impl": None, "open": None, "deploy": None}
             papers.append(current_paper)
             continue
         if current_paper is None:
@@ -107,8 +111,14 @@ def parse_markdown(path: Path) -> dict:
             current_paper["time"] = tm.group(1)
         elif (tg := TAGS_RE.match(line)):
             current_paper["tags"] = tg.group(1)
-        elif (im := INSIGHT_RE.match(line)):
-            current_paper["insight"] = im.group(1)
+        elif (sm := SUMMARY_RE.match(line)):
+            current_paper["summary"] = sm.group(1)
+        elif (pm2 := IMPL_RE.match(line)):
+            current_paper["impl"] = pm2.group(1)
+        elif (om := OPEN_RE.match(line)):
+            current_paper["open"] = om.group(1)
+        elif (dm := DEPLOY_RE.match(line)):
+            current_paper["deploy"] = dm.group(1)
 
     data["run_time_dt"] = None
     if data.get("run_time"):
@@ -196,6 +206,12 @@ def build_run_detail(run: dict, home_link: str = "index.html", archive_link: str
                     {f"<div><span>标签</span><strong>{esc(p.get('tags'))}</strong></div>" if p.get('tags') else ""}
                   </div>
                   {f"<p class='insight'>{esc(p.get('insight'))}</p>" if p.get('insight') else ""}
+                  <div class='paper-facts'>
+                    {f"<div><span>摘要总结</span><strong>{esc(p.get('summary'))}</strong></div>" if p.get('summary') else ""}
+                    {f"<div><span>实现概率</span><strong>{esc(p.get('impl'))}</strong></div>" if p.get('impl') else ""}
+                    {f"<div><span>开源</span><strong>{esc(p.get('open'))}</strong></div>" if p.get('open') else ""}
+                    {f"<div><span>可部署</span><strong>{esc(p.get('deploy'))}</strong></div>" if p.get('deploy') else ""}
+                  </div>
                   <div class='tags'>{tag_html}</div>
                 </article>
                 """
@@ -421,6 +437,10 @@ def build_css() -> str:
     .paper-meta span { display: block; font-size: .78rem; color: var(--muted); margin-bottom: 2px; }
     .paper-meta strong { font-size: .88rem; font-weight: 700; line-height: 1.45; }
     .insight { margin: 10px 0 0; color: var(--text); font-size: .95rem; }
+    .paper-facts { display: grid; gap: 8px; margin-top: 12px; }
+    .paper-facts div { display: grid; gap: 3px; padding: 10px 12px; border-radius: 14px; background: rgba(247,249,252,.9); border: 1px solid rgba(0,0,0,.05); }
+    .paper-facts span { font-size: .74rem; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); font-weight: 800; }
+    .paper-facts strong { font-size: .92rem; line-height: 1.45; font-weight: 600; }
     .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
     .top3 { display: grid; gap: 10px; }
     .top3-item {
