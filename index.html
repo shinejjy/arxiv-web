@@ -10,7 +10,7 @@
     :root {
       color-scheme: light;
       --bg: #f6f5f4;
-      --surface: rgba(255,255,255,.82);
+      --surface: rgba(255,255,255,.86);
       --surface-strong: rgba(255,255,255,.96);
       --text: rgba(0,0,0,.92);
       --muted: #615d59;
@@ -147,6 +147,13 @@
     .overall-card { padding: 18px; border-radius: 18px; color: var(--muted); font-size: .98rem; line-height: 1.7; }
     .source { margin-top: 22px; color: var(--soft); font-size: .86rem; text-align: center; }
     .hero-empty { display: block; }
+    .archive-grid { display: grid; gap: 14px; }
+    .archive-card { padding: 18px; border-radius: var(--radius-lg); background: var(--surface); border: 1px solid rgba(255,255,255,.8); box-shadow: var(--shadow-soft); }
+    .archive-head { display: flex; justify-content: space-between; gap: 12px; align-items: start; }
+    .archive-date { font-weight: 800; font-size: 1.03rem; }
+    .archive-meta { color: var(--muted); font-size: .92rem; margin-top: 4px; }
+    .archive-open { flex: none; color: var(--blue); background: var(--blue-bg); border: 1px solid rgba(0,117,222,.12); padding: 8px 12px; border-radius: 999px; font-weight: 800; }
+    .archive-top { margin-top: 12px; color: var(--text); line-height: 1.6; }
     @media (max-width: 900px) {
       .hero, .grid { grid-template-columns: 1fr; }
       .paper-meta { grid-template-columns: 1fr; }
@@ -159,185 +166,195 @@
       h1 { font-size: 2.05rem; }
       .section-chip { flex-basis: 100%; }
       .section-head { flex-direction: column; align-items: start; }
+      .archive-head { flex-direction: column; }
     }
-  </style>
+    </style>
 </head>
 <body>
   <div class='page'>
     <header class='topbar'>
       <div class='brand'><span class='brand-mark'></span>arXiv 每日摘要</div>
-      <div class='hint'>自动刷新 · 手机友好 · 精选判断</div>
+      <div class='hint'>最新：2026-04-16 02:17:45</div>
     </header>
     
         <section class='hero card'>
           <div class='hero-copy'>
             <div class='eyebrow'>arXiv 每日摘要</div>
             <h1>arxiv-daily-autonomy-robotics-vlm-vla</h1>
-            <p class='lede'>聚焦自动驾驶、机械臂/操控、VLA 与 VLM。保留判断，不堆砌原始列表，适合手机快速浏览。</p>
+            <p class='lede'>聚焦自动驾驶、机械臂 / 操控、VLA 与 VLM。适合手机快速浏览，也保留完整历史详情。</p>
             <div class='hero-badges'>
-              <span class='badge blue'>10 篇论文</span>
-              <span class='badge green'>北京时间 8:00</span>
-              <span class='badge violet'>手机友好</span>
+              <a class='badge blue' href='/' >返回首页</a>
+              <a class='badge violet' href='/archive/'>历史归档</a>
+              <span class='badge green'>10 篇论文</span>
             </div>
           </div>
           <div class='hero-panel'>
-            <div class='stat-card'>
-              <span>Job ID</span>
-              <strong>054d56957dbb</strong>
-            </div>
-            <div class='stat-card'>
-              <span>Run Time</span>
-              <strong>2026-04-16 02:17:45</strong>
-            </div>
-            <div class='stat-card'>
-              <span>Schedule</span>
-              <strong>0 0 * * *</strong>
-            </div>
+            <div class='stat-card'><span>Job ID</span><strong>054d56957dbb</strong></div>
+            <div class='stat-card'><span>Run Time</span><strong>2026-04-16 02:17:45</strong></div>
+            <div class='stat-card'><span>Schedule</span><strong>0 0 * * *</strong></div>
           </div>
         </section>
-
-        <section class='section-block'>
-          <div class='section-head'><h2>今日概览</h2><span>10 篇 · 4 个主题块</span></div>
-          <div class='section-chips'>
-            <div class='section-chip blue'><strong>自动驾驶（3）</strong><span>3 篇</span></div><div class='section-chip green'><strong>机械臂 / 机器人操作（3）</strong><span>3 篇</span></div><div class='section-chip violet'><strong>VLA（2）</strong><span>2 篇</span></div><div class='section-chip amber'><strong>VLM（2）</strong><span>2 篇</span></div>
-          </div>
-        </section>
-
-        <section class='section-block'><div class='section-head'><h2>今天最值得重点看的 3 篇</h2><span>编辑优先级</span></div><div class='top3'><div class='top3-item'><span class='rank'>1</span><div class='top3-text'>1. **2604.13891v1 — Beyond Conservative Automated Driving...**</div></div><div class='top3-item'><span class='rank'>2</span><div class='top3-text'>2. **2604.14125v1 — HiVLA...**</div></div><div class='top3-item'><span class='rank'>3</span><div class='top3-text'>3. **2604.14149v1 — One Token per Highly Selective Frame...**</div></div></div></section>
         
-        <section class='section-block'><div class='section-head'><h2>自动驾驶（3）</h2><span>3 篇</span></div><div class='grid'>
-                    <article class='paper-card'>
-                      <div class='paper-top'>
-                        <div class='paper-title'><a href='https://arxiv.org/abs/2604.13891v1' target='_blank' rel='noreferrer'>Beyond Conservative Automated Driving in Multi-Agent Scenarios via Coupled Model Predictive Control and Deep Reinforcement Learning</a></div>
-                        <a class='arxiv-link' href='https://arxiv.org/abs/2604.13891v1' target='_blank' rel='noreferrer'>2604.13891v1</a>
-                      </div>
-                      <div class='paper-meta'>
-                        <div><span>发布时间</span><strong>2026-04-15 21:58</strong></div>
-                        <div><span>标签</span><strong>自动驾驶 / 多车交互 / MPC + DRL</strong></div>
-                      </div>
-                      <p class='insight'>把 MPC 的约束处理能力和 DRL 的灵活性结合起来，针对无信号路口的多车交互做决策优化。属于今天自动驾驶里最像“可落地方法升级”的一篇。</p>
-                      <div class='tags'><span class='badge soft'>自动驾驶</span><span class='badge soft'>多车交互</span><span class='badge soft'>MPC + DRL</span></div>
-                    </article>
-                    
-                    <article class='paper-card'>
-                      <div class='paper-top'>
-                        <div class='paper-title'><a href='https://arxiv.org/abs/2604.13853v1' target='_blank' rel='noreferrer'>Mosaic: An Extensible Framework for Composing Rule-Based and Learned Motion Planners</a></div>
-                        <a class='arxiv-link' href='https://arxiv.org/abs/2604.13853v1' target='_blank' rel='noreferrer'>2604.13853v1</a>
-                      </div>
-                      <div class='paper-meta'>
-                        <div><span>发布时间</span><strong>2026-04-15 21:23</strong></div>
-                        <div><span>标签</span><strong>自动驾驶 / 规划框架 / 规则+学习融合</strong></div>
-                      </div>
-                      <p class='insight'>更偏系统框架，把规则式规划器和学习式规划器组合起来，解决可解释性与适应性之间的矛盾。工程价值比较高，适合做规划系统参考。</p>
-                      <div class='tags'><span class='badge soft'>自动驾驶</span><span class='badge soft'>规划框架</span><span class='badge soft'>规则+学习融合</span></div>
-                    </article>
-                    
-                    <article class='paper-card'>
-                      <div class='paper-top'>
-                        <div class='paper-title'><a href='https://arxiv.org/abs/2604.13878v1' target='_blank' rel='noreferrer'>Drowsiness-Aware Adaptive Autonomous Braking System based on Deep Reinforcement Learning for Enhanced Road Safety</a></div>
-                        <a class='arxiv-link' href='https://arxiv.org/abs/2604.13878v1' target='_blank' rel='noreferrer'>2604.13878v1</a>
-                      </div>
-                      <div class='paper-meta'>
-                        <div><span>发布时间</span><strong>2026-04-15 21:39</strong></div>
-                        <div><span>标签</span><strong>自动驾驶 / ADAS / 安全制动</strong></div>
-                      </div>
-                      <p class='insight'>面向疲劳驾驶场景的自适应自动制动，属于更偏应用落地的安全控制工作。创新强度不如前两篇，但场景明确、实用性不错。</p>
-                      <div class='tags'><span class='badge soft'>自动驾驶</span><span class='badge soft'>ADAS</span><span class='badge soft'>安全制动</span></div>
-                    </article>
-                    </div></section><section class='section-block'><div class='section-head'><h2>机械臂 / 机器人操作（3）</h2><span>3 篇</span></div><div class='grid'>
-                    <article class='paper-card'>
-                      <div class='paper-top'>
-                        <div class='paper-title'><a href='https://arxiv.org/abs/2604.14089v1' target='_blank' rel='noreferrer'>UMI-3D: Extending Universal Manipulation Interface from Vision-Limited to 3D Spatial Perception</a></div>
-                        <a class='arxiv-link' href='https://arxiv.org/abs/2604.14089v1' target='_blank' rel='noreferrer'>2604.14089v1</a>
-                      </div>
-                      <div class='paper-meta'>
-                        <div><span>发布时间</span><strong>2026-04-16 01:04</strong></div>
-                        <div><span>标签</span><strong>机械臂 / 数据采集 / 3D 感知</strong></div>
-                      </div>
-                      <p class='insight'>在 UMI 基础上扩展 3D 空间感知，核心价值在于提升 manipulation 数据采集的鲁棒性。属于基础设施型工作，做机器人数据管线很值得看。</p>
-                      <div class='tags'><span class='badge soft'>机械臂</span><span class='badge soft'>数据采集</span><span class='badge soft'>3D 感知</span></div>
-                    </article>
-                    
-                    <article class='paper-card'>
-                      <div class='paper-top'>
-                        <div class='paper-title'><a href='https://arxiv.org/abs/2604.13633v1' target='_blank' rel='noreferrer'>ESCAPE: Episodic Spatial Memory and Adaptive Execution Policy for Long-Horizon Mobile Manipulation</a></div>
-                        <a class='arxiv-link' href='https://arxiv.org/abs/2604.13633v1' target='_blank' rel='noreferrer'>2604.13633v1</a>
-                      </div>
-                      <div class='paper-meta'>
-                        <div><span>发布时间</span><strong>2026-04-15 17:01</strong></div>
-                        <div><span>标签</span><strong>机械臂 / 长时程操作 / 空间记忆</strong></div>
-                      </div>
-                      <p class='insight'>解决长时程任务里的遗忘、空间一致性和执行僵化问题，比较典型的长程 mobile manipulation 方法。对室内服务机器人和家居操作很相关。</p>
-                      <div class='tags'><span class='badge soft'>机械臂</span><span class='badge soft'>长时程操作</span><span class='badge soft'>空间记忆</span></div>
-                    </article>
-                    
-                    <article class='paper-card'>
-                      <div class='paper-top'>
-                        <div class='paper-title'><a href='https://arxiv.org/abs/2604.13645v1' target='_blank' rel='noreferrer'>A Mechanistic Analysis of Sim-and-Real Co-Training in Generative Robot Policies</a></div>
-                        <a class='arxiv-link' href='https://arxiv.org/abs/2604.13645v1' target='_blank' rel='noreferrer'>2604.13645v1</a>
-                      </div>
-                      <div class='paper-meta'>
-                        <div><span>发布时间</span><strong>2026-04-15 17:14</strong></div>
-                        <div><span>标签</span><strong>机械臂 / sim2real / 机制分析</strong></div>
-                      </div>
-                      <p class='insight'>不是单纯堆实验，而是分析仿真+真实联合训练“为什么有效、什么时候有效”。方法论味道很强，适合想理解 robot policy 训练规律的人。</p>
-                      <div class='tags'><span class='badge soft'>机械臂</span><span class='badge soft'>sim2real</span><span class='badge soft'>机制分析</span></div>
-                    </article>
-                    </div></section><section class='section-block'><div class='section-head'><h2>VLA（2）</h2><span>2 篇</span></div><div class='grid'>
-                    <article class='paper-card'>
-                      <div class='paper-top'>
-                        <div class='paper-title'><a href='https://arxiv.org/abs/2604.14125v1' target='_blank' rel='noreferrer'>HiVLA: A Visual-Grounded-Centric Hierarchical Embodied Manipulation System</a></div>
-                        <a class='arxiv-link' href='https://arxiv.org/abs/2604.14125v1' target='_blank' rel='noreferrer'>2604.14125v1</a>
-                      </div>
-                      <div class='paper-meta'>
-                        <div><span>发布时间</span><strong>2026-04-16 01:50</strong></div>
-                        <div><span>标签</span><strong>VLA / 分层执行 / embodied manipulation</strong></div>
-                      </div>
-                      <p class='insight'>直接瞄准“VLM 先验强，但控制数据细”的核心矛盾，强调 visual grounding 和层次化执行。今天 VLA 方向里最值得优先看的论文之一。</p>
-                      <div class='tags'><span class='badge soft'>VLA</span><span class='badge soft'>分层执行</span><span class='badge soft'>embodied manipulation</span></div>
-                    </article>
-                    
-                    <article class='paper-card'>
-                      <div class='paper-top'>
-                        <div class='paper-title'><a href='https://arxiv.org/abs/2604.13733v1' target='_blank' rel='noreferrer'>Jump-Start Reinforcement Learning with Vision-Language-Action Regularization</a></div>
-                        <a class='arxiv-link' href='https://arxiv.org/abs/2604.13733v1' target='_blank' rel='noreferrer'>2604.13733v1</a>
-                      </div>
-                      <div class='paper-meta'>
-                        <div><span>发布时间</span><strong>2026-04-15 19:17</strong></div>
-                        <div><span>标签</span><strong>VLA / 强化学习 / 机器人控制</strong></div>
-                      </div>
-                      <p class='insight'>用 VLA 预训练能力去正则化 RL，目标是改善长时程稀疏奖励下的探索和信用分配。方法路线清楚，泛化潜力也不错。</p>
-                      <div class='tags'><span class='badge soft'>VLA</span><span class='badge soft'>强化学习</span><span class='badge soft'>机器人控制</span></div>
-                    </article>
-                    </div></section><section class='section-block'><div class='section-head'><h2>VLM（2）</h2><span>2 篇</span></div><div class='grid'>
-                    <article class='paper-card'>
-                      <div class='paper-top'>
-                        <div class='paper-title'><a href='https://arxiv.org/abs/2604.14149v1' target='_blank' rel='noreferrer'>One Token per Highly Selective Frame: Towards Extreme Compression for Long Video Understanding</a></div>
-                        <a class='arxiv-link' href='https://arxiv.org/abs/2604.14149v1' target='_blank' rel='noreferrer'>2604.14149v1</a>
-                      </div>
-                      <div class='paper-meta'>
-                        <div><span>发布时间</span><strong>2026-04-16 01:59</strong></div>
-                        <div><span>标签</span><strong>VLM / 长视频理解 / 极端压缩</strong></div>
-                      </div>
-                      <p class='insight'>直接针对长视频上下文爆炸问题，核心是尽量用极少 token 保留时序信息。对视频 VLM 的效率瓶颈很有现实价值。</p>
-                      <div class='tags'><span class='badge soft'>VLM</span><span class='badge soft'>长视频理解</span><span class='badge soft'>极端压缩</span></div>
-                    </article>
-                    
-                    <article class='paper-card'>
-                      <div class='paper-top'>
-                        <div class='paper-title'><a href='https://arxiv.org/abs/2604.13993v1' target='_blank' rel='noreferrer'>Reward Design for Physical Reasoning in Vision-Language Models</a></div>
-                        <a class='arxiv-link' href='https://arxiv.org/abs/2604.13993v1' target='_blank' rel='noreferrer'>2604.13993v1</a>
-                      </div>
-                      <div class='paper-meta'>
-                        <div><span>发布时间</span><strong>2026-04-15 23:36</strong></div>
-                        <div><span>标签</span><strong>VLM / 物理推理 / 后训练</strong></div>
-                      </div>
-                      <p class='insight'>关注 VLM 在物理推理上的奖励设计和后训练策略，属于“让模型更会想”的方向。比单纯 benchmark 更偏训练改进，参考价值较高。</p>
-                      <div class='tags'><span class='badge soft'>VLM</span><span class='badge soft'>物理推理</span><span class='badge soft'>后训练</span></div>
-                    </article>
-                    </div></section>
-        <div class='source'>来源文件：2026-04-16_02-17-45.md · 更新时间：2026-04-16 02:17:45</div>
-        
+
+            <section class='section-block'>
+              <div class='section-head'><h2>今日概览</h2><span>10 篇 · 4 个主题块</span></div>
+              <div class='section-chips'><span class='badge soft'>自动驾驶（3） 3</span><span class='badge soft'>机械臂 / 机器人操作（3） 3</span><span class='badge soft'>VLA（2） 2</span><span class='badge soft'>VLM（2） 2</span></div>
+            </section>
+            
+
+            <section class='section-block'>
+              <div class='section-head'><h2>今天最值得重点看的 3 篇</h2><span>编辑优先级</span></div>
+              <div class='top3'><div class='top3-item'><span class='rank'>1</span><div class='top3-text'>1. **2604.13891v1 — Beyond Conservative Automated Driving...**</div></div><div class='top3-item'><span class='rank'>2</span><div class='top3-text'>2. **2604.14125v1 — HiVLA...**</div></div><div class='top3-item'><span class='rank'>3</span><div class='top3-text'>3. **2604.14149v1 — One Token per Highly Selective Frame...**</div></div></div>
+            </section>
+            
+<section class='section-block'><div class='section-head'><h2>自动驾驶（3）</h2><span>3 篇</span></div><div class='grid'>
+
+                <article class='paper-card'>
+                  <div class='paper-top'>
+                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.13891v1' target='_blank' rel='noreferrer'>Beyond Conservative Automated Driving in Multi-Agent Scenarios via Coupled Model Predictive Control and Deep Reinforcement Learning</a></div>
+                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.13891v1' target='_blank' rel='noreferrer'>2604.13891v1</a>
+                  </div>
+                  <div class='paper-meta'>
+                    <div><span>发布时间</span><strong>2026-04-15 21:58</strong></div>
+                    <div><span>标签</span><strong>自动驾驶 / 多车交互 / MPC + DRL</strong></div>
+                  </div>
+                  <p class='insight'>把 MPC 的约束处理能力和 DRL 的灵活性结合起来，针对无信号路口的多车交互做决策优化。属于今天自动驾驶里最像“可落地方法升级”的一篇。</p>
+                  <div class='tags'><span class='badge soft'>自动驾驶</span><span class='badge soft'>多车交互</span><span class='badge soft'>MPC + DRL</span></div>
+                </article>
+                
+
+                <article class='paper-card'>
+                  <div class='paper-top'>
+                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.13853v1' target='_blank' rel='noreferrer'>Mosaic: An Extensible Framework for Composing Rule-Based and Learned Motion Planners</a></div>
+                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.13853v1' target='_blank' rel='noreferrer'>2604.13853v1</a>
+                  </div>
+                  <div class='paper-meta'>
+                    <div><span>发布时间</span><strong>2026-04-15 21:23</strong></div>
+                    <div><span>标签</span><strong>自动驾驶 / 规划框架 / 规则+学习融合</strong></div>
+                  </div>
+                  <p class='insight'>更偏系统框架，把规则式规划器和学习式规划器组合起来，解决可解释性与适应性之间的矛盾。工程价值比较高，适合做规划系统参考。</p>
+                  <div class='tags'><span class='badge soft'>自动驾驶</span><span class='badge soft'>规划框架</span><span class='badge soft'>规则+学习融合</span></div>
+                </article>
+                
+
+                <article class='paper-card'>
+                  <div class='paper-top'>
+                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.13878v1' target='_blank' rel='noreferrer'>Drowsiness-Aware Adaptive Autonomous Braking System based on Deep Reinforcement Learning for Enhanced Road Safety</a></div>
+                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.13878v1' target='_blank' rel='noreferrer'>2604.13878v1</a>
+                  </div>
+                  <div class='paper-meta'>
+                    <div><span>发布时间</span><strong>2026-04-15 21:39</strong></div>
+                    <div><span>标签</span><strong>自动驾驶 / ADAS / 安全制动</strong></div>
+                  </div>
+                  <p class='insight'>面向疲劳驾驶场景的自适应自动制动，属于更偏应用落地的安全控制工作。创新强度不如前两篇，但场景明确、实用性不错。</p>
+                  <div class='tags'><span class='badge soft'>自动驾驶</span><span class='badge soft'>ADAS</span><span class='badge soft'>安全制动</span></div>
+                </article>
+                
+</div></section>
+<section class='section-block'><div class='section-head'><h2>机械臂 / 机器人操作（3）</h2><span>3 篇</span></div><div class='grid'>
+
+                <article class='paper-card'>
+                  <div class='paper-top'>
+                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.14089v1' target='_blank' rel='noreferrer'>UMI-3D: Extending Universal Manipulation Interface from Vision-Limited to 3D Spatial Perception</a></div>
+                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.14089v1' target='_blank' rel='noreferrer'>2604.14089v1</a>
+                  </div>
+                  <div class='paper-meta'>
+                    <div><span>发布时间</span><strong>2026-04-16 01:04</strong></div>
+                    <div><span>标签</span><strong>机械臂 / 数据采集 / 3D 感知</strong></div>
+                  </div>
+                  <p class='insight'>在 UMI 基础上扩展 3D 空间感知，核心价值在于提升 manipulation 数据采集的鲁棒性。属于基础设施型工作，做机器人数据管线很值得看。</p>
+                  <div class='tags'><span class='badge soft'>机械臂</span><span class='badge soft'>数据采集</span><span class='badge soft'>3D 感知</span></div>
+                </article>
+                
+
+                <article class='paper-card'>
+                  <div class='paper-top'>
+                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.13633v1' target='_blank' rel='noreferrer'>ESCAPE: Episodic Spatial Memory and Adaptive Execution Policy for Long-Horizon Mobile Manipulation</a></div>
+                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.13633v1' target='_blank' rel='noreferrer'>2604.13633v1</a>
+                  </div>
+                  <div class='paper-meta'>
+                    <div><span>发布时间</span><strong>2026-04-15 17:01</strong></div>
+                    <div><span>标签</span><strong>机械臂 / 长时程操作 / 空间记忆</strong></div>
+                  </div>
+                  <p class='insight'>解决长时程任务里的遗忘、空间一致性和执行僵化问题，比较典型的长程 mobile manipulation 方法。对室内服务机器人和家居操作很相关。</p>
+                  <div class='tags'><span class='badge soft'>机械臂</span><span class='badge soft'>长时程操作</span><span class='badge soft'>空间记忆</span></div>
+                </article>
+                
+
+                <article class='paper-card'>
+                  <div class='paper-top'>
+                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.13645v1' target='_blank' rel='noreferrer'>A Mechanistic Analysis of Sim-and-Real Co-Training in Generative Robot Policies</a></div>
+                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.13645v1' target='_blank' rel='noreferrer'>2604.13645v1</a>
+                  </div>
+                  <div class='paper-meta'>
+                    <div><span>发布时间</span><strong>2026-04-15 17:14</strong></div>
+                    <div><span>标签</span><strong>机械臂 / sim2real / 机制分析</strong></div>
+                  </div>
+                  <p class='insight'>不是单纯堆实验，而是分析仿真+真实联合训练“为什么有效、什么时候有效”。方法论味道很强，适合想理解 robot policy 训练规律的人。</p>
+                  <div class='tags'><span class='badge soft'>机械臂</span><span class='badge soft'>sim2real</span><span class='badge soft'>机制分析</span></div>
+                </article>
+                
+</div></section>
+<section class='section-block'><div class='section-head'><h2>VLA（2）</h2><span>2 篇</span></div><div class='grid'>
+
+                <article class='paper-card'>
+                  <div class='paper-top'>
+                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.14125v1' target='_blank' rel='noreferrer'>HiVLA: A Visual-Grounded-Centric Hierarchical Embodied Manipulation System</a></div>
+                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.14125v1' target='_blank' rel='noreferrer'>2604.14125v1</a>
+                  </div>
+                  <div class='paper-meta'>
+                    <div><span>发布时间</span><strong>2026-04-16 01:50</strong></div>
+                    <div><span>标签</span><strong>VLA / 分层执行 / embodied manipulation</strong></div>
+                  </div>
+                  <p class='insight'>直接瞄准“VLM 先验强，但控制数据细”的核心矛盾，强调 visual grounding 和层次化执行。今天 VLA 方向里最值得优先看的论文之一。</p>
+                  <div class='tags'><span class='badge soft'>VLA</span><span class='badge soft'>分层执行</span><span class='badge soft'>embodied manipulation</span></div>
+                </article>
+                
+
+                <article class='paper-card'>
+                  <div class='paper-top'>
+                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.13733v1' target='_blank' rel='noreferrer'>Jump-Start Reinforcement Learning with Vision-Language-Action Regularization</a></div>
+                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.13733v1' target='_blank' rel='noreferrer'>2604.13733v1</a>
+                  </div>
+                  <div class='paper-meta'>
+                    <div><span>发布时间</span><strong>2026-04-15 19:17</strong></div>
+                    <div><span>标签</span><strong>VLA / 强化学习 / 机器人控制</strong></div>
+                  </div>
+                  <p class='insight'>用 VLA 预训练能力去正则化 RL，目标是改善长时程稀疏奖励下的探索和信用分配。方法路线清楚，泛化潜力也不错。</p>
+                  <div class='tags'><span class='badge soft'>VLA</span><span class='badge soft'>强化学习</span><span class='badge soft'>机器人控制</span></div>
+                </article>
+                
+</div></section>
+<section class='section-block'><div class='section-head'><h2>VLM（2）</h2><span>2 篇</span></div><div class='grid'>
+
+                <article class='paper-card'>
+                  <div class='paper-top'>
+                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.14149v1' target='_blank' rel='noreferrer'>One Token per Highly Selective Frame: Towards Extreme Compression for Long Video Understanding</a></div>
+                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.14149v1' target='_blank' rel='noreferrer'>2604.14149v1</a>
+                  </div>
+                  <div class='paper-meta'>
+                    <div><span>发布时间</span><strong>2026-04-16 01:59</strong></div>
+                    <div><span>标签</span><strong>VLM / 长视频理解 / 极端压缩</strong></div>
+                  </div>
+                  <p class='insight'>直接针对长视频上下文爆炸问题，核心是尽量用极少 token 保留时序信息。对视频 VLM 的效率瓶颈很有现实价值。</p>
+                  <div class='tags'><span class='badge soft'>VLM</span><span class='badge soft'>长视频理解</span><span class='badge soft'>极端压缩</span></div>
+                </article>
+                
+
+                <article class='paper-card'>
+                  <div class='paper-top'>
+                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.13993v1' target='_blank' rel='noreferrer'>Reward Design for Physical Reasoning in Vision-Language Models</a></div>
+                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.13993v1' target='_blank' rel='noreferrer'>2604.13993v1</a>
+                  </div>
+                  <div class='paper-meta'>
+                    <div><span>发布时间</span><strong>2026-04-15 23:36</strong></div>
+                    <div><span>标签</span><strong>VLM / 物理推理 / 后训练</strong></div>
+                  </div>
+                  <p class='insight'>关注 VLM 在物理推理上的奖励设计和后训练策略，属于“让模型更会想”的方向。比单纯 benchmark 更偏训练改进，参考价值较高。</p>
+                  <div class='tags'><span class='badge soft'>VLM</span><span class='badge soft'>物理推理</span><span class='badge soft'>后训练</span></div>
+                </article>
+                
+</div></section>
   </div>
 </body>
 </html>
