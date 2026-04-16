@@ -31,7 +31,17 @@ def esc(text: str | None) -> str:
 def latest_markdowns() -> list[Path]:
     if not SRC_DIR.exists():
         return []
-    return sorted(SRC_DIR.glob("*.md"), key=lambda p: p.stat().st_mtime, reverse=True)
+    candidates = sorted(SRC_DIR.glob("*.md"), key=lambda p: p.stat().st_mtime, reverse=True)
+    valid: list[Path] = []
+    for path in candidates:
+        try:
+            text = path.read_text(encoding="utf-8", errors="ignore")
+        except OSError:
+            continue
+        # 只接受真正包含论文正文的输出；避免把异常的技能提示/空跑结果当成最新日报
+        if "## 自动驾驶" in text and "- **看点：**" in text and "- **摘要总结：**" in text:
+            valid.append(path)
+    return valid or candidates
 
 
 def parse_markdown(path: Path) -> dict:
