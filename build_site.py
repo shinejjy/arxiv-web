@@ -23,7 +23,7 @@ JOB_ID = "054d56957dbb"
 SITE_DIR = Path(__file__).resolve().parent
 SRC_DIR = Path.home() / ".hermes" / "cron" / "output" / JOB_ID
 PREVIEW_DIR = SITE_DIR / "assets" / "previews"
-PREVIEW_CACHE_VERSION = "v4"
+PREVIEW_CACHE_VERSION = "v5"
 
 SECTION_RE = re.compile(r"^##\s+(.*?)\s*$")
 PAPER_RE = re.compile(r"^\d+\.\s+\*\*(.*?)\*\*\s*$")
@@ -206,8 +206,8 @@ def pad_preview_png(data: bytes, pad_x: int | None = None, pad_y: int | None = N
         with Image.open(io.BytesIO(data)) as img:
             img.load()
             img = img.convert("RGB")
-            px = pad_x if pad_x is not None else max(48, img.width // 16)
-            py = pad_y if pad_y is not None else max(32, img.height // 22)
+            px = pad_x if pad_x is not None else max(72, img.width // 11)
+            py = pad_y if pad_y is not None else max(48, img.height // 18)
             canvas = Image.new("RGB", (img.width + px * 2, img.height + py * 2), "white")
             canvas.paste(img, (px, py))
             buf = io.BytesIO()
