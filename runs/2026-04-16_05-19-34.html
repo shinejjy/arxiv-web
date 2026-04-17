@@ -4,6 +4,7 @@
   <meta charset='utf-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <meta http-equiv='refresh' content='300'>
+  <meta name='theme-color' content='#f6f5f4'>
   <title>arXiv 每日摘要</title>
   <link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap' rel='stylesheet'>
   <style>
@@ -58,10 +59,12 @@
     .brand-mark { width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--violet)); box-shadow: 0 0 0 6px rgba(0,117,222,.1); }
     .topbar .hint { color: var(--muted); font-size: .92rem; }
     .hero {
-      display: grid; grid-template-columns: 1.45fr .9fr; gap: 18px;
-      padding: 28px; border-radius: var(--radius-xl);
-      background: linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.72));
-      border: 1px solid rgba(255,255,255,.8); box-shadow: var(--shadow);
+      display: grid; grid-template-columns: 1.35fr .95fr; gap: 18px;
+      padding: 28px; border-radius: 32px;
+      background:
+        radial-gradient(circle at top right, rgba(109,74,255,.14), transparent 32%),
+        linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.76));
+      border: 1px solid rgba(255,255,255,.84); box-shadow: var(--shadow);
     }
     .eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
@@ -77,16 +80,20 @@
     .badge.green { color: #107426; background: rgba(26,174,57,.10); }
     .badge.violet { color: #5234d6; background: rgba(109,74,255,.10); }
     .badge.soft { color: var(--muted); background: rgba(255,255,255,.78); border-color: var(--line); }
-    .hero-panel { display: grid; gap: 12px; align-content: start; }
+    .hero-panel { display: grid; gap: 12px; align-content: start; grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .stat-card, .card, .paper-card, .overall-card {
       background: var(--surface);
       border: 1px solid rgba(255,255,255,.8);
       box-shadow: var(--shadow-soft);
       backdrop-filter: blur(16px);
     }
-    .stat-card { padding: 16px; border-radius: var(--radius-md); }
-    .stat-card span { display: block; color: var(--muted); font-size: .82rem; margin-bottom: 6px; }
-    .stat-card strong { font-size: 1rem; line-height: 1.35; }
+    .stat-card {
+      padding: 15px 14px; border-radius: 18px; min-height: 84px;
+      display: grid; gap: 4px; align-content: start;
+      background: linear-gradient(180deg, rgba(255,255,255,.94), rgba(249,251,255,.86));
+    }
+    .stat-card span { display: block; color: var(--muted); font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; font-weight: 800; }
+    .stat-card strong { font-size: .98rem; line-height: 1.35; }
     .section-block { margin-top: 22px; }
     .section-head {
       display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
@@ -95,6 +102,17 @@
     .section-head h2 { margin: 0; font-size: 1.15rem; letter-spacing: -.02em; }
     .section-head span { color: var(--muted); font-size: .92rem; }
     .section-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+    .section-rail {
+      display: flex; gap: 10px; overflow-x: auto; padding: 2px 2px 8px;
+      -webkit-overflow-scrolling: touch; scrollbar-width: none;
+    }
+    .section-rail::-webkit-scrollbar { display: none; }
+    .rail-chip {
+      flex: 0 0 auto; padding: 10px 14px; border-radius: 999px; white-space: nowrap;
+      background: rgba(255,255,255,.82); border: 1px solid rgba(0,0,0,.06);
+      box-shadow: 0 8px 20px rgba(0,0,0,.04); font-size: .9rem; font-weight: 800;
+    }
+    .rail-chip:hover { color: var(--blue); transform: translateY(-1px); }
     .section-chip {
       flex: 1 1 220px; display: flex; justify-content: space-between; gap: 12px;
       align-items: center; padding: 14px 16px; border-radius: 18px; background: rgba(255,255,255,.72);
@@ -109,8 +127,9 @@
     .section-chip.rose { background: linear-gradient(180deg, rgba(255,244,251,.95), rgba(255,255,255,.82)); }
     .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
     .paper-card {
-      padding: 18px; border-radius: var(--radius-lg); position: relative; overflow: hidden;
-      background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.84));
+      padding: 18px; border-radius: 24px; position: relative; overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,255,255,.86));
+      border: 1px solid rgba(255,255,255,.86);
     }
     .paper-card::before {
       content: ''; position: absolute; left: 0; top: 0; right: 0; height: 3px;
@@ -120,12 +139,16 @@
     .paper-top { display: flex; justify-content: space-between; gap: 12px; align-items: start; margin-bottom: 10px; }
     .paper-title { font-size: 1.02rem; font-weight: 800; line-height: 1.35; letter-spacing: -.02em; }
     .paper-title a:hover { color: var(--blue); }
+    .paper-summary {
+      margin: 10px 0 0; color: var(--text); font-size: .95rem; line-height: 1.58;
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+    }
     .arxiv-link {
       flex: none; font-size: .78rem; font-weight: 800; color: var(--blue);
       background: var(--blue-bg); border: 1px solid rgba(0,117,222,.12);
       padding: 6px 10px; border-radius: 999px;
     }
-    .paper-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
+    .paper-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0 8px; }
     .paper-meta div {
       padding: 10px 11px; border-radius: 14px; background: rgba(255,255,255,.74); border: 1px solid var(--line);
     }
@@ -133,9 +156,23 @@
     .paper-meta strong { font-size: .88rem; font-weight: 700; line-height: 1.45; }
     .insight { margin: 10px 0 0; color: var(--text); font-size: .95rem; }
     .paper-facts { display: grid; gap: 8px; margin-top: 12px; }
-    .paper-facts div { display: grid; gap: 3px; padding: 10px 12px; border-radius: 14px; background: rgba(247,249,252,.9); border: 1px solid rgba(0,0,0,.05); }
+    .paper-facts .fact { display: grid; gap: 3px; padding: 10px 12px; border-radius: 14px; background: rgba(247,249,252,.9); border: 1px solid rgba(0,0,0,.05); }
+    .paper-facts .fact.good { background: linear-gradient(180deg, rgba(243,253,246,.98), rgba(255,255,255,.92)); border-color: rgba(26,174,57,.14); }
+    .paper-facts .fact.bad { background: linear-gradient(180deg, rgba(255,245,245,.98), rgba(255,255,255,.92)); border-color: rgba(216,79,79,.14); }
+    .paper-facts .fact.neutral { background: linear-gradient(180deg, rgba(247,249,252,.96), rgba(255,255,255,.9)); border-color: rgba(0,0,0,.05); }
     .paper-facts span { font-size: .74rem; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); font-weight: 800; }
     .paper-facts strong { font-size: .92rem; line-height: 1.45; font-weight: 600; }
+    .paper-facts .fact.good strong { color: #107426; }
+    .paper-facts .fact.bad strong { color: #bb2d2d; }
+    .paper-actions {
+      display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px;
+    }
+    .paper-action {
+      display: inline-flex; align-items: center; justify-content: center; min-height: 40px;
+      padding: 0 14px; border-radius: 999px; border: 1px solid rgba(0,0,0,.08);
+      background: rgba(255,255,255,.86); color: var(--text); font-size: .88rem; font-weight: 800;
+    }
+    .paper-action.primary { color: white; border-color: transparent; background: linear-gradient(135deg, var(--blue), var(--violet)); box-shadow: 0 10px 20px rgba(109,74,255,.22); }
     .figure-card {
       margin-top: 12px; padding: 12px; border-radius: 18px; background: linear-gradient(180deg, rgba(255,255,255,.94), rgba(248,250,255,.92));
       border: 1px solid rgba(109,74,255,.10); box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
@@ -183,6 +220,18 @@
     .archive-meta { color: var(--muted); font-size: .92rem; margin-top: 4px; }
     .archive-open { flex: none; color: var(--blue); background: var(--blue-bg); border: 1px solid rgba(0,117,222,.12); padding: 8px 12px; border-radius: 999px; font-weight: 800; }
     .archive-top { margin-top: 12px; color: var(--text); line-height: 1.6; }
+    .dock {
+      display: none; position: sticky; bottom: 12px; z-index: 8; margin-top: 18px;
+      padding: 10px; border-radius: 22px; background: rgba(255,255,255,.72); backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,.86); box-shadow: var(--shadow);
+    }
+    .dock-items { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+    .dock-item {
+      display: inline-flex; align-items: center; justify-content: center; min-height: 44px;
+      padding: 0 12px; border-radius: 16px; background: rgba(247,249,252,.96); border: 1px solid rgba(0,0,0,.06);
+      font-size: .9rem; font-weight: 800;
+    }
+    .dock-item.primary { color: white; border: 0; background: linear-gradient(135deg, var(--blue), var(--violet)); }
     @media (max-width: 900px) {
       .hero, .grid { grid-template-columns: 1fr; }
       .paper-meta { grid-template-columns: 1fr; }
@@ -190,6 +239,7 @@
       .pipeline-flow { grid-template-columns: 1fr; }
       .pipeline-arrow { display: none; }
       .pipeline-step { min-height: unset; }
+      .hero-panel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 560px) {
       .page { padding: 14px 12px 40px; }
@@ -199,11 +249,16 @@
       .section-chip { flex-basis: 100%; }
       .section-head { flex-direction: column; align-items: start; }
       .archive-head { flex-direction: column; }
+      .dock { display: block; }
+      .hero-panel { grid-template-columns: 1fr 1fr; }
+      .paper-top { flex-direction: column; }
+      .arxiv-link { align-self: flex-start; }
+      .paper-action { flex: 1 1 0; }
     }
     </style>
 </head>
 <body>
-  <div class='page'>
+  <div class='page' id='top'>
     <header class='topbar'>
       <div class='brand'><span class='brand-mark'></span>arXiv 每日摘要</div>
       <div class='hint'>归档运行：2026-04-16 05:19:34</div>
@@ -224,28 +279,33 @@
             <div class='stat-card'><span>Job ID</span><strong>054d56957dbb</strong></div>
             <div class='stat-card'><span>Run Time</span><strong>2026-04-16 05:19:34</strong></div>
             <div class='stat-card'><span>Schedule</span><strong>0 0 * * *</strong></div>
+            <div class='stat-card'><span>主题块</span><strong>4 个</strong></div>
           </div>
+        </section>
+        <section class='section-block'>
+          <div class='section-head'><h2>快速跳转</h2><span>滑动即可切换模块</span></div>
+          <div class='section-rail'><a class='rail-chip' href='#overview'>概览</a><a class='rail-chip' href='#top3'>重点 3 篇</a><a class='rail-chip' href='#overall'>总评</a><a class='rail-chip' href='#figure_f64736b9'>自动驾驶</a><a class='rail-chip' href='#figure_6340108e'>机械臂 / 操控</a><a class='rail-chip' href='#VLA'>VLA</a><a class='rail-chip' href='#VLM'>VLM</a></div>
         </section>
         
 
-            <section class='section-block'>
+            <section class='section-block' id='overview'>
               <div class='section-head'><h2>今日概览</h2><span>10 篇 · 4 个主题块</span></div>
               <div class='section-chips'><span class='badge soft'>自动驾驶 3</span><span class='badge soft'>机械臂 / 操控 3</span><span class='badge soft'>VLA 2</span><span class='badge soft'>VLM 2</span></div>
             </section>
             
 
-            <section class='section-block'>
+            <section class='section-block' id='top3'>
               <div class='section-head'><h2>今天最值得重点看的 3 篇</h2><span>编辑优先级</span></div>
               <div class='top3'><div class='top3-item'><span class='rank'>1</span><div class='top3-text'>1. **Mosaic: An Extensible Framework for Composing Rule-Based and Learned Motion Planners** —— 自动驾驶里最实用：有安全、可解释性、闭环基准和代码。</div></div><div class='top3-item'><span class='rank'>2</span><div class='top3-text'>2. **HiVLA: A Visual-Grounded-Centric Hierarchical Embodied Manipulation System** —— 分层 VLM+动作专家的路线很清晰，且有真实世界结果。</div></div><div class='top3-item'><span class='rank'>3</span><div class='top3-text'>3. **Grounded World Model for Semantically Generalizable Planning** —— 语义泛化最强的一篇，VLA / world model / MPC 三者结合得最紧。</div></div></div>
             </section>
             
 
-            <section class='section-block'>
+            <section class='section-block' id='overall'>
               <div class='section-head'><h2>整体判断</h2><span>今日总评</span></div>
               <div class='overall-card'>今天这批论文里，真正“方法强、可落地”的主线是：自动驾驶里的可解释组合规划、操控里的分层 VLA、以及把语义对齐引入 world model / MPC 的规划路线；VLM 侧更多是奖励设计和 benchmark，适合做实验和补齐评测，不太像直接上生产的系统。</div>
             </section>
             
-<section class='section-block'><div class='section-head'><h2>自动驾驶</h2><span>3 篇</span></div><div class='grid'>
+<section class='section-block' id='figure_f64736b9'><div class='section-head'><h2>自动驾驶</h2><span>3 篇</span></div><div class='grid'>
 
                 <article class='paper-card'>
                   <div class='paper-top'>
@@ -256,12 +316,12 @@
                     <div><span>发布时间</span><strong>2026-04-15 21:23</strong></div>
                     <div><span>标签</span><strong>自动驾驶 / 规划 / 方法 / 安全</strong></div>
                   </div>
+                  <p class='paper-summary'>通过 arbitration graphs 把轨迹生成与验证/评分解耦，避免重新训练；在 nuPlan 和 interPlan 上都明显优于单独的规则或学习规划器。</p>
                   
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>通过 arbitration graphs 把轨迹生成与验证/评分解耦，避免重新训练；在 nuPlan 和 interPlan 上都明显优于单独的规则或学习规划器。</strong></div>
-                    <div><span>实现概率</span><strong>72% —— 结构清晰、评测扎实，而且作者明确给出代码。</strong></div>
-                    <div><span>开源</span><strong>是</strong></div>
-                    <div><span>可部署</span><strong>是</strong></div>
+                    <div class='fact neutral'><span>实现概率</span><strong>72% —— 结构清晰、评测扎实，而且作者明确给出代码。</strong></div>
+                    <div class='fact good'><span>开源</span><strong>是</strong></div>
+                    <div class='fact good'><span>可部署</span><strong>是</strong></div>
                   </div>
                   
                   
@@ -304,6 +364,7 @@
     </div>
     
                   <div class='tags'><span class='badge soft'>自动驾驶</span><span class='badge soft'>规划</span><span class='badge soft'>方法</span></div>
+                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='../archive/index.html'>返回归档</a></div>
                 </article>
                 
 
@@ -316,12 +377,12 @@
                     <div><span>发布时间</span><strong>2026-04-14 10:34</strong></div>
                     <div><span>标签</span><strong>自动驾驶 / VLA / 方法 / 导航</strong></div>
                   </div>
+                  <p class='paper-summary'>提出 Sequential Navigation Guidance（SNG）与 SNG-QA 数据集，并构造 SNG-VLA 融合局部规划和全局导航；摘要称在精确建模导航信息后取得 SOTA。</p>
                   
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>提出 Sequential Navigation Guidance（SNG）与 SNG-QA 数据集，并构造 SNG-VLA 融合局部规划和全局导航；摘要称在精确建模导航信息后取得 SOTA。</strong></div>
-                    <div><span>实现概率</span><strong>60% —— 思路明确，但是否能稳定落地仍取决于导航表示和数据扩展。</strong></div>
-                    <div><span>开源</span><strong>不确定</strong></div>
-                    <div><span>可部署</span><strong>不确定</strong></div>
+                    <div class='fact good'><span>实现概率</span><strong>60% —— 思路明确，但是否能稳定落地仍取决于导航表示和数据扩展。</strong></div>
+                    <div class='fact bad'><span>开源</span><strong>不确定</strong></div>
+                    <div class='fact bad'><span>可部署</span><strong>不确定</strong></div>
                   </div>
                   
                   
@@ -364,6 +425,7 @@
     </div>
     
                   <div class='tags'><span class='badge soft'>自动驾驶</span><span class='badge soft'>VLA</span><span class='badge soft'>方法</span></div>
+                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='../archive/index.html'>返回归档</a></div>
                 </article>
                 
 
@@ -376,12 +438,12 @@
                     <div><span>发布时间</span><strong>2026-04-14 19:55</strong></div>
                     <div><span>标签</span><strong>自动驾驶 / 路径规划 / 方法 / 对比实验</strong></div>
                   </div>
+                  <p class='paper-summary'>用 DDPG 在带禁区的路径规划中学习安全动作序列，并与 pseudo-spectral 最优控制比较；结果显示 RL 更快，但可行域与最优性都还有限。</p>
                   
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>用 DDPG 在带禁区的路径规划中学习安全动作序列，并与 pseudo-spectral 最优控制比较；结果显示 RL 更快，但可行域与最优性都还有限。</strong></div>
-                    <div><span>实现概率</span><strong>48% —— 代码思路不复杂，但问题设定偏简化，离真实自动驾驶还有距离。</strong></div>
-                    <div><span>开源</span><strong>不确定</strong></div>
-                    <div><span>可部署</span><strong>不确定</strong></div>
+                    <div class='fact bad'><span>实现概率</span><strong>48% —— 代码思路不复杂，但问题设定偏简化，离真实自动驾驶还有距离。</strong></div>
+                    <div class='fact bad'><span>开源</span><strong>不确定</strong></div>
+                    <div class='fact bad'><span>可部署</span><strong>不确定</strong></div>
                   </div>
                   
                   
@@ -424,10 +486,11 @@
     </div>
     
                   <div class='tags'><span class='badge soft'>自动驾驶</span><span class='badge soft'>路径规划</span><span class='badge soft'>方法</span></div>
+                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='../archive/index.html'>返回归档</a></div>
                 </article>
                 
 </div></section>
-<section class='section-block'><div class='section-head'><h2>机械臂 / 操控</h2><span>3 篇</span></div><div class='grid'>
+<section class='section-block' id='figure_6340108e'><div class='section-head'><h2>机械臂 / 操控</h2><span>3 篇</span></div><div class='grid'>
 
                 <article class='paper-card'>
                   <div class='paper-top'>
@@ -438,12 +501,12 @@
                     <div><span>发布时间</span><strong>2026-04-16 01:50</strong></div>
                     <div><span>标签</span><strong>机械臂 / 操控 / VLA / 分层方法</strong></div>
                   </div>
+                  <p class='paper-summary'>高层 VLM 负责任务分解和视觉定位，低层用 flow-matching DiT 做动作生成；作者强调在模拟和真实世界都优于端到端基线，尤其适合长程组合技能和小目标操作。</p>
                   
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>高层 VLM 负责任务分解和视觉定位，低层用 flow-matching DiT 做动作生成；作者强调在模拟和真实世界都优于端到端基线，尤其适合长程组合技能和小目标操作。</strong></div>
-                    <div><span>实现概率</span><strong>70% —— 分层设计很顺手，且有真实世界结果，复现价值高。</strong></div>
-                    <div><span>开源</span><strong>不确定</strong></div>
-                    <div><span>可部署</span><strong>是</strong></div>
+                    <div class='fact good'><span>实现概率</span><strong>70% —— 分层设计很顺手，且有真实世界结果，复现价值高。</strong></div>
+                    <div class='fact bad'><span>开源</span><strong>不确定</strong></div>
+                    <div class='fact good'><span>可部署</span><strong>是</strong></div>
                   </div>
                   
                   
@@ -486,6 +549,7 @@
     </div>
     
                   <div class='tags'><span class='badge soft'>机械臂</span><span class='badge soft'>操控</span><span class='badge soft'>VLA</span></div>
+                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='../archive/index.html'>返回归档</a></div>
                 </article>
                 
 
@@ -498,12 +562,12 @@
                     <div><span>发布时间</span><strong>2026-04-15 01:54</strong></div>
                     <div><span>标签</span><strong>机械臂 / 操控 / humanoid / 触觉 / 方法</strong></div>
                   </div>
+                  <p class='paper-summary'>结合 RL 稳定控制器、VR 远程操作数据采集和带 touch dreaming 的多模态 Transformer；在 5 个接触密集任务上，平均成功率相对强基线提升 90.9%。</p>
                   
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>结合 RL 稳定控制器、VR 远程操作数据采集和带 touch dreaming 的多模态 Transformer；在 5 个接触密集任务上，平均成功率相对强基线提升 90.9%。</strong></div>
-                    <div><span>实现概率</span><strong>74% —— 真实世界任务清楚，组件也比较标准，工程路线很明确。</strong></div>
-                    <div><span>开源</span><strong>不确定</strong></div>
-                    <div><span>可部署</span><strong>是</strong></div>
+                    <div class='fact neutral'><span>实现概率</span><strong>74% —— 真实世界任务清楚，组件也比较标准，工程路线很明确。</strong></div>
+                    <div class='fact bad'><span>开源</span><strong>不确定</strong></div>
+                    <div class='fact good'><span>可部署</span><strong>是</strong></div>
                   </div>
                   
                   
@@ -546,6 +610,7 @@
     </div>
     
                   <div class='tags'><span class='badge soft'>机械臂</span><span class='badge soft'>操控</span><span class='badge soft'>humanoid</span></div>
+                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='../archive/index.html'>返回归档</a></div>
                 </article>
                 
 
@@ -558,12 +623,12 @@
                     <div><span>发布时间</span><strong>2026-04-15 22:53</strong></div>
                     <div><span>标签</span><strong>机械臂 / 操控 / VLA / 长程规划</strong></div>
                   </div>
+                  <p class='paper-summary'>高层 VLM 负责结构化任务记忆、目标分解和失败校正，低层 VLA 负责 diffusion 式动作执行；在 RMBench 上平均成功率 32.4%，强于最强基线的 9.8%。</p>
                   
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>高层 VLM 负责结构化任务记忆、目标分解和失败校正，低层 VLA 负责 diffusion 式动作执行；在 RMBench 上平均成功率 32.4%，强于最强基线的 9.8%。</strong></div>
-                    <div><span>实现概率</span><strong>66% —— 体系化很强，但闭环稳定性和记忆模块的工程细节会决定上限。</strong></div>
-                    <div><span>开源</span><strong>不确定</strong></div>
-                    <div><span>可部署</span><strong>不确定</strong></div>
+                    <div class='fact neutral'><span>实现概率</span><strong>66% —— 体系化很强，但闭环稳定性和记忆模块的工程细节会决定上限。</strong></div>
+                    <div class='fact bad'><span>开源</span><strong>不确定</strong></div>
+                    <div class='fact bad'><span>可部署</span><strong>不确定</strong></div>
                   </div>
                   
                   
@@ -606,10 +671,11 @@
     </div>
     
                   <div class='tags'><span class='badge soft'>机械臂</span><span class='badge soft'>操控</span><span class='badge soft'>VLA</span></div>
+                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='../archive/index.html'>返回归档</a></div>
                 </article>
                 
 </div></section>
-<section class='section-block'><div class='section-head'><h2>VLA</h2><span>2 篇</span></div><div class='grid'>
+<section class='section-block' id='VLA'><div class='section-head'><h2>VLA</h2><span>2 篇</span></div><div class='grid'>
 
                 <article class='paper-card'>
                   <div class='paper-top'>
@@ -620,12 +686,12 @@
                     <div><span>发布时间</span><strong>2026-04-14 01:25</strong></div>
                     <div><span>标签</span><strong>VLA / 世界模型 / 方法 / 规划</strong></div>
                   </div>
+                  <p class='paper-summary'>先学 grounded world model，再用与任务指令相似度来给动作轨迹打分；在 WISER 基准上成功率 87%，显著高于传统 VLA 的平均 22%。</p>
                   
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>先学 grounded world model，再用与任务指令相似度来给动作轨迹打分；在 WISER 基准上成功率 87%，显著高于传统 VLA 的平均 22%。</strong></div>
-                    <div><span>实现概率</span><strong>78% —— 方法链条完整，性能也很强，属于今天最像“能直接抄”的路线之一。</strong></div>
-                    <div><span>开源</span><strong>不确定</strong></div>
-                    <div><span>可部署</span><strong>不确定</strong></div>
+                    <div class='fact neutral'><span>实现概率</span><strong>78% —— 方法链条完整，性能也很强，属于今天最像“能直接抄”的路线之一。</strong></div>
+                    <div class='fact bad'><span>开源</span><strong>不确定</strong></div>
+                    <div class='fact bad'><span>可部署</span><strong>不确定</strong></div>
                   </div>
                   
                   
@@ -668,6 +734,7 @@
     </div>
     
                   <div class='tags'><span class='badge soft'>VLA</span><span class='badge soft'>世界模型</span><span class='badge soft'>方法</span></div>
+                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='../archive/index.html'>返回归档</a></div>
                 </article>
                 
 
@@ -680,12 +747,12 @@
                     <div><span>发布时间</span><strong>2026-04-15 19:17</strong></div>
                     <div><span>标签</span><strong>VLA / 强化学习 / 方法 / 操控</strong></div>
                   </div>
+                  <p class='paper-summary'>在稀疏或不完美奖励下，把 VLA 正则项加到 RL 训练里，以改善探索和信用分配；目标是长程操控中的闭环控制。</p>
                   
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>在稀疏或不完美奖励下，把 VLA 正则项加到 RL 训练里，以改善探索和信用分配；目标是长程操控中的闭环控制。</strong></div>
-                    <div><span>实现概率</span><strong>63% —— 训练技巧型方法，复现门槛不高，但收益是否稳定要看任务和奖励设计。</strong></div>
-                    <div><span>开源</span><strong>不确定</strong></div>
-                    <div><span>可部署</span><strong>不确定</strong></div>
+                    <div class='fact good'><span>实现概率</span><strong>63% —— 训练技巧型方法，复现门槛不高，但收益是否稳定要看任务和奖励设计。</strong></div>
+                    <div class='fact bad'><span>开源</span><strong>不确定</strong></div>
+                    <div class='fact bad'><span>可部署</span><strong>不确定</strong></div>
                   </div>
                   
                   
@@ -728,10 +795,11 @@
     </div>
     
                   <div class='tags'><span class='badge soft'>VLA</span><span class='badge soft'>强化学习</span><span class='badge soft'>方法</span></div>
+                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='../archive/index.html'>返回归档</a></div>
                 </article>
                 
 </div></section>
-<section class='section-block'><div class='section-head'><h2>VLM</h2><span>2 篇</span></div><div class='grid'>
+<section class='section-block' id='VLM'><div class='section-head'><h2>VLM</h2><span>2 篇</span></div><div class='grid'>
 
                 <article class='paper-card'>
                   <div class='paper-top'>
@@ -742,12 +810,12 @@
                     <div><span>发布时间</span><strong>2026-04-15 23:36</strong></div>
                     <div><span>标签</span><strong>VLM / 奖励设计 / 方法 / 物理推理</strong></div>
                   </div>
+                  <p class='paper-summary'>对 GRPO 训练中的四类奖励做系统消融：格式、准确率、综合 rubric、注意力奖励；结果显示奖励设计不会线性变好，且不同奖励会诱导不同推理偏好。</p>
                   
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>对 GRPO 训练中的四类奖励做系统消融：格式、准确率、综合 rubric、注意力奖励；结果显示奖励设计不会线性变好，且不同奖励会诱导不同推理偏好。</strong></div>
-                    <div><span>实现概率</span><strong>84% —— 依赖现成模型和明确奖励定义，最容易复现，也最容易改造成自己的实验。</strong></div>
-                    <div><span>开源</span><strong>不确定</strong></div>
-                    <div><span>可部署</span><strong>不确定</strong></div>
+                    <div class='fact neutral'><span>实现概率</span><strong>84% —— 依赖现成模型和明确奖励定义，最容易复现，也最容易改造成自己的实验。</strong></div>
+                    <div class='fact bad'><span>开源</span><strong>不确定</strong></div>
+                    <div class='fact bad'><span>可部署</span><strong>不确定</strong></div>
                   </div>
                   
                   
@@ -790,6 +858,7 @@
     </div>
     
                   <div class='tags'><span class='badge soft'>VLM</span><span class='badge soft'>奖励设计</span><span class='badge soft'>方法</span></div>
+                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='../archive/index.html'>返回归档</a></div>
                 </article>
                 
 
@@ -802,12 +871,12 @@
                     <div><span>发布时间</span><strong>2026-04-15 15:57</strong></div>
                     <div><span>标签</span><strong>VLM / benchmark / 数据集 / 评测</strong></div>
                   </div>
+                  <p class='paper-summary'>构建了 11.2K 长视频、39.4K 冲突事件的大规模基准 AVID，并给出 AVID-Qwen 基线；摘要显示当前 omni-modal 模型在时序定位和推理上仍有明显短板。</p>
                   
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>构建了 11.2K 长视频、39.4K 冲突事件的大规模基准 AVID，并给出 AVID-Qwen 基线；摘要显示当前 omni-modal 模型在时序定位和推理上仍有明显短板。</strong></div>
-                    <div><span>实现概率</span><strong>52% —— 做基准和评测体系相对直接，但它更像研究基础设施，不是即插即用的应用方案。</strong></div>
-                    <div><span>开源</span><strong>不确定</strong></div>
-                    <div><span>可部署</span><strong>不确定</strong></div>
+                    <div class='fact good'><span>实现概率</span><strong>52% —— 做基准和评测体系相对直接，但它更像研究基础设施，不是即插即用的应用方案。</strong></div>
+                    <div class='fact bad'><span>开源</span><strong>不确定</strong></div>
+                    <div class='fact bad'><span>可部署</span><strong>不确定</strong></div>
                   </div>
                   
                   
@@ -850,9 +919,17 @@
     </div>
     
                   <div class='tags'><span class='badge soft'>VLM</span><span class='badge soft'>benchmark</span><span class='badge soft'>数据集</span></div>
+                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='../archive/index.html'>返回归档</a></div>
                 </article>
                 
 </div></section>
+    <nav class='dock' aria-label='页面导航'>
+      <div class='dock-items'>
+        <a class='dock-item primary' href='../index.html'>首页</a>
+        <a class='dock-item' href='../archive/index.html'>归档</a>
+        <a class='dock-item' href='#top'>顶部</a>
+      </div>
+    </nav>
   </div>
 </body>
 </html>
