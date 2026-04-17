@@ -58,7 +58,14 @@
     .section-rail .rail-chip { flex: 1 1 220px; justify-content: space-between; background: rgba(255,255,255,.74); }
     .section-rail .rail-chip span { font-weight: 800; }
     .weekly-grid { display: grid; grid-template-columns: 1.35fr .9fr; gap: 14px; align-items: start; }
-    .cloud-card { padding: 18px; border-radius: var(--radius-lg); background: rgba(255,255,255,.74); border: 1px solid var(--line); box-shadow: var(--shadow-soft); }
+    .figure-card { padding: 18px; border-radius: var(--radius-lg); background: rgba(255,255,255,.74); border: 1px solid var(--line); box-shadow: var(--shadow-soft); }
+    .figure-head { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; margin-bottom: 12px; }
+    .figure-head strong { font-size: 1.02rem; }
+    .figure-head span { color: var(--muted); font-size: .9rem; }
+    .figure-image { width: 100%; display: block; border-radius: 20px; overflow: hidden; background: rgba(255,255,255,.96); border: 1px solid rgba(0,0,0,.05); }
+    .figure-caption { margin-top: 10px; color: var(--muted); font-size: .9rem; line-height: 1.6; }
+    .cloud-figure .figure-image { min-height: 200px; }
+    .framework-figure .figure-image { min-height: 160px; }
     .cloud { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
     .cloud-empty { color: var(--muted); padding: 14px 4px; }
     .cloud-chip { display: inline-flex; align-items: baseline; gap: 8px; padding: 10px 14px; line-height: 1; --scale: 1; transform-origin: center; }
@@ -108,6 +115,7 @@
       .hero, .grid, .weekly-grid { grid-template-columns: 1fr; }
       .paper-meta { grid-template-columns: 1fr; }
       .topbar { position: static; border-radius: 20px; }
+      .figure-head { flex-direction: column; align-items: start; }
     }
     @media (max-width: 560px) {
       .page { padding: 14px 12px 40px; }
