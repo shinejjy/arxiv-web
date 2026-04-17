@@ -136,9 +136,31 @@
     .paper-facts div { display: grid; gap: 3px; padding: 10px 12px; border-radius: 14px; background: rgba(247,249,252,.9); border: 1px solid rgba(0,0,0,.05); }
     .paper-facts span { font-size: .74rem; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); font-weight: 800; }
     .paper-facts strong { font-size: .92rem; line-height: 1.45; font-weight: 600; }
-    .paper-figure { margin: 12px 0 0; padding: 12px; border-radius: 16px; background: rgba(255,255,255,.76); border: 1px solid var(--line); }
+    .paper-facts .md p, .paper-facts .md ul, .insight p, .insight ul { margin: 0; }
+    .paper-facts .md ul, .insight ul { padding-left: 1.1em; }
+    .paper-facts .md li, .insight li { margin: 4px 0; }
+    .paper-facts .md code, .insight code { padding: 0 .3em; border-radius: 6px; background: rgba(0,0,0,.04); }
+    .paper-figure-link { display: block; margin-top: 12px; color: inherit; }
+    .paper-figure-link:active { transform: scale(.999); }
+    .paper-figure { margin: 0; padding: 12px; border-radius: 16px; background: rgba(255,255,255,.76); border: 1px solid var(--line); cursor: zoom-in; }
     .paper-figure img { display: block; width: 100%; height: auto; max-height: 340px; object-fit: contain; border-radius: 12px; background: #fff; }
     .paper-figure figcaption { margin-top: 8px; color: var(--muted); font-size: .84rem; line-height: 1.45; }
+    .paper-figure-modal {
+      position: fixed; inset: 0; display: none; align-items: center; justify-content: center; z-index: 9999;
+      background: rgba(15, 18, 22, .76); padding: 18px;
+    }
+    .paper-figure-modal.open { display: flex; }
+    .paper-figure-modal-inner {
+      position: relative; width: min(96vw, 1200px); height: min(92vh, 920px);
+      background: rgba(255,255,255,.98); border-radius: 18px; box-shadow: 0 30px 100px rgba(0,0,0,.35); overflow: hidden;
+      display: grid; grid-template-rows: 1fr auto;
+    }
+    .paper-figure-modal img { width: 100%; height: 100%; object-fit: contain; background: #fff; }
+    .paper-figure-modal-caption { padding: 10px 14px 14px; color: var(--muted); font-size: .92rem; border-top: 1px solid var(--line); }
+    .paper-figure-modal-close {
+      position: absolute; top: 10px; right: 10px; z-index: 2; border: 0; width: 38px; height: 38px; border-radius: 999px;
+      background: rgba(0,0,0,.72); color: #fff; font-size: 20px; cursor: pointer;
+    }
     .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
     .top3 { display: grid; gap: 10px; }
     .top3-item {
@@ -211,13 +233,13 @@
 
             <section class='section-block'>
               <div class='section-head'><h2>今天最值得重点看的 3 篇</h2><span>编辑优先级</span></div>
-              <div class='top3'><div class='top3-item'><span class='rank'>1</span><div class='top3-text'>1. **HiVLA: A Visual-Grounded-Centric Hierarchical Embodied Manipulation System** —— 分层 VLA 设计清楚，兼顾推理和执行，且有真实世界验证。</div></div><div class='top3-item'><span class='rank'>2</span><div class='top3-text'>2. **FastGrasp: Learning-based Whole-body Control method for Fast Dexterous Grasping with Mobile Manipulators** —— 全身控制 + 触觉反馈 + 移动操作，离真实机器人落地很近。</div></div><div class='top3-item'><span class='rank'>3</span><div class='top3-text'>3. **Mosaic: An Extensible Framework for Composing Rule-Based and Learned Motion Planners** —— 自动驾驶里“可解释 + 可组合 + 可验证”的方向，工程价值很高。</div></div></div>
+              <div class='top3'><div class='top3-item'><span class='rank'>1</span><div class='top3-text'><p>1. <strong>HiVLA: A Visual-Grounded-Centric Hierarchical Embodied Manipulation System</strong> —— 分层 VLA 设计清楚，兼顾推理和执行，且有真实世界验证。</p></div></div><div class='top3-item'><span class='rank'>2</span><div class='top3-text'><p>2. <strong>FastGrasp: Learning-based Whole-body Control method for Fast Dexterous Grasping with Mobile Manipulators</strong> —— 全身控制 + 触觉反馈 + 移动操作，离真实机器人落地很近。</p></div></div><div class='top3-item'><span class='rank'>3</span><div class='top3-text'><p>3. <strong>Mosaic: An Extensible Framework for Composing Rule-Based and Learned Motion Planners</strong> —— 自动驾驶里“可解释 + 可组合 + 可验证”的方向，工程价值很高。</p></div></div></div>
             </section>
             
 
             <section class='section-block'>
               <div class='section-head'><h2>整体判断</h2><span>今日总评</span></div>
-              <div class='overall-card'>今天的 10 篇里，最明显的趋势是：自动驾驶继续往“混合式规划”走，操控和 VLA 则更强调分层、记忆、触觉和真实执行闭环；VLM 侧重点则是可靠性和 token 效率。整体上偏方法与系统落地，纯 survey 很少，值得优先看的是真正能把“推理—规划—执行”拆开的工作。</div>
+              <div class='overall-card'><p>今天的 10 篇里，最明显的趋势是：自动驾驶继续往“混合式规划”走，操控和 VLA 则更强调分层、记忆、触觉和真实执行闭环；VLM 侧重点则是可靠性和 token 效率。整体上偏方法与系统落地，纯 survey 很少，值得优先看的是真正能把“推理—规划—执行”拆开的工作。</p></div>
             </section>
             
 <section class='section-block'><div class='section-head'><h2>今日论文</h2><span>0 篇</span></div><div class='grid'>
@@ -233,7 +255,7 @@
                     <div><span>发布时间</span><strong>2026-04-15 21:58:38</strong></div>
                     <div><span>标签</span><strong>自动驾驶 / 方法 / MPC+RL / 多车交互</strong></div>
                   </div>
-                  <p class='insight'>把安全可控的 MPC 和更灵活的 RL 绑在一起，直接针对无信号路口的多车博弈。</p>
+                  <div class='insight'><p>把安全可控的 MPC 和更灵活的 RL 绑在一起，直接针对无信号路口的多车博弈。</p></div>
                   <div class='paper-facts'>
                     
                     
@@ -254,7 +276,7 @@
                     <div><span>发布时间</span><strong>2026-04-15 21:23:47</strong></div>
                     <div><span>标签</span><strong>自动驾驶 / 方法 / 规划框架 / 可解释性</strong></div>
                   </div>
-                  <p class='insight'>不是单一 planner，而是把规则和学习式 planner 通过仲裁图拼起来，强调可追踪、可验证。</p>
+                  <div class='insight'><p>不是单一 planner，而是把规则和学习式 planner 通过仲裁图拼起来，强调可追踪、可验证。</p></div>
                   <div class='paper-facts'>
                     
                     
@@ -275,7 +297,7 @@
                     <div><span>发布时间</span><strong>2026-04-15 00:00:53</strong></div>
                     <div><span>标签</span><strong>自动驾驶 / 方法 / BEV / 多任务感知</strong></div>
                   </div>
-                  <p class='insight'>用跨任务注意力把检测和分割在同一个 BEV 空间里互相“喂信息”，思路直接。</p>
+                  <div class='insight'><p>用跨任务注意力把检测和分割在同一个 BEV 空间里互相“喂信息”，思路直接。</p></div>
                   <div class='paper-facts'>
                     
                     
@@ -298,7 +320,7 @@
                     <div><span>发布时间</span><strong>2026-04-14 23:30:57</strong></div>
                     <div><span>标签</span><strong>机械臂 / 操控 / 方法 / 移动操作</strong></div>
                   </div>
-                  <p class='insight'>面向“快抓”，把底盘、机械臂、手和触觉一起纳入全身控制，比较硬核。</p>
+                  <div class='insight'><p>面向“快抓”，把底盘、机械臂、手和触觉一起纳入全身控制，比较硬核。</p></div>
                   <div class='paper-facts'>
                     
                     
@@ -319,7 +341,7 @@
                     <div><span>发布时间</span><strong>2026-04-15 01:54:17</strong></div>
                     <div><span>标签</span><strong>机械臂 / 操控 / 人形机器人 / 触觉</strong></div>
                   </div>
-                  <p class='insight'>不是只看图像做动作，而是把“预测未来触觉”当成学习核心，适合接触丰富任务。</p>
+                  <div class='insight'><p>不是只看图像做动作，而是把“预测未来触觉”当成学习核心，适合接触丰富任务。</p></div>
                   <div class='paper-facts'>
                     
                     
@@ -340,7 +362,7 @@
                     <div><span>发布时间</span><strong>2026-04-16 01:04:34</strong></div>
                     <div><span>标签</span><strong>机械臂 / 操控 / 系统 / 数据采集</strong></div>
                   </div>
-                  <p class='insight'>重点不在策略，而在把低成本示教/采集接口从单目视觉升级到 3D 空间感知，解决数据质量问题。</p>
+                  <div class='insight'><p>重点不在策略，而在把低成本示教/采集接口从单目视觉升级到 3D 空间感知，解决数据质量问题。</p></div>
                   <div class='paper-facts'>
                     
                     
@@ -363,7 +385,7 @@
                     <div><span>发布时间</span><strong>2026-04-16 01:50:07</strong></div>
                     <div><span>标签</span><strong>VLA / 机械臂 / 方法 / 分层控制</strong></div>
                   </div>
-                  <p class='insight'>典型的“先规划、再执行”分层 VLA，努力保住 VLM 的推理能力，不把它直接揉成动作网络。</p>
+                  <div class='insight'><p>典型的“先规划、再执行”分层 VLA，努力保住 VLM 的推理能力，不把它直接揉成动作网络。</p></div>
                   <div class='paper-facts'>
                     
                     
@@ -384,7 +406,7 @@
                     <div><span>发布时间</span><strong>2026-04-15 22:53:09</strong></div>
                     <div><span>标签</span><strong>VLA / 机械臂 / 长时序任务 / 反思规划</strong></div>
                   </div>
-                  <p class='insight'>重点不是一步到位出动作，而是把长期任务拆解、记忆和纠错做成闭环。</p>
+                  <div class='insight'><p>重点不是一步到位出动作，而是把长期任务拆解、记忆和纠错做成闭环。</p></div>
                   <div class='paper-facts'>
                     
                     
@@ -407,7 +429,7 @@
                     <div><span>发布时间</span><strong>2026-04-16 01:51:28</strong></div>
                     <div><span>标签</span><strong>VLM / 多模态对齐 / 可靠性 / 方法</strong></div>
                   </div>
-                  <p class='insight'>直接针对“看视频就瞎猜声音”的问题动手，重点是压制视觉捷径和音频幻觉。</p>
+                  <div class='insight'><p>直接针对“看视频就瞎猜声音”的问题动手，重点是压制视觉捷径和音频幻觉。</p></div>
                   <div class='paper-facts'>
                     
                     
@@ -428,7 +450,7 @@
                     <div><span>发布时间</span><strong>2026-04-16 01:59:52</strong></div>
                     <div><span>标签</span><strong>VLM / 长视频理解 / 压缩 / 效率</strong></div>
                   </div>
-                  <p class='insight'>目标很直接：把长视频压到“每帧一个 token”级别，尽量别让上下文窗口爆掉。</p>
+                  <div class='insight'><p>目标很直接：把长视频压到“每帧一个 token”级别，尽量别让上下文窗口爆掉。</p></div>
                   <div class='paper-facts'>
                     
                     
@@ -441,5 +463,43 @@
                 
 </div></section>
   </div>
+  <div class='paper-figure-modal' id='paperFigureModal' aria-hidden='true'>
+    <div class='paper-figure-modal-inner' role='dialog' aria-modal='true' aria-label='论文图预览'>
+      <button class='paper-figure-modal-close' id='paperFigureModalClose' aria-label='关闭'>×</button>
+      <img id='paperFigureModalImg' alt=''>
+      <div class='paper-figure-modal-caption' id='paperFigureModalCaption'></div>
+    </div>
+  </div>
+  <script>
+  (() => {
+    const modal = document.getElementById('paperFigureModal');
+    const modalImg = document.getElementById('paperFigureModalImg');
+    const modalCaption = document.getElementById('paperFigureModalCaption');
+    const closeBtn = document.getElementById('paperFigureModalClose');
+    const open = (src, alt) => {
+      modalImg.src = src;
+      modalImg.alt = alt || '';
+      modalCaption.textContent = alt || '';
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+    };
+    const close = () => {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      modalImg.removeAttribute('src');
+    };
+    document.querySelectorAll('.paper-figure-link').forEach((el) => {
+      el.addEventListener('click', (ev) => {
+        const full = el.getAttribute('data-full') || el.getAttribute('href');
+        if (!full) return;
+        ev.preventDefault();
+        open(full, el.getAttribute('data-alt') || '');
+      });
+    });
+    closeBtn.addEventListener('click', close);
+    modal.addEventListener('click', (ev) => { if (ev.target === modal) close(); });
+    document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape') close(); });
+  })();
+  </script>
 </body>
 </html>
