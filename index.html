@@ -4,7 +4,6 @@
   <meta charset='utf-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <meta http-equiv='refresh' content='300'>
-  <meta name='theme-color' content='#f6f5f4'>
   <title>arXiv 每日摘要</title>
   <link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap' rel='stylesheet'>
   <style>
@@ -59,12 +58,10 @@
     .brand-mark { width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--violet)); box-shadow: 0 0 0 6px rgba(0,117,222,.1); }
     .topbar .hint { color: var(--muted); font-size: .92rem; }
     .hero {
-      display: grid; grid-template-columns: 1.35fr .95fr; gap: 18px;
-      padding: 28px; border-radius: 32px;
-      background:
-        radial-gradient(circle at top right, rgba(109,74,255,.14), transparent 32%),
-        linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.76));
-      border: 1px solid rgba(255,255,255,.84); box-shadow: var(--shadow);
+      display: grid; grid-template-columns: 1.45fr .9fr; gap: 18px;
+      padding: 28px; border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.72));
+      border: 1px solid rgba(255,255,255,.8); box-shadow: var(--shadow);
     }
     .eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
@@ -80,20 +77,16 @@
     .badge.green { color: #107426; background: rgba(26,174,57,.10); }
     .badge.violet { color: #5234d6; background: rgba(109,74,255,.10); }
     .badge.soft { color: var(--muted); background: rgba(255,255,255,.78); border-color: var(--line); }
-    .hero-panel { display: grid; gap: 12px; align-content: start; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hero-panel { display: grid; gap: 12px; align-content: start; }
     .stat-card, .card, .paper-card, .overall-card {
       background: var(--surface);
       border: 1px solid rgba(255,255,255,.8);
       box-shadow: var(--shadow-soft);
       backdrop-filter: blur(16px);
     }
-    .stat-card {
-      padding: 15px 14px; border-radius: 18px; min-height: 84px;
-      display: grid; gap: 4px; align-content: start;
-      background: linear-gradient(180deg, rgba(255,255,255,.94), rgba(249,251,255,.86));
-    }
-    .stat-card span { display: block; color: var(--muted); font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; font-weight: 800; }
-    .stat-card strong { font-size: .98rem; line-height: 1.35; }
+    .stat-card { padding: 16px; border-radius: var(--radius-md); }
+    .stat-card span { display: block; color: var(--muted); font-size: .82rem; margin-bottom: 6px; }
+    .stat-card strong { font-size: 1rem; line-height: 1.35; }
     .section-block { margin-top: 22px; }
     .section-head {
       display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
@@ -102,17 +95,6 @@
     .section-head h2 { margin: 0; font-size: 1.15rem; letter-spacing: -.02em; }
     .section-head span { color: var(--muted); font-size: .92rem; }
     .section-chips { display: flex; flex-wrap: wrap; gap: 10px; }
-    .section-rail {
-      display: flex; gap: 10px; overflow-x: auto; padding: 2px 2px 8px;
-      -webkit-overflow-scrolling: touch; scrollbar-width: none;
-    }
-    .section-rail::-webkit-scrollbar { display: none; }
-    .rail-chip {
-      flex: 0 0 auto; padding: 10px 14px; border-radius: 999px; white-space: nowrap;
-      background: rgba(255,255,255,.82); border: 1px solid rgba(0,0,0,.06);
-      box-shadow: 0 8px 20px rgba(0,0,0,.04); font-size: .9rem; font-weight: 800;
-    }
-    .rail-chip:hover { color: var(--blue); transform: translateY(-1px); }
     .section-chip {
       flex: 1 1 220px; display: flex; justify-content: space-between; gap: 12px;
       align-items: center; padding: 14px 16px; border-radius: 18px; background: rgba(255,255,255,.72);
@@ -127,9 +109,8 @@
     .section-chip.rose { background: linear-gradient(180deg, rgba(255,244,251,.95), rgba(255,255,255,.82)); }
     .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
     .paper-card {
-      padding: 18px; border-radius: 24px; position: relative; overflow: hidden;
-      background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,255,255,.86));
-      border: 1px solid rgba(255,255,255,.86);
+      padding: 18px; border-radius: var(--radius-lg); position: relative; overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.84));
     }
     .paper-card::before {
       content: ''; position: absolute; left: 0; top: 0; right: 0; height: 3px;
@@ -139,16 +120,12 @@
     .paper-top { display: flex; justify-content: space-between; gap: 12px; align-items: start; margin-bottom: 10px; }
     .paper-title { font-size: 1.02rem; font-weight: 800; line-height: 1.35; letter-spacing: -.02em; }
     .paper-title a:hover { color: var(--blue); }
-    .paper-summary {
-      margin: 10px 0 0; color: var(--text); font-size: .95rem; line-height: 1.58;
-      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
-    }
     .arxiv-link {
       flex: none; font-size: .78rem; font-weight: 800; color: var(--blue);
       background: var(--blue-bg); border: 1px solid rgba(0,117,222,.12);
       padding: 6px 10px; border-radius: 999px;
     }
-    .paper-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0 8px; }
+    .paper-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
     .paper-meta div {
       padding: 10px 11px; border-radius: 14px; background: rgba(255,255,255,.74); border: 1px solid var(--line);
     }
@@ -156,48 +133,9 @@
     .paper-meta strong { font-size: .88rem; font-weight: 700; line-height: 1.45; }
     .insight { margin: 10px 0 0; color: var(--text); font-size: .95rem; }
     .paper-facts { display: grid; gap: 8px; margin-top: 12px; }
-    .paper-facts .fact { display: grid; gap: 3px; padding: 10px 12px; border-radius: 14px; background: rgba(247,249,252,.9); border: 1px solid rgba(0,0,0,.05); }
-    .paper-facts .fact.good { background: linear-gradient(180deg, rgba(243,253,246,.98), rgba(255,255,255,.92)); border-color: rgba(26,174,57,.14); }
-    .paper-facts .fact.bad { background: linear-gradient(180deg, rgba(255,245,245,.98), rgba(255,255,255,.92)); border-color: rgba(216,79,79,.14); }
-    .paper-facts .fact.neutral { background: linear-gradient(180deg, rgba(247,249,252,.96), rgba(255,255,255,.9)); border-color: rgba(0,0,0,.05); }
+    .paper-facts div { display: grid; gap: 3px; padding: 10px 12px; border-radius: 14px; background: rgba(247,249,252,.9); border: 1px solid rgba(0,0,0,.05); }
     .paper-facts span { font-size: .74rem; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); font-weight: 800; }
     .paper-facts strong { font-size: .92rem; line-height: 1.45; font-weight: 600; }
-    .paper-facts .fact.good strong { color: #107426; }
-    .paper-facts .fact.bad strong { color: #bb2d2d; }
-    .paper-actions {
-      display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px;
-    }
-    .paper-action {
-      display: inline-flex; align-items: center; justify-content: center; min-height: 40px;
-      padding: 0 14px; border-radius: 999px; border: 1px solid rgba(0,0,0,.08);
-      background: rgba(255,255,255,.86); color: var(--text); font-size: .88rem; font-weight: 800;
-    }
-    .paper-action.primary { color: white; border-color: transparent; background: linear-gradient(135deg, var(--blue), var(--violet)); box-shadow: 0 10px 20px rgba(109,74,255,.22); }
-    .figure-card {
-      margin-top: 12px; padding: 12px; border-radius: 18px; background: linear-gradient(180deg, rgba(255,255,255,.94), rgba(248,250,255,.92));
-      border: 1px solid rgba(109,74,255,.10); box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
-    }
-    .figure-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 10px; }
-    .figure-title { font-weight: 800; font-size: .88rem; color: var(--violet); letter-spacing: .02em; }
-    .figure-note { color: var(--muted); font-size: .8rem; }
-    .figure-link { display: block; border-radius: 14px; overflow: hidden; border: 1px solid rgba(0,0,0,.05); background: rgba(255,255,255,.9); }
-    .figure-img { display: block; width: 100%; height: auto; }
-    .pipeline-card {
-      margin-top: 12px; padding: 14px; border-radius: 18px; background: linear-gradient(180deg, rgba(248,250,255,.96), rgba(255,255,255,.86));
-      border: 1px solid rgba(0,117,222,.10); box-shadow: inset 0 1px 0 rgba(255,255,255,.7);
-    }
-    .pipeline-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 12px; }
-    .pipeline-title { font-weight: 800; font-size: .88rem; color: var(--blue); letter-spacing: .02em; }
-    .pipeline-note { color: var(--muted); font-size: .8rem; }
-    .pipeline-flow { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; align-items: center; }
-    .pipeline-step {
-      padding: 10px 10px 9px; border-radius: 16px; background: rgba(255,255,255,.9); border: 1px solid rgba(0,0,0,.06);
-      min-height: 92px; display: grid; align-content: start; gap: 4px;
-    }
-    .pipeline-phase { font-size: .72rem; font-weight: 800; color: var(--blue); text-transform: uppercase; letter-spacing: .04em; }
-    .pipeline-label { font-size: .9rem; font-weight: 800; line-height: 1.35; }
-    .pipeline-detail { font-size: .8rem; color: var(--muted); line-height: 1.45; }
-    .pipeline-arrow { color: var(--soft); font-size: 1.2rem; font-weight: 800; text-align: center; }
     .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
     .top3 { display: grid; gap: 10px; }
     .top3-item {
@@ -220,26 +158,10 @@
     .archive-meta { color: var(--muted); font-size: .92rem; margin-top: 4px; }
     .archive-open { flex: none; color: var(--blue); background: var(--blue-bg); border: 1px solid rgba(0,117,222,.12); padding: 8px 12px; border-radius: 999px; font-weight: 800; }
     .archive-top { margin-top: 12px; color: var(--text); line-height: 1.6; }
-    .dock {
-      display: none; position: sticky; bottom: 12px; z-index: 8; margin-top: 18px;
-      padding: 10px; border-radius: 22px; background: rgba(255,255,255,.72); backdrop-filter: blur(18px);
-      border: 1px solid rgba(255,255,255,.86); box-shadow: var(--shadow);
-    }
-    .dock-items { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
-    .dock-item {
-      display: inline-flex; align-items: center; justify-content: center; min-height: 44px;
-      padding: 0 12px; border-radius: 16px; background: rgba(247,249,252,.96); border: 1px solid rgba(0,0,0,.06);
-      font-size: .9rem; font-weight: 800;
-    }
-    .dock-item.primary { color: white; border: 0; background: linear-gradient(135deg, var(--blue), var(--violet)); }
     @media (max-width: 900px) {
       .hero, .grid { grid-template-columns: 1fr; }
       .paper-meta { grid-template-columns: 1fr; }
       .topbar { position: static; border-radius: 20px; }
-      .pipeline-flow { grid-template-columns: 1fr; }
-      .pipeline-arrow { display: none; }
-      .pipeline-step { min-height: unset; }
-      .hero-panel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 560px) {
       .page { padding: 14px 12px 40px; }
@@ -249,16 +171,11 @@
       .section-chip { flex-basis: 100%; }
       .section-head { flex-direction: column; align-items: start; }
       .archive-head { flex-direction: column; }
-      .dock { display: block; }
-      .hero-panel { grid-template-columns: 1fr 1fr; }
-      .paper-top { flex-direction: column; }
-      .arxiv-link { align-self: flex-start; }
-      .paper-action { flex: 1 1 0; }
     }
     </style>
 </head>
 <body>
-  <div class='page' id='top'>
+  <div class='page'>
     <header class='topbar'>
       <div class='brand'><span class='brand-mark'></span>arXiv 每日摘要</div>
       <div class='hint'>最新：2026-04-17 08:15:25</div>
@@ -268,31 +185,41 @@
           <div class='hero-copy'>
             <div class='eyebrow'>arXiv 每日摘要</div>
             <h1>arxiv-daily-autonomy-robotics-vlm-vla</h1>
-            <p class='lede'>聚焦自动驾驶、机械臂 / 操控、VLA 与 VLM。适合手机快速浏览，也保留完整历史详情。</p>
+            <p class='lede'>聚焦自动驾驶、机械臂 / 操控、VLA 与 VLM。首页按手机优先设计：先看总览，再看词云和主题卡片，最后展开具体论文。</p>
             <div class='hero-badges'>
               <a class='badge blue' href='./index.html'>回到首页</a>
               <a class='badge violet' href='archive/index.html'>历史归档</a>
               <span class='badge green'>10 篇论文</span>
+              <span class='badge soft'>7 天窗口：2026-04-16 — 2026-04-17</span>
             </div>
           </div>
           <div class='hero-panel'>
             <div class='stat-card'><span>Job ID</span><strong>054d56957dbb</strong></div>
             <div class='stat-card'><span>Run Time</span><strong>2026-04-17 08:15:25</strong></div>
             <div class='stat-card'><span>Schedule</span><strong>0 0 * * *</strong></div>
-            <div class='stat-card'><span>主题块</span><strong>4 个</strong></div>
+            <div class='stat-card'><span>本周论文</span><strong>20</strong></div>
+            <div class='stat-card'><span>平均实现概率</span><strong>71%</strong></div>
+            <div class='stat-card'><span>开源 / 可部署</span><strong>1 / 10</strong></div>
           </div>
-        </section>
-        <section class='section-block'>
-          <div class='section-head'><h2>快速跳转</h2><span>滑动即可切换模块</span></div>
-          <div class='section-rail'><a class='rail-chip' href='#overview'>概览</a><a class='rail-chip' href='#top3'>重点 3 篇</a><a class='rail-chip' href='#overall'>总评</a><a class='rail-chip' href='#figure_f64736b9'>自动驾驶</a><a class='rail-chip' href='#figure_6340108e'>机械臂 / 操控</a><a class='rail-chip' href='#VLA'>VLA</a><a class='rail-chip' href='#VLM'>VLM</a></div>
         </section>
         
 
-            <section class='section-block' id='overview'>
-              <div class='section-head'><h2>今日概览</h2><span>10 篇 · 4 个主题块</span></div>
-              <div class='section-chips'><span class='badge soft'>自动驾驶 3</span><span class='badge soft'>机械臂 / 操控 3</span><span class='badge soft'>VLA 2</span><span class='badge soft'>VLM 2</span></div>
-            </section>
-            
+        <section class='section-block'>
+          <div class='section-head'><h2>快速筛选</h2><span>点词云、点主题，手机上直接筛选</span></div>
+          <div class='search-bar'>
+            <input id='paper-search' type='search' placeholder='搜索标题、标签、摘要关键词…' autocomplete='off'>
+            <button type='button' class='paper-action' data-filter='clear'>清除</button>
+          </div>
+          <div class='filter-rail'>
+            <button type='button' class='rail-chip active' data-filter='all'>全部</button>
+            <button type='button' class='rail-chip' data-filter='high'>高实现概率</button>
+            <button type='button' class='rail-chip' data-filter='deploy'>可部署</button>
+            <button type='button' class='rail-chip' data-filter='open'>开源</button>
+            <button type='button' class='rail-chip' data-filter='paper'>论文</button>
+          </div>
+          <div class='section-rail'><button type='button' class='rail-chip' data-section='自动驾驶'>自动驾驶<span>3</span></button><button type='button' class='rail-chip' data-section='机械臂 / 操控'>机械臂 / 操控<span>3</span></button><button type='button' class='rail-chip' data-section='VLA'>VLA<span>2</span></button><button type='button' class='rail-chip' data-section='VLM'>VLM<span>2</span></button></div>
+        </section>
+        
 
             <section class='section-block' id='top3'>
               <div class='section-head'><h2>今天最值得重点看的 3 篇</h2><span>编辑优先级</span></div>
@@ -300,736 +227,462 @@
             </section>
             
 
-            <section class='section-block' id='overall'>
+        <section class='section-block' id='week-cloud'>
+          <div class='section-head'><h2>最近 7 天主题词云</h2><span>2026-04-16 — 2026-04-17 · 20 篇 · 373 个词</span></div>
+          <div class='weekly-grid'>
+            <div class='cloud-card'>
+              <div class='cloud'><button type='button' class='cloud-chip blue' data-term='VLA' style='--scale:1.85;'><span>VLA</span><em>37</em></button><button type='button' class='cloud-chip violet' data-term='机械臂' style='--scale:1.82;'><span>机械臂</span><em>36</em></button><button type='button' class='cloud-chip green' data-term='操控' style='--scale:1.75;'><span>操控</span><em>33</em></button><button type='button' class='cloud-chip amber' data-term='自动驾驶' style='--scale:1.67;'><span>自动驾驶</span><em>30</em></button><button type='button' class='cloud-chip rose' data-term='Manipulation' style='--scale:1.62;'><span>Manipulation</span><em>28</em></button><button type='button' class='cloud-chip blue' data-term='VLM' style='--scale:1.62;'><span>VLM</span><em>28</em></button><button type='button' class='cloud-chip violet' data-term='Learning' style='--scale:1.52;'><span>Learning</span><em>24</em></button><button type='button' class='cloud-chip green' data-term='Planning' style='--scale:1.31;'><span>Planning</span><em>16</em></button><button type='button' class='cloud-chip amber' data-term='Control' style='--scale:1.21;'><span>Control</span><em>12</em></button><button type='button' class='cloud-chip rose' data-term='Reinforcement' style='--scale:1.21;'><span>Reinforcement</span><em>12</em></button><button type='button' class='cloud-chip blue' data-term='Understanding' style='--scale:1.21;'><span>Understanding</span><em>12</em></button><button type='button' class='cloud-chip violet' data-term='RL' style='--scale:1.16;'><span>RL</span><em>10</em></button><button type='button' class='cloud-chip green' data-term='Mosaic' style='--scale:1.16;'><span>Mosaic</span><em>10</em></button><button type='button' class='cloud-chip amber' data-term='HiVLA' style='--scale:1.16;'><span>HiVLA</span><em>10</em></button><button type='button' class='cloud-chip rose' data-term='Driving' style='--scale:1.11;'><span>Driving</span><em>8</em></button><button type='button' class='cloud-chip blue' data-term='Extensible' style='--scale:1.11;'><span>Extensible</span><em>8</em></button><button type='button' class='cloud-chip violet' data-term='Framework' style='--scale:1.11;'><span>Framework</span><em>8</em></button><button type='button' class='cloud-chip green' data-term='Composing' style='--scale:1.11;'><span>Composing</span><em>8</em></button></div>
+            </div>
+            <div class='weekly-stats'>
+              <div class='stat-card'><span>窗口长度</span><strong>2026-04-16 — 2026-04-17</strong></div>
+              <div class='stat-card'><span>累计论文</span><strong>20</strong></div>
+              <div class='stat-card'><span>高频词数量</span><strong>18</strong></div>
+              <div class='stat-card'><span>平均实现概率</span><strong>71%</strong></div>
+              <div class='stat-card'><span>开源 / 可部署</span><strong>1 / 10</strong></div>
+              <div class='stat-card'><span>周判断</span><strong>偏研究型、择优看</strong></div>
+            </div>
+          </div>
+        </section>
+        
+
+            <section class='section-block'>
               <div class='section-head'><h2>整体判断</h2><span>今日总评</span></div>
               <div class='overall-card'>今天的 10 篇里，最明显的趋势是：自动驾驶继续往“混合式规划”走，操控和 VLA 则更强调分层、记忆、触觉和真实执行闭环；VLM 侧重点则是可靠性和 token 效率。整体上偏方法与系统落地，纯 survey 很少，值得优先看的是真正能把“推理—规划—执行”拆开的工作。</div>
             </section>
             
-<section class='section-block' id='figure_f64736b9'><div class='section-head'><h2>自动驾驶</h2><span>3 篇</span></div><div class='grid'>
+<section class='section-block' data-section-group='自动驾驶'><div class='section-head'><h2>自动驾驶</h2><span>3 篇</span></div><div class='grid'>
 
-                <article class='paper-card'>
-                  <div class='paper-top'>
-                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.13891v1' target='_blank' rel='noreferrer'>Beyond Conservative Automated Driving in Multi-Agent Scenarios via Coupled Model Predictive Control and Deep Reinforcement Learning</a></div>
-                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.13891v1' target='_blank' rel='noreferrer'>2604.13891v1</a>
+                <details class='paper-card' data-paper-card='1' data-section='自动驾驶' data-tags='自动驾驶 方法 MPC+RL 多车交互' data-search='beyond conservative automated driving in multi-agent scenarios via coupled model predictive control and deep reinforcement learning 自动驾驶 / 方法 / mpc+rl / 多车交互 论文提出 mpc-rl 混合框架，在三种交通密度下都优于纯 mpc 和端到端 rl，并展示了到高速并线场景的零样本迁移。 2026-04-15 21:58:38 自动驾驶' data-impl='75' data-open='uncertain' data-deploy='yes' data-top3='false'>
+                  <summary>
+                    <div class='paper-top'>
+                      <div class='paper-title'>Beyond Conservative Automated Driving in Multi-Agent Scenarios via Coupled Model Predictive Control and Deep Reinforcement Learning</div>
+                      <a class='arxiv-link' href='https://arxiv.org/abs/2604.13891v1' target='_blank' rel='noreferrer'>2604.13891v1</a>
+                    </div>
+                    <div class='paper-summary'>论文提出 MPC-RL 混合框架，在三种交通密度下都优于纯 MPC 和端到端 RL，并展示了到高速并线场景的零样本迁移。</div>
+                    <div class='paper-badges'>
+                      <span class='badge violet'>实现概率 75%</span>
+                      <span class='badge amber'>开源：不确定</span>
+                      <span class='badge green'>可部署：是 —— 有 MPC 骨架和迁移实验，比较像能接入现有规划栈的方案。</span>
+                    </div>
+                  </summary>
+                  <div class='paper-body'>
+                    <div class='paper-meta'>
+                      <div><span>发布时间</span><strong>2026-04-15 21:58:38</strong></div>
+                      <div><span>主题</span><strong>自动驾驶</strong></div>
+                    </div>
+                    
+                    <div class='paper-facts'><div class='fact neutral'><span>摘要总结</span><strong>论文提出 MPC-RL 混合框架，在三种交通密度下都优于纯 MPC 和端到端 RL，并展示了到高速并线场景的零样本迁移。</strong></div>
+                    <div class='fact neutral'><span>开源判断</span><strong>不确定</strong></div>
+                    <div class='fact good'><span>部署判断</span><strong>是 —— 有 MPC 骨架和迁移实验，比较像能接入现有规划栈的方案。</strong></div>
+                    <div class='fact neutral'><span>实现概率</span><strong>75% —— 结构清晰、分块容易落地，但真实交通中的安全边界和泛化仍是核心难点。</strong></div>
+                    </div>
+                    <div class='paper-actions'>
+                      <a class='paper-action primary' href='https://arxiv.org/abs/2604.13891v1' target='_blank' rel='noreferrer'>打开 arXiv</a>
+                      <button type='button' class='paper-action' data-filter='term'>同类论文</button>
+                    </div>
+                    <div class='tags'><span class='badge soft'>自动驾驶</span><span class='badge soft'>方法</span><span class='badge soft'>MPC+RL</span><span class='badge soft'>多车交互</span></div>
+                    <div class='paper-keywords'><span class='keyword-chip' data-term='beyond'>beyond</span><span class='keyword-chip' data-term='conservative'>conservative</span><span class='keyword-chip' data-term='automated'>automated</span><span class='keyword-chip' data-term='driving'>driving</span><span class='keyword-chip' data-term='multi-agent'>multi-agent</span><span class='keyword-chip' data-term='scenarios'>scenarios</span><span class='keyword-chip' data-term='coupled'>coupled</span><span class='keyword-chip' data-term='predictive'>predictive</span><span class='keyword-chip' data-term='Beyond'>Beyond</span><span class='keyword-chip' data-term='Conservative'>Conservative</span><span class='keyword-chip' data-term='Automated'>Automated</span><span class='keyword-chip' data-term='Driving'>Driving</span><span class='keyword-chip' data-term='Multi-Agent'>Multi-Agent</span></div>
                   </div>
-                  <div class='paper-meta'>
-                    <div><span>发布时间</span><strong>2026-04-15 21:58:38</strong></div>
-                    <div><span>标签</span><strong>自动驾驶 / 方法 / MPC+RL / 多车交互</strong></div>
-                  </div>
-                  <p class='paper-summary'>论文提出 MPC-RL 混合框架，在三种交通密度下都优于纯 MPC 和端到端 RL，并展示了到高速并线场景的零样本迁移。</p>
-                  
-                  <div class='paper-facts'>
-                    <div class='fact good'><span>实现概率</span><strong>75% —— 结构清晰、分块容易落地，但真实交通中的安全边界和泛化仍是核心难点。</strong></div>
-                    <div class='fact bad'><span>开源</span><strong>不确定</strong></div>
-                    <div class='fact good'><span>可部署</span><strong>是 —— 有 MPC 骨架和迁移实验，比较像能接入现有规划栈的方案。</strong></div>
-                  </div>
-                  
-    <div class='figure-card'>
-      <div class='figure-head'>
-        <span class='figure-title'>图像线索</span>
-        <span class='figure-note'>cached</span>
-      </div>
-      <a class='figure-link' href='assets/figs/2604.13891v1_v5.png' target='_blank' rel='noreferrer'>
-        <img class='figure-img' src='assets/figs/2604.13891v1_v5.png' alt='paper figure preview'>
-      </a>
-    </div>
-    
-                  
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>多模态传感器</div>
-              <div class='pipeline-detail'>相机 / 激光雷达 / 车道与地图</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>感知与世界模型</div>
-              <div class='pipeline-detail'>目标、车道、占用、未来状态</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>决策</div>
-              <div class='pipeline-label'>预测与规划</div>
-              <div class='pipeline-detail'>轨迹生成 / 风险评估 / 运动规划</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>控制执行</div>
-              <div class='pipeline-detail'>转向、加速、制动或轨迹点</div>
-            </div>
-            
-            
-      </div>
-    </div>
-    
-                  <div class='tags'><span class='badge soft'>自动驾驶</span><span class='badge soft'>方法</span><span class='badge soft'>MPC+RL</span></div>
-                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org/abs/2604.13891v1' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='archive/index.html'>返回归档</a></div>
-                </article>
+                </details>
                 
 
-                <article class='paper-card'>
-                  <div class='paper-top'>
-                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.13853v1' target='_blank' rel='noreferrer'>Mosaic: An Extensible Framework for Composing Rule-Based and Learned Motion Planners</a></div>
-                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.13853v1' target='_blank' rel='noreferrer'>2604.13853v1</a>
-                  </div>
-                  <div class='paper-meta'>
-                    <div><span>发布时间</span><strong>2026-04-15 21:23:47</strong></div>
-                    <div><span>标签</span><strong>自动驾驶 / 方法 / 规划框架 / 可解释性</strong></div>
-                  </div>
-                  <p class='paper-summary'>作者提出 Mosaic，通过轨迹验证、统一打分和最优选择，把 rule-based 与 learned planner 组合到同一决策框架中；在 nuPlan 上取得强结果，并降低了 at-fault collision。</p>
-                  
-                  <div class='paper-facts'>
+                <details class='paper-card' data-paper-card='1' data-section='自动驾驶' data-tags='自动驾驶 方法 规划框架 可解释性' data-search='mosaic: an extensible framework for composing rule-based and learned motion planners 自动驾驶 / 方法 / 规划框架 / 可解释性 作者提出 mosaic，通过轨迹验证、统一打分和最优选择，把 rule-based 与 learned planner 组合到同一决策框架中；在 nuplan 上取得强结果，并降低了 at-fault collision。 2026-04-15 21:23:47 自动驾驶' data-impl='82' data-open='uncertain' data-deploy='yes' data-top3='false'>
+                  <summary>
+                    <div class='paper-top'>
+                      <div class='paper-title'>Mosaic: An Extensible Framework for Composing Rule-Based and Learned Motion Planners</div>
+                      <a class='arxiv-link' href='https://arxiv.org/abs/2604.13853v1' target='_blank' rel='noreferrer'>2604.13853v1</a>
+                    </div>
+                    <div class='paper-summary'>作者提出 Mosaic，通过轨迹验证、统一打分和最优选择，把 rule-based 与 learned planner 组合到同一决策框架中；在 nuPlan 上取得强结果，并降低了 at-fault collision…</div>
+                    <div class='paper-badges'>
+                      <span class='badge green'>实现概率 82%</span>
+                      <span class='badge amber'>开源：不确定</span>
+                      <span class='badge green'>可部署：是 —— 更像可插入现有自动驾驶规划链路的中间层。</span>
+                    </div>
+                  </summary>
+                  <div class='paper-body'>
+                    <div class='paper-meta'>
+                      <div><span>发布时间</span><strong>2026-04-15 21:23:47</strong></div>
+                      <div><span>主题</span><strong>自动驾驶</strong></div>
+                    </div>
+                    
+                    <div class='paper-facts'><div class='fact good'><span>摘要总结</span><strong>作者提出 Mosaic，通过轨迹验证、统一打分和最优选择，把 rule-based 与 learned planner 组合到同一决策框架中；在 nuPlan 上取得强结果，并降低了 at-fault collision。</strong></div>
+                    <div class='fact neutral'><span>开源判断</span><strong>不确定</strong></div>
+                    <div class='fact good'><span>部署判断</span><strong>是 —— 更像可插入现有自动驾驶规划链路的中间层。</strong></div>
                     <div class='fact good'><span>实现概率</span><strong>82% —— 框架型思路很工程化，核心是系统集成而不是单点黑科技。</strong></div>
-                    <div class='fact bad'><span>开源</span><strong>不确定</strong></div>
-                    <div class='fact good'><span>可部署</span><strong>是 —— 更像可插入现有自动驾驶规划链路的中间层。</strong></div>
+                    </div>
+                    <div class='paper-actions'>
+                      <a class='paper-action primary' href='https://arxiv.org/abs/2604.13853v1' target='_blank' rel='noreferrer'>打开 arXiv</a>
+                      <button type='button' class='paper-action' data-filter='term'>同类论文</button>
+                    </div>
+                    <div class='tags'><span class='badge soft'>自动驾驶</span><span class='badge soft'>方法</span><span class='badge soft'>规划框架</span><span class='badge soft'>可解释性</span></div>
+                    <div class='paper-keywords'><span class='keyword-chip' data-term='mosaic'>mosaic</span><span class='keyword-chip' data-term='extensible'>extensible</span><span class='keyword-chip' data-term='framework'>framework</span><span class='keyword-chip' data-term='composing'>composing</span><span class='keyword-chip' data-term='rule-based'>rule-based</span><span class='keyword-chip' data-term='learned'>learned</span><span class='keyword-chip' data-term='motion'>motion</span><span class='keyword-chip' data-term='planners'>planners</span><span class='keyword-chip' data-term='Mosaic'>Mosaic</span><span class='keyword-chip' data-term='Extensible'>Extensible</span><span class='keyword-chip' data-term='Framework'>Framework</span><span class='keyword-chip' data-term='Composing'>Composing</span><span class='keyword-chip' data-term='Rule-Based'>Rule-Based</span></div>
                   </div>
-                  
-    <div class='figure-card'>
-      <div class='figure-head'>
-        <span class='figure-title'>图像线索</span>
-        <span class='figure-note'>cached</span>
-      </div>
-      <a class='figure-link' href='assets/figs/2604.13853v1_v5.png' target='_blank' rel='noreferrer'>
-        <img class='figure-img' src='assets/figs/2604.13853v1_v5.png' alt='paper figure preview'>
-      </a>
-    </div>
-    
-                  
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>多模态传感器</div>
-              <div class='pipeline-detail'>相机 / 激光雷达 / 车道与地图</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>感知与世界模型</div>
-              <div class='pipeline-detail'>目标、车道、占用、未来状态</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>决策</div>
-              <div class='pipeline-label'>预测与规划</div>
-              <div class='pipeline-detail'>轨迹生成 / 风险评估 / 运动规划</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>控制执行</div>
-              <div class='pipeline-detail'>转向、加速、制动或轨迹点</div>
-            </div>
-            
-            
-      </div>
-    </div>
-    
-                  <div class='tags'><span class='badge soft'>自动驾驶</span><span class='badge soft'>方法</span><span class='badge soft'>规划框架</span></div>
-                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org/abs/2604.13853v1' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='archive/index.html'>返回归档</a></div>
-                </article>
+                </details>
                 
 
-                <article class='paper-card'>
-                  <div class='paper-top'>
-                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.12918v1' target='_blank' rel='noreferrer'>Radar-Camera BEV Multi-Task Learning with Cross-Task Attention Bridge for Joint 3D Detection and Segmentation</a></div>
-                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.12918v1' target='_blank' rel='noreferrer'>2604.12918v1</a>
-                  </div>
-                  <div class='paper-meta'>
-                    <div><span>发布时间</span><strong>2026-04-15 00:00:53</strong></div>
-                    <div><span>标签</span><strong>自动驾驶 / 方法 / BEV / 多任务感知</strong></div>
-                  </div>
-                  <p class='paper-summary'>论文提出 CTAB，在雷达-相机融合的多任务框架中交换检测与分割特征，改善分割边界和语义一致性；在 nuScenes 上取得稳定收益。</p>
-                  
-                  <div class='paper-facts'>
+                <details class='paper-card' data-paper-card='1' data-section='自动驾驶' data-tags='自动驾驶 方法 BEV 多任务感知' data-search='radar-camera bev multi-task learning with cross-task attention bridge for joint 3d detection and segmentation 自动驾驶 / 方法 / bev / 多任务感知 论文提出 ctab，在雷达-相机融合的多任务框架中交换检测与分割特征，改善分割边界和语义一致性；在 nuscenes 上取得稳定收益。 2026-04-15 00:00:53 自动驾驶' data-impl='78' data-open='uncertain' data-deploy='yes' data-top3='false'>
+                  <summary>
+                    <div class='paper-top'>
+                      <div class='paper-title'>Radar-Camera BEV Multi-Task Learning with Cross-Task Attention Bridge for Joint 3D Detection and Segmentation</div>
+                      <a class='arxiv-link' href='https://arxiv.org/abs/2604.12918v1' target='_blank' rel='noreferrer'>2604.12918v1</a>
+                    </div>
+                    <div class='paper-summary'>论文提出 CTAB，在雷达-相机融合的多任务框架中交换检测与分割特征，改善分割边界和语义一致性；在 nuScenes 上取得稳定收益。</div>
+                    <div class='paper-badges'>
+                      <span class='badge violet'>实现概率 78%</span>
+                      <span class='badge amber'>开源：不确定</span>
+                      <span class='badge green'>可部署：是 —— 如果已有雷达+相机 BEV 体系，这类模块最容易工程化。</span>
+                    </div>
+                  </summary>
+                  <div class='paper-body'>
+                    <div class='paper-meta'>
+                      <div><span>发布时间</span><strong>2026-04-15 00:00:53</strong></div>
+                      <div><span>主题</span><strong>自动驾驶</strong></div>
+                    </div>
+                    
+                    <div class='paper-facts'><div class='fact neutral'><span>摘要总结</span><strong>论文提出 CTAB，在雷达-相机融合的多任务框架中交换检测与分割特征，改善分割边界和语义一致性；在 nuScenes 上取得稳定收益。</strong></div>
+                    <div class='fact neutral'><span>开源判断</span><strong>不确定</strong></div>
+                    <div class='fact good'><span>部署判断</span><strong>是 —— 如果已有雷达+相机 BEV 体系，这类模块最容易工程化。</strong></div>
                     <div class='fact neutral'><span>实现概率</span><strong>78% —— 模块清晰、基于常见传感器栈，落地门槛主要在数据和训练配方。</strong></div>
-                    <div class='fact bad'><span>开源</span><strong>不确定</strong></div>
-                    <div class='fact good'><span>可部署</span><strong>是 —— 如果已有雷达+相机 BEV 体系，这类模块最容易工程化。</strong></div>
+                    </div>
+                    <div class='paper-actions'>
+                      <a class='paper-action primary' href='https://arxiv.org/abs/2604.12918v1' target='_blank' rel='noreferrer'>打开 arXiv</a>
+                      <button type='button' class='paper-action' data-filter='term'>同类论文</button>
+                    </div>
+                    <div class='tags'><span class='badge soft'>自动驾驶</span><span class='badge soft'>方法</span><span class='badge soft'>BEV</span><span class='badge soft'>多任务感知</span></div>
+                    <div class='paper-keywords'><span class='keyword-chip' data-term='radar-camera'>radar-camera</span><span class='keyword-chip' data-term='BEV'>BEV</span><span class='keyword-chip' data-term='multi-task'>multi-task</span><span class='keyword-chip' data-term='learning'>learning</span><span class='keyword-chip' data-term='cross-task'>cross-task</span><span class='keyword-chip' data-term='attention'>attention</span><span class='keyword-chip' data-term='bridge'>bridge</span><span class='keyword-chip' data-term='joint'>joint</span><span class='keyword-chip' data-term='Radar-Camera'>Radar-Camera</span><span class='keyword-chip' data-term='Multi-Task'>Multi-Task</span><span class='keyword-chip' data-term='Learning'>Learning</span><span class='keyword-chip' data-term='Cross-Task'>Cross-Task</span></div>
                   </div>
-                  
-    <div class='figure-card'>
-      <div class='figure-head'>
-        <span class='figure-title'>图像线索</span>
-        <span class='figure-note'>cached</span>
-      </div>
-      <a class='figure-link' href='assets/figs/2604.12918v1_v5.png' target='_blank' rel='noreferrer'>
-        <img class='figure-img' src='assets/figs/2604.12918v1_v5.png' alt='paper figure preview'>
-      </a>
-    </div>
-    
-                  
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>多模态传感器</div>
-              <div class='pipeline-detail'>相机 / 激光雷达 / 车道与地图</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>感知与世界模型</div>
-              <div class='pipeline-detail'>目标、车道、占用、未来状态</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>决策</div>
-              <div class='pipeline-label'>预测与规划</div>
-              <div class='pipeline-detail'>轨迹生成 / 风险评估 / 运动规划</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>控制执行</div>
-              <div class='pipeline-detail'>转向、加速、制动或轨迹点</div>
-            </div>
-            
-            
-      </div>
-    </div>
-    
-                  <div class='tags'><span class='badge soft'>自动驾驶</span><span class='badge soft'>方法</span><span class='badge soft'>BEV</span></div>
-                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org/abs/2604.12918v1' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='archive/index.html'>返回归档</a></div>
-                </article>
+                </details>
                 
 </div></section>
-<section class='section-block' id='figure_6340108e'><div class='section-head'><h2>机械臂 / 操控</h2><span>3 篇</span></div><div class='grid'>
+<section class='section-block' data-section-group='机械臂 / 操控'><div class='section-head'><h2>机械臂 / 操控</h2><span>3 篇</span></div><div class='grid'>
 
-                <article class='paper-card'>
-                  <div class='paper-top'>
-                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.12879v1' target='_blank' rel='noreferrer'>FastGrasp: Learning-based Whole-body Control method for Fast Dexterous Grasping with Mobile Manipulators</a></div>
-                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.12879v1' target='_blank' rel='noreferrer'>2604.12879v1</a>
+                <details class='paper-card' data-paper-card='1' data-section='机械臂 / 操控' data-tags='机械臂 操控 方法 移动操作' data-search='fastgrasp: learning-based whole-body control method for fast dexterous grasping with mobile manipulators 机械臂 / 操控 / 方法 / 移动操作 作者提出 fastgrasp：先用条件 vae 生成抓取候选，再用强化学习做全身协同控制，并引入触觉反馈做实时修正；仿真和真实实验都验证了快抓能力。 2026-04-14 23:30:57 机械臂 / 操控' data-impl='70' data-open='uncertain' data-deploy='yes' data-top3='false'>
+                  <summary>
+                    <div class='paper-top'>
+                      <div class='paper-title'>FastGrasp: Learning-based Whole-body Control method for Fast Dexterous Grasping with Mobile Manipulators</div>
+                      <a class='arxiv-link' href='https://arxiv.org/abs/2604.12879v1' target='_blank' rel='noreferrer'>2604.12879v1</a>
+                    </div>
+                    <div class='paper-summary'>作者提出 FastGrasp：先用条件 VAE 生成抓取候选，再用强化学习做全身协同控制，并引入触觉反馈做实时修正；仿真和真实实验都验证了快抓能力。</div>
+                    <div class='paper-badges'>
+                      <span class='badge violet'>实现概率 70%</span>
+                      <span class='badge amber'>开源：不确定</span>
+                      <span class='badge green'>可部署：是 —— 已经做了真实系统验证，属于“能上机器人”的一类。</span>
+                    </div>
+                  </summary>
+                  <div class='paper-body'>
+                    <div class='paper-meta'>
+                      <div><span>发布时间</span><strong>2026-04-14 23:30:57</strong></div>
+                      <div><span>主题</span><strong>机械臂 / 操控</strong></div>
+                    </div>
+                    
+                    <div class='paper-facts'><div class='fact neutral'><span>摘要总结</span><strong>作者提出 FastGrasp：先用条件 VAE 生成抓取候选，再用强化学习做全身协同控制，并引入触觉反馈做实时修正；仿真和真实实验都验证了快抓能力。</strong></div>
+                    <div class='fact neutral'><span>开源判断</span><strong>不确定</strong></div>
+                    <div class='fact good'><span>部署判断</span><strong>是 —— 已经做了真实系统验证，属于“能上机器人”的一类。</strong></div>
+                    <div class='fact neutral'><span>实现概率</span><strong>70% —— 思路完整，但对底盘、手部、触觉和控制同步要求高，硬件依赖重。</strong></div>
+                    </div>
+                    <div class='paper-actions'>
+                      <a class='paper-action primary' href='https://arxiv.org/abs/2604.12879v1' target='_blank' rel='noreferrer'>打开 arXiv</a>
+                      <button type='button' class='paper-action' data-filter='term'>同类论文</button>
+                    </div>
+                    <div class='tags'><span class='badge soft'>机械臂</span><span class='badge soft'>操控</span><span class='badge soft'>方法</span><span class='badge soft'>移动操作</span></div>
+                    <div class='paper-keywords'><span class='keyword-chip' data-term='fastgrasp'>fastgrasp</span><span class='keyword-chip' data-term='learning-based'>learning-based</span><span class='keyword-chip' data-term='whole-body'>whole-body</span><span class='keyword-chip' data-term='control'>control</span><span class='keyword-chip' data-term='fast'>fast</span><span class='keyword-chip' data-term='dexterous'>dexterous</span><span class='keyword-chip' data-term='grasping'>grasping</span><span class='keyword-chip' data-term='mobile'>mobile</span><span class='keyword-chip' data-term='FastGrasp'>FastGrasp</span><span class='keyword-chip' data-term='Learning-based'>Learning-based</span><span class='keyword-chip' data-term='Whole-body'>Whole-body</span><span class='keyword-chip' data-term='Control'>Control</span><span class='keyword-chip' data-term='Fast'>Fast</span></div>
                   </div>
-                  <div class='paper-meta'>
-                    <div><span>发布时间</span><strong>2026-04-14 23:30:57</strong></div>
-                    <div><span>标签</span><strong>机械臂 / 操控 / 方法 / 移动操作</strong></div>
-                  </div>
-                  <p class='paper-summary'>作者提出 FastGrasp：先用条件 VAE 生成抓取候选，再用强化学习做全身协同控制，并引入触觉反馈做实时修正；仿真和真实实验都验证了快抓能力。</p>
-                  
-                  <div class='paper-facts'>
-                    <div class='fact good'><span>实现概率</span><strong>70% —— 思路完整，但对底盘、手部、触觉和控制同步要求高，硬件依赖重。</strong></div>
-                    <div class='fact bad'><span>开源</span><strong>不确定</strong></div>
-                    <div class='fact good'><span>可部署</span><strong>是 —— 已经做了真实系统验证，属于“能上机器人”的一类。</strong></div>
-                  </div>
-                  
-    <div class='figure-card'>
-      <div class='figure-head'>
-        <span class='figure-title'>图像线索</span>
-        <span class='figure-note'>cached</span>
-      </div>
-      <a class='figure-link' href='assets/figs/2604.12879v1_v5.png' target='_blank' rel='noreferrer'>
-        <img class='figure-img' src='assets/figs/2604.12879v1_v5.png' alt='paper figure preview'>
-      </a>
-    </div>
-    
-                  
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>视觉与触觉</div>
-              <div class='pipeline-detail'>RGB / Depth / Proprioception / State</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>场景与物体解析</div>
-              <div class='pipeline-detail'>物体、位姿、可操作区域</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>决策</div>
-              <div class='pipeline-label'>技能或策略规划</div>
-              <div class='pipeline-detail'>抓取 / 放置 / 轨迹 / 任务分解</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>机械臂动作</div>
-              <div class='pipeline-detail'>末端位姿、关节控制、执行信号</div>
-            </div>
-            
-            
-      </div>
-    </div>
-    
-                  <div class='tags'><span class='badge soft'>机械臂</span><span class='badge soft'>操控</span><span class='badge soft'>方法</span></div>
-                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org/abs/2604.12879v1' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='archive/index.html'>返回归档</a></div>
-                </article>
+                </details>
                 
 
-                <article class='paper-card'>
-                  <div class='paper-top'>
-                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.13015v1' target='_blank' rel='noreferrer'>Learning Versatile Humanoid Manipulation with Touch Dreaming</a></div>
-                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.13015v1' target='_blank' rel='noreferrer'>2604.13015v1</a>
+                <details class='paper-card' data-paper-card='1' data-section='机械臂 / 操控' data-tags='机械臂 操控 人形机器人 触觉' data-search='learning versatile humanoid manipulation with touch dreaming 机械臂 / 操控 / 人形机器人 / 触觉 论文先做 rl 全身控制和人形数据采集，再训练一个把视觉、 proprioception 和触觉结合起来的 transformer；通过 touch dreaming 提升接触表征，在五个接触密集任务上明显优于基线。 2026-04-15 01:54:17 机械臂 / 操控' data-impl='68' data-open='uncertain' data-deploy='yes' data-top3='false'>
+                  <summary>
+                    <div class='paper-top'>
+                      <div class='paper-title'>Learning Versatile Humanoid Manipulation with Touch Dreaming</div>
+                      <a class='arxiv-link' href='https://arxiv.org/abs/2604.13015v1' target='_blank' rel='noreferrer'>2604.13015v1</a>
+                    </div>
+                    <div class='paper-summary'>论文先做 RL 全身控制和人形数据采集，再训练一个把视觉、 proprioception 和触觉结合起来的 Transformer；通过 touch dreaming 提升接触表征，在五个接触密集任务上明显优于基线。</div>
+                    <div class='paper-badges'>
+                      <span class='badge soft'>实现概率 68%</span>
+                      <span class='badge amber'>开源：不确定</span>
+                      <span class='badge green'>可部署：是 —— 如果具备人形平台和触觉传感，这套方法很像可持续迭代的训练管线。</span>
+                    </div>
+                  </summary>
+                  <div class='paper-body'>
+                    <div class='paper-meta'>
+                      <div><span>发布时间</span><strong>2026-04-15 01:54:17</strong></div>
+                      <div><span>主题</span><strong>机械臂 / 操控</strong></div>
+                    </div>
+                    
+                    <div class='paper-facts'><div class='fact bad'><span>摘要总结</span><strong>论文先做 RL 全身控制和人形数据采集，再训练一个把视觉、 proprioception 和触觉结合起来的 Transformer；通过 touch dreaming 提升接触表征，在五个接触密集任务上明显优于基线。</strong></div>
+                    <div class='fact neutral'><span>开源判断</span><strong>不确定</strong></div>
+                    <div class='fact good'><span>部署判断</span><strong>是 —— 如果具备人形平台和触觉传感，这套方法很像可持续迭代的训练管线。</strong></div>
+                    <div class='fact bad'><span>实现概率</span><strong>68% —— 算法主线清楚，但人形数据采集和全身执行是主要成本。</strong></div>
+                    </div>
+                    <div class='paper-actions'>
+                      <a class='paper-action primary' href='https://arxiv.org/abs/2604.13015v1' target='_blank' rel='noreferrer'>打开 arXiv</a>
+                      <button type='button' class='paper-action' data-filter='term'>同类论文</button>
+                    </div>
+                    <div class='tags'><span class='badge soft'>机械臂</span><span class='badge soft'>操控</span><span class='badge soft'>人形机器人</span><span class='badge soft'>触觉</span></div>
+                    <div class='paper-keywords'><span class='keyword-chip' data-term='learning'>learning</span><span class='keyword-chip' data-term='versatile'>versatile</span><span class='keyword-chip' data-term='humanoid'>humanoid</span><span class='keyword-chip' data-term='manipulation'>manipulation</span><span class='keyword-chip' data-term='touch'>touch</span><span class='keyword-chip' data-term='dreaming'>dreaming</span><span class='keyword-chip' data-term='机械臂'>机械臂</span><span class='keyword-chip' data-term='操控'>操控</span><span class='keyword-chip' data-term='Learning'>Learning</span><span class='keyword-chip' data-term='Versatile'>Versatile</span><span class='keyword-chip' data-term='Humanoid'>Humanoid</span><span class='keyword-chip' data-term='Manipulation'>Manipulation</span><span class='keyword-chip' data-term='Touch'>Touch</span></div>
                   </div>
-                  <div class='paper-meta'>
-                    <div><span>发布时间</span><strong>2026-04-15 01:54:17</strong></div>
-                    <div><span>标签</span><strong>机械臂 / 操控 / 人形机器人 / 触觉</strong></div>
-                  </div>
-                  <p class='paper-summary'>论文先做 RL 全身控制和人形数据采集，再训练一个把视觉、 proprioception 和触觉结合起来的 Transformer；通过 touch dreaming 提升接触表征，在五个接触密集任务上明显优于基线。</p>
-                  
-                  <div class='paper-facts'>
-                    <div class='fact good'><span>实现概率</span><strong>68% —— 算法主线清楚，但人形数据采集和全身执行是主要成本。</strong></div>
-                    <div class='fact bad'><span>开源</span><strong>不确定</strong></div>
-                    <div class='fact good'><span>可部署</span><strong>是 —— 如果具备人形平台和触觉传感，这套方法很像可持续迭代的训练管线。</strong></div>
-                  </div>
-                  
-    <div class='figure-card'>
-      <div class='figure-head'>
-        <span class='figure-title'>图像线索</span>
-        <span class='figure-note'>cached</span>
-      </div>
-      <a class='figure-link' href='assets/figs/2604.13015v1_v5.png' target='_blank' rel='noreferrer'>
-        <img class='figure-img' src='assets/figs/2604.13015v1_v5.png' alt='paper figure preview'>
-      </a>
-    </div>
-    
-                  
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>视觉与触觉</div>
-              <div class='pipeline-detail'>RGB / Depth / Proprioception / State</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>场景与物体解析</div>
-              <div class='pipeline-detail'>物体、位姿、可操作区域</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>决策</div>
-              <div class='pipeline-label'>技能或策略规划</div>
-              <div class='pipeline-detail'>抓取 / 放置 / 轨迹 / 任务分解</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>机械臂动作</div>
-              <div class='pipeline-detail'>末端位姿、关节控制、执行信号</div>
-            </div>
-            
-            
-      </div>
-    </div>
-    
-                  <div class='tags'><span class='badge soft'>机械臂</span><span class='badge soft'>操控</span><span class='badge soft'>人形机器人</span></div>
-                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org/abs/2604.13015v1' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='archive/index.html'>返回归档</a></div>
-                </article>
+                </details>
                 
 
-                <article class='paper-card'>
-                  <div class='paper-top'>
-                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.14089v1' target='_blank' rel='noreferrer'>UMI-3D: Extending Universal Manipulation Interface from Vision-Limited to 3D Spatial Perception</a></div>
-                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.14089v1' target='_blank' rel='noreferrer'>2604.14089v1</a>
+                <details class='paper-card' data-paper-card='1' data-section='机械臂 / 操控' data-tags='机械臂 操控 系统 数据采集' data-search='umi-3d: extending universal manipulation interface from vision-limited to 3d spatial perception 机械臂 / 操控 / 系统 / 数据采集 umi-3d 在 wrist-mounted 采集系统里加入轻量 lidar，解决遮挡、动态场景和定位失败；再配合时空标定和多模态同步，让示教数据更稳、更准，真实任务成功率随之提升。 2026-04-16 01:04:34 机械臂 / 操控' data-impl='66' data-open='uncertain' data-deploy='yes' data-top3='false'>
+                  <summary>
+                    <div class='paper-top'>
+                      <div class='paper-title'>UMI-3D: Extending Universal Manipulation Interface from Vision-Limited to 3D Spatial Perception</div>
+                      <a class='arxiv-link' href='https://arxiv.org/abs/2604.14089v1' target='_blank' rel='noreferrer'>2604.14089v1</a>
+                    </div>
+                    <div class='paper-summary'>UMI-3D 在 wrist-mounted 采集系统里加入轻量 LiDAR，解决遮挡、动态场景和定位失败；再配合时空标定和多模态同步，让示教数据更稳、更准，真实任务成功率随之提升。</div>
+                    <div class='paper-badges'>
+                      <span class='badge soft'>实现概率 66%</span>
+                      <span class='badge amber'>开源：不确定</span>
+                      <span class='badge green'>可部署：是 —— 这类采集系统最容易在实验室和数据工厂先落地。</span>
+                    </div>
+                  </summary>
+                  <div class='paper-body'>
+                    <div class='paper-meta'>
+                      <div><span>发布时间</span><strong>2026-04-16 01:04:34</strong></div>
+                      <div><span>主题</span><strong>机械臂 / 操控</strong></div>
+                    </div>
+                    
+                    <div class='paper-facts'><div class='fact bad'><span>摘要总结</span><strong>UMI-3D 在 wrist-mounted 采集系统里加入轻量 LiDAR，解决遮挡、动态场景和定位失败；再配合时空标定和多模态同步，让示教数据更稳、更准，真实任务成功率随之提升。</strong></div>
+                    <div class='fact neutral'><span>开源判断</span><strong>不确定</strong></div>
+                    <div class='fact good'><span>部署判断</span><strong>是 —— 这类采集系统最容易在实验室和数据工厂先落地。</strong></div>
+                    <div class='fact bad'><span>实现概率</span><strong>66% —— 系统路径合理，但需要专门硬件和较强的标定能力。</strong></div>
+                    </div>
+                    <div class='paper-actions'>
+                      <a class='paper-action primary' href='https://arxiv.org/abs/2604.14089v1' target='_blank' rel='noreferrer'>打开 arXiv</a>
+                      <button type='button' class='paper-action' data-filter='term'>同类论文</button>
+                    </div>
+                    <div class='tags'><span class='badge soft'>机械臂</span><span class='badge soft'>操控</span><span class='badge soft'>系统</span><span class='badge soft'>数据采集</span></div>
+                    <div class='paper-keywords'><span class='keyword-chip' data-term='umi-3d'>umi-3d</span><span class='keyword-chip' data-term='extending'>extending</span><span class='keyword-chip' data-term='universal'>universal</span><span class='keyword-chip' data-term='manipulation'>manipulation</span><span class='keyword-chip' data-term='interface'>interface</span><span class='keyword-chip' data-term='vision-limited'>vision-limited</span><span class='keyword-chip' data-term='spatial'>spatial</span><span class='keyword-chip' data-term='perception'>perception</span><span class='keyword-chip' data-term='UMI-3D'>UMI-3D</span><span class='keyword-chip' data-term='Extending'>Extending</span><span class='keyword-chip' data-term='Universal'>Universal</span><span class='keyword-chip' data-term='Manipulation'>Manipulation</span><span class='keyword-chip' data-term='Interface'>Interface</span></div>
                   </div>
-                  <div class='paper-meta'>
-                    <div><span>发布时间</span><strong>2026-04-16 01:04:34</strong></div>
-                    <div><span>标签</span><strong>机械臂 / 操控 / 系统 / 数据采集</strong></div>
-                  </div>
-                  <p class='paper-summary'>UMI-3D 在 wrist-mounted 采集系统里加入轻量 LiDAR，解决遮挡、动态场景和定位失败；再配合时空标定和多模态同步，让示教数据更稳、更准，真实任务成功率随之提升。</p>
-                  
-                  <div class='paper-facts'>
-                    <div class='fact neutral'><span>实现概率</span><strong>66% —— 系统路径合理，但需要专门硬件和较强的标定能力。</strong></div>
-                    <div class='fact bad'><span>开源</span><strong>不确定</strong></div>
-                    <div class='fact good'><span>可部署</span><strong>是 —— 这类采集系统最容易在实验室和数据工厂先落地。</strong></div>
-                  </div>
-                  
-    <div class='figure-card'>
-      <div class='figure-head'>
-        <span class='figure-title'>图像线索</span>
-        <span class='figure-note'>cached</span>
-      </div>
-      <a class='figure-link' href='assets/figs/2604.14089v1_v5.png' target='_blank' rel='noreferrer'>
-        <img class='figure-img' src='assets/figs/2604.14089v1_v5.png' alt='paper figure preview'>
-      </a>
-    </div>
-    
-                  
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>视觉与触觉</div>
-              <div class='pipeline-detail'>RGB / Depth / Proprioception / State</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>场景与物体解析</div>
-              <div class='pipeline-detail'>物体、位姿、可操作区域</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>决策</div>
-              <div class='pipeline-label'>技能或策略规划</div>
-              <div class='pipeline-detail'>抓取 / 放置 / 轨迹 / 任务分解</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>机械臂动作</div>
-              <div class='pipeline-detail'>末端位姿、关节控制、执行信号</div>
-            </div>
-            
-            
-      </div>
-    </div>
-    
-                  <div class='tags'><span class='badge soft'>机械臂</span><span class='badge soft'>操控</span><span class='badge soft'>系统</span></div>
-                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org/abs/2604.14089v1' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='archive/index.html'>返回归档</a></div>
-                </article>
+                </details>
                 
 </div></section>
-<section class='section-block' id='VLA'><div class='section-head'><h2>VLA</h2><span>2 篇</span></div><div class='grid'>
+<section class='section-block' data-section-group='VLA'><div class='section-head'><h2>VLA</h2><span>2 篇</span></div><div class='grid'>
 
-                <article class='paper-card'>
-                  <div class='paper-top'>
-                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.14125v1' target='_blank' rel='noreferrer'>HiVLA: A Visual-Grounded-Centric Hierarchical Embodied Manipulation System</a></div>
-                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.14125v1' target='_blank' rel='noreferrer'>2604.14125v1</a>
+                <details class='paper-card' data-paper-card='1' data-section='VLA' data-tags='VLA 机械臂 方法 分层控制' data-search='hivla: a visual-grounded-centric hierarchical embodied manipulation system vla / 机械臂 / 方法 / 分层控制 作者提出 hivla：高层用 vlm 做任务分解和视觉定位，输出子任务与目标框；低层用 diffusion transformer 执行动作，并通过级联交叉注意力融合全局语义、局部裁剪和技能信息。论文声称在仿真和真实世界都明显优于端到端基线。 2026-04-16 01:50:07 vla' data-impl='72' data-open='uncertain' data-deploy='yes' data-top3='false'>
+                  <summary>
+                    <div class='paper-top'>
+                      <div class='paper-title'>HiVLA: A Visual-Grounded-Centric Hierarchical Embodied Manipulation System</div>
+                      <a class='arxiv-link' href='https://arxiv.org/abs/2604.14125v1' target='_blank' rel='noreferrer'>2604.14125v1</a>
+                    </div>
+                    <div class='paper-summary'>作者提出 HiVLA：高层用 VLM 做任务分解和视觉定位，输出子任务与目标框；低层用 diffusion Transformer 执行动作，并通过级联交叉注意力融合全局语义、局部裁剪和技能信息。论文声称在仿真和真实世界…</div>
+                    <div class='paper-badges'>
+                      <span class='badge violet'>实现概率 72%</span>
+                      <span class='badge amber'>开源：不确定</span>
+                      <span class='badge green'>可部署：是 —— 既有真实实验又有明确的模块边界，比较像可工程化的 VLA 路线。</span>
+                    </div>
+                  </summary>
+                  <div class='paper-body'>
+                    <div class='paper-meta'>
+                      <div><span>发布时间</span><strong>2026-04-16 01:50:07</strong></div>
+                      <div><span>主题</span><strong>VLA</strong></div>
+                    </div>
+                    
+                    <div class='paper-facts'><div class='fact neutral'><span>摘要总结</span><strong>作者提出 HiVLA：高层用 VLM 做任务分解和视觉定位，输出子任务与目标框；低层用 diffusion Transformer 执行动作，并通过级联交叉注意力融合全局语义、局部裁剪和技能信息。论文声称在仿真和真实世界都明显优于端到端基线。</strong></div>
+                    <div class='fact neutral'><span>开源判断</span><strong>不确定</strong></div>
+                    <div class='fact good'><span>部署判断</span><strong>是 —— 既有真实实验又有明确的模块边界，比较像可工程化的 VLA 路线。</strong></div>
+                    <div class='fact neutral'><span>实现概率</span><strong>72% —— 分层设计很合理，难点在高层定位和低层执行之间的接口稳定性。</strong></div>
+                    </div>
+                    <div class='paper-actions'>
+                      <a class='paper-action primary' href='https://arxiv.org/abs/2604.14125v1' target='_blank' rel='noreferrer'>打开 arXiv</a>
+                      <button type='button' class='paper-action' data-filter='term'>同类论文</button>
+                    </div>
+                    <div class='tags'><span class='badge soft'>VLA</span><span class='badge soft'>机械臂</span><span class='badge soft'>方法</span><span class='badge soft'>分层控制</span></div>
+                    <div class='paper-keywords'><span class='keyword-chip' data-term='hivla'>hivla</span><span class='keyword-chip' data-term='visual-grounded-centric'>visual-grounded-centric</span><span class='keyword-chip' data-term='hierarchical'>hierarchical</span><span class='keyword-chip' data-term='embodied'>embodied</span><span class='keyword-chip' data-term='manipulation'>manipulation</span><span class='keyword-chip' data-term='VLA'>VLA</span><span class='keyword-chip' data-term='机械臂'>机械臂</span><span class='keyword-chip' data-term='分层控制'>分层控制</span><span class='keyword-chip' data-term='HiVLA'>HiVLA</span><span class='keyword-chip' data-term='Visual-Grounded-Centric'>Visual-Grounded-Centric</span><span class='keyword-chip' data-term='Hierarchical'>Hierarchical</span><span class='keyword-chip' data-term='Embodied'>Embodied</span><span class='keyword-chip' data-term='Manipulation'>Manipulation</span></div>
                   </div>
-                  <div class='paper-meta'>
-                    <div><span>发布时间</span><strong>2026-04-16 01:50:07</strong></div>
-                    <div><span>标签</span><strong>VLA / 机械臂 / 方法 / 分层控制</strong></div>
-                  </div>
-                  <p class='paper-summary'>作者提出 HiVLA：高层用 VLM 做任务分解和视觉定位，输出子任务与目标框；低层用 diffusion Transformer 执行动作，并通过级联交叉注意力融合全局语义、局部裁剪和技能信息。论文声称在仿真和真实世界都明显优于端到端基线。</p>
-                  
-                  <div class='paper-facts'>
-                    <div class='fact good'><span>实现概率</span><strong>72% —— 分层设计很合理，难点在高层定位和低层执行之间的接口稳定性。</strong></div>
-                    <div class='fact bad'><span>开源</span><strong>不确定</strong></div>
-                    <div class='fact good'><span>可部署</span><strong>是 —— 既有真实实验又有明确的模块边界，比较像可工程化的 VLA 路线。</strong></div>
-                  </div>
-                  
-    <div class='figure-card'>
-      <div class='figure-head'>
-        <span class='figure-title'>图像线索</span>
-        <span class='figure-note'>cached</span>
-      </div>
-      <a class='figure-link' href='assets/figs/2604.14125v1_v5.png' target='_blank' rel='noreferrer'>
-        <img class='figure-img' src='assets/figs/2604.14125v1_v5.png' alt='paper figure preview'>
-      </a>
-    </div>
-    
-                  
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>视觉与触觉</div>
-              <div class='pipeline-detail'>RGB / Depth / Proprioception / State</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>场景与物体解析</div>
-              <div class='pipeline-detail'>物体、位姿、可操作区域</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>决策</div>
-              <div class='pipeline-label'>技能或策略规划</div>
-              <div class='pipeline-detail'>抓取 / 放置 / 轨迹 / 任务分解</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>机械臂动作</div>
-              <div class='pipeline-detail'>末端位姿、关节控制、执行信号</div>
-            </div>
-            
-            
-      </div>
-    </div>
-    
-                  <div class='tags'><span class='badge soft'>VLA</span><span class='badge soft'>机械臂</span><span class='badge soft'>方法</span></div>
-                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org/abs/2604.14125v1' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='archive/index.html'>返回归档</a></div>
-                </article>
+                </details>
                 
 
-                <article class='paper-card'>
-                  <div class='paper-top'>
-                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.13942v1' target='_blank' rel='noreferrer'>Goal2Skill: Long-Horizon Manipulation with Adaptive Planning and Reflection</a></div>
-                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.13942v1' target='_blank' rel='noreferrer'>2604.13942v1</a>
+                <details class='paper-card' data-paper-card='1' data-section='VLA' data-tags='VLA 机械臂 长时序任务 反思规划' data-search='goal2skill: long-horizon manipulation with adaptive planning and reflection vla / 机械臂 / 长时序任务 / 反思规划 论文提出一个双系统框架：高层 vlm 负责任务记忆、目标分解、结果验证和错误纠正，低层 vla 执行具体动作；通过“规划-执行-反思”闭环提升长时序操作稳定性。 2026-04-15 22:53:09 vla' data-impl='74' data-open='uncertain' data-deploy='uncertain' data-top3='false'>
+                  <summary>
+                    <div class='paper-top'>
+                      <div class='paper-title'>Goal2Skill: Long-Horizon Manipulation with Adaptive Planning and Reflection</div>
+                      <a class='arxiv-link' href='https://arxiv.org/abs/2604.13942v1' target='_blank' rel='noreferrer'>2604.13942v1</a>
+                    </div>
+                    <div class='paper-summary'>论文提出一个双系统框架：高层 VLM 负责任务记忆、目标分解、结果验证和错误纠正，低层 VLA 执行具体动作；通过“规划-执行-反思”闭环提升长时序操作稳定性。</div>
+                    <div class='paper-badges'>
+                      <span class='badge violet'>实现概率 74%</span>
+                      <span class='badge amber'>开源：不确定</span>
+                      <span class='badge amber'>可部署：不确定 —— 方向对，但长时序、部分可观测环境下的稳定性还要看更多验证。</span>
+                    </div>
+                  </summary>
+                  <div class='paper-body'>
+                    <div class='paper-meta'>
+                      <div><span>发布时间</span><strong>2026-04-15 22:53:09</strong></div>
+                      <div><span>主题</span><strong>VLA</strong></div>
+                    </div>
+                    
+                    <div class='paper-facts'><div class='fact neutral'><span>摘要总结</span><strong>论文提出一个双系统框架：高层 VLM 负责任务记忆、目标分解、结果验证和错误纠正，低层 VLA 执行具体动作；通过“规划-执行-反思”闭环提升长时序操作稳定性。</strong></div>
+                    <div class='fact neutral'><span>开源判断</span><strong>不确定</strong></div>
+                    <div class='fact neutral'><span>部署判断</span><strong>不确定 —— 方向对，但长时序、部分可观测环境下的稳定性还要看更多验证。</strong></div>
+                    <div class='fact neutral'><span>实现概率</span><strong>74% —— 系统逻辑自然，但长时序任务的误差积累和恢复仍会很难。</strong></div>
+                    </div>
+                    <div class='paper-actions'>
+                      <a class='paper-action primary' href='https://arxiv.org/abs/2604.13942v1' target='_blank' rel='noreferrer'>打开 arXiv</a>
+                      <button type='button' class='paper-action' data-filter='term'>同类论文</button>
+                    </div>
+                    <div class='tags'><span class='badge soft'>VLA</span><span class='badge soft'>机械臂</span><span class='badge soft'>长时序任务</span><span class='badge soft'>反思规划</span></div>
+                    <div class='paper-keywords'><span class='keyword-chip' data-term='goal2skill'>goal2skill</span><span class='keyword-chip' data-term='long-horizon'>long-horizon</span><span class='keyword-chip' data-term='manipulation'>manipulation</span><span class='keyword-chip' data-term='adaptive'>adaptive</span><span class='keyword-chip' data-term='planning'>planning</span><span class='keyword-chip' data-term='reflection'>reflection</span><span class='keyword-chip' data-term='VLA'>VLA</span><span class='keyword-chip' data-term='机械臂'>机械臂</span><span class='keyword-chip' data-term='Goal2Skill'>Goal2Skill</span><span class='keyword-chip' data-term='Long-Horizon'>Long-Horizon</span><span class='keyword-chip' data-term='Manipulation'>Manipulation</span><span class='keyword-chip' data-term='Adaptive'>Adaptive</span><span class='keyword-chip' data-term='Planning'>Planning</span></div>
                   </div>
-                  <div class='paper-meta'>
-                    <div><span>发布时间</span><strong>2026-04-15 22:53:09</strong></div>
-                    <div><span>标签</span><strong>VLA / 机械臂 / 长时序任务 / 反思规划</strong></div>
-                  </div>
-                  <p class='paper-summary'>论文提出一个双系统框架：高层 VLM 负责任务记忆、目标分解、结果验证和错误纠正，低层 VLA 执行具体动作；通过“规划-执行-反思”闭环提升长时序操作稳定性。</p>
-                  
-                  <div class='paper-facts'>
-                    <div class='fact bad'><span>实现概率</span><strong>74% —— 系统逻辑自然，但长时序任务的误差积累和恢复仍会很难。</strong></div>
-                    <div class='fact bad'><span>开源</span><strong>不确定</strong></div>
-                    <div class='fact good'><span>可部署</span><strong>不确定 —— 方向对，但长时序、部分可观测环境下的稳定性还要看更多验证。</strong></div>
-                  </div>
-                  
-    <div class='figure-card'>
-      <div class='figure-head'>
-        <span class='figure-title'>图像线索</span>
-        <span class='figure-note'>cached</span>
-      </div>
-      <a class='figure-link' href='assets/figs/2604.13942v1_v5.png' target='_blank' rel='noreferrer'>
-        <img class='figure-img' src='assets/figs/2604.13942v1_v5.png' alt='paper figure preview'>
-      </a>
-    </div>
-    
-                  
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>多模态传感器</div>
-              <div class='pipeline-detail'>相机 / 激光雷达 / 车道与地图</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>感知与世界模型</div>
-              <div class='pipeline-detail'>目标、车道、占用、未来状态</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>决策</div>
-              <div class='pipeline-label'>预测与规划</div>
-              <div class='pipeline-detail'>轨迹生成 / 风险评估 / 运动规划</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>控制执行</div>
-              <div class='pipeline-detail'>转向、加速、制动或轨迹点</div>
-            </div>
-            
-            
-      </div>
-    </div>
-    
-                  <div class='tags'><span class='badge soft'>VLA</span><span class='badge soft'>机械臂</span><span class='badge soft'>长时序任务</span></div>
-                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org/abs/2604.13942v1' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='archive/index.html'>返回归档</a></div>
-                </article>
+                </details>
                 
 </div></section>
-<section class='section-block' id='VLM'><div class='section-head'><h2>VLM</h2><span>2 篇</span></div><div class='grid'>
+<section class='section-block' data-section-group='VLM'><div class='section-head'><h2>VLM</h2><span>2 篇</span></div><div class='grid'>
 
-                <article class='paper-card'>
-                  <div class='paper-top'>
-                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.14129v1' target='_blank' rel='noreferrer'>Don&#x27;t Let the Video Speak: Audio-Contrastive Preference Optimization for Audio-Visual Language Models</a></div>
-                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.14129v1' target='_blank' rel='noreferrer'>2604.14129v1</a>
+                <details class='paper-card' data-paper-card='1' data-section='VLM' data-tags='VLM 多模态对齐 可靠性 方法' data-search='don&#x27;t let the video speak: audio-contrastive preference optimization for audio-visual language models vlm / 多模态对齐 / 可靠性 / 方法 论文提出 acpo，用输出对比和输入对比两个目标去惩罚模型忽视真实音频信号的行为；作者报告它能显著提升音频 grounding，同时不明显牺牲整体多模态能力。 2026-04-16 01:51:28 vlm' data-impl='84' data-open='uncertain' data-deploy='uncertain' data-top3='false'>
+                  <summary>
+                    <div class='paper-top'>
+                      <div class='paper-title'>Don&#x27;t Let the Video Speak: Audio-Contrastive Preference Optimization for Audio-Visual Language Models</div>
+                      <a class='arxiv-link' href='https://arxiv.org/abs/2604.14129v1' target='_blank' rel='noreferrer'>2604.14129v1</a>
+                    </div>
+                    <div class='paper-summary'>论文提出 ACPO，用输出对比和输入对比两个目标去惩罚模型忽视真实音频信号的行为；作者报告它能显著提升音频 grounding，同时不明显牺牲整体多模态能力。</div>
+                    <div class='paper-badges'>
+                      <span class='badge green'>实现概率 84%</span>
+                      <span class='badge amber'>开源：不确定</span>
+                      <span class='badge amber'>可部署：不确定 —— 更像训练层改造，不是独立可部署系统。</span>
+                    </div>
+                  </summary>
+                  <div class='paper-body'>
+                    <div class='paper-meta'>
+                      <div><span>发布时间</span><strong>2026-04-16 01:51:28</strong></div>
+                      <div><span>主题</span><strong>VLM</strong></div>
+                    </div>
+                    
+                    <div class='paper-facts'><div class='fact good'><span>摘要总结</span><strong>论文提出 ACPO，用输出对比和输入对比两个目标去惩罚模型忽视真实音频信号的行为；作者报告它能显著提升音频 grounding，同时不明显牺牲整体多模态能力。</strong></div>
+                    <div class='fact neutral'><span>开源判断</span><strong>不确定</strong></div>
+                    <div class='fact neutral'><span>部署判断</span><strong>不确定 —— 更像训练层改造，不是独立可部署系统。</strong></div>
+                    <div class='fact good'><span>实现概率</span><strong>84% —— 优化目标很清楚，属于比较容易复现和集成的训练策略。</strong></div>
+                    </div>
+                    <div class='paper-actions'>
+                      <a class='paper-action primary' href='https://arxiv.org/abs/2604.14129v1' target='_blank' rel='noreferrer'>打开 arXiv</a>
+                      <button type='button' class='paper-action' data-filter='term'>同类论文</button>
+                    </div>
+                    <div class='tags'><span class='badge soft'>VLM</span><span class='badge soft'>多模态对齐</span><span class='badge soft'>可靠性</span><span class='badge soft'>方法</span></div>
+                    <div class='paper-keywords'><span class='keyword-chip' data-term='don'>don</span><span class='keyword-chip' data-term='let'>let</span><span class='keyword-chip' data-term='speak'>speak</span><span class='keyword-chip' data-term='audio-contrastive'>audio-contrastive</span><span class='keyword-chip' data-term='preference'>preference</span><span class='keyword-chip' data-term='optimization'>optimization</span><span class='keyword-chip' data-term='audio-visual'>audio-visual</span><span class='keyword-chip' data-term='models'>models</span><span class='keyword-chip' data-term='Don'>Don</span><span class='keyword-chip' data-term='Let'>Let</span><span class='keyword-chip' data-term='Speak'>Speak</span><span class='keyword-chip' data-term='Audio-Contrastive'>Audio-Contrastive</span><span class='keyword-chip' data-term='Preference'>Preference</span></div>
                   </div>
-                  <div class='paper-meta'>
-                    <div><span>发布时间</span><strong>2026-04-16 01:51:28</strong></div>
-                    <div><span>标签</span><strong>VLM / 多模态对齐 / 可靠性 / 方法</strong></div>
-                  </div>
-                  <p class='paper-summary'>论文提出 ACPO，用输出对比和输入对比两个目标去惩罚模型忽视真实音频信号的行为；作者报告它能显著提升音频 grounding，同时不明显牺牲整体多模态能力。</p>
-                  
-                  <div class='paper-facts'>
-                    <div class='fact neutral'><span>实现概率</span><strong>84% —— 优化目标很清楚，属于比较容易复现和集成的训练策略。</strong></div>
-                    <div class='fact bad'><span>开源</span><strong>不确定</strong></div>
-                    <div class='fact good'><span>可部署</span><strong>不确定 —— 更像训练层改造，不是独立可部署系统。</strong></div>
-                  </div>
-                  
-    <div class='figure-card'>
-      <div class='figure-head'>
-        <span class='figure-title'>图像线索</span>
-        <span class='figure-note'>cached</span>
-      </div>
-      <a class='figure-link' href='assets/figs/2604.14129v1_v5.png' target='_blank' rel='noreferrer'>
-        <img class='figure-img' src='assets/figs/2604.14129v1_v5.png' alt='paper figure preview'>
-      </a>
-    </div>
-    
-                  
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>图像 + 问题</div>
-              <div class='pipeline-detail'>单图 / 多图 / 文本提示</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>视觉语言编码</div>
-              <div class='pipeline-detail'>区域、对象、关系、语义</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>推理</div>
-              <div class='pipeline-label'>跨模态推理</div>
-              <div class='pipeline-detail'>问答、检索、解释、决策</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>文本或结构化结果</div>
-              <div class='pipeline-detail'>答案、描述、工具调用</div>
-            </div>
-            
-            
-      </div>
-    </div>
-    
-                  <div class='tags'><span class='badge soft'>VLM</span><span class='badge soft'>多模态对齐</span><span class='badge soft'>可靠性</span></div>
-                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org/abs/2604.14129v1' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='archive/index.html'>返回归档</a></div>
-                </article>
+                </details>
                 
 
-                <article class='paper-card'>
-                  <div class='paper-top'>
-                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.14149v1' target='_blank' rel='noreferrer'>One Token per Highly Selective Frame: Towards Extreme Compression for Long Video Understanding</a></div>
-                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.14149v1' target='_blank' rel='noreferrer'>2604.14149v1</a>
+                <details class='paper-card' data-paper-card='1' data-section='VLM' data-tags='VLM 长视频理解 压缩 效率' data-search='one token per highly selective frame: towards extreme compression for long video understanding vlm / 长视频理解 / 压缩 / 效率 论文提出可学习的逐层 token 压缩和基于问题相关性的帧选择，减少长视频中的冗余 token；同时通过局部注意力缓解长上下文的位置偏置，让模型能看更多帧。 2026-04-16 01:59:52 vlm' data-impl='79' data-open='uncertain' data-deploy='uncertain' data-top3='false'>
+                  <summary>
+                    <div class='paper-top'>
+                      <div class='paper-title'>One Token per Highly Selective Frame: Towards Extreme Compression for Long Video Understanding</div>
+                      <a class='arxiv-link' href='https://arxiv.org/abs/2604.14149v1' target='_blank' rel='noreferrer'>2604.14149v1</a>
+                    </div>
+                    <div class='paper-summary'>论文提出可学习的逐层 token 压缩和基于问题相关性的帧选择，减少长视频中的冗余 token；同时通过局部注意力缓解长上下文的位置偏置，让模型能看更多帧。</div>
+                    <div class='paper-badges'>
+                      <span class='badge violet'>实现概率 79%</span>
+                      <span class='badge amber'>开源：不确定</span>
+                      <span class='badge amber'>可部署：不确定 —— 适合做 VLM 加速模块，但不属于单独产品。</span>
+                    </div>
+                  </summary>
+                  <div class='paper-body'>
+                    <div class='paper-meta'>
+                      <div><span>发布时间</span><strong>2026-04-16 01:59:52</strong></div>
+                      <div><span>主题</span><strong>VLM</strong></div>
+                    </div>
+                    
+                    <div class='paper-facts'><div class='fact neutral'><span>摘要总结</span><strong>论文提出可学习的逐层 token 压缩和基于问题相关性的帧选择，减少长视频中的冗余 token；同时通过局部注意力缓解长上下文的位置偏置，让模型能看更多帧。</strong></div>
+                    <div class='fact neutral'><span>开源判断</span><strong>不确定</strong></div>
+                    <div class='fact neutral'><span>部署判断</span><strong>不确定 —— 适合做 VLM 加速模块，但不属于单独产品。</strong></div>
+                    <div class='fact neutral'><span>实现概率</span><strong>79% —— 压缩思路比较工程化，但收益高度依赖模型与视频分布。</strong></div>
+                    </div>
+                    <div class='paper-actions'>
+                      <a class='paper-action primary' href='https://arxiv.org/abs/2604.14149v1' target='_blank' rel='noreferrer'>打开 arXiv</a>
+                      <button type='button' class='paper-action' data-filter='term'>同类论文</button>
+                    </div>
+                    <div class='tags'><span class='badge soft'>VLM</span><span class='badge soft'>长视频理解</span><span class='badge soft'>压缩</span><span class='badge soft'>效率</span></div>
+                    <div class='paper-keywords'><span class='keyword-chip' data-term='one'>one</span><span class='keyword-chip' data-term='token'>token</span><span class='keyword-chip' data-term='per'>per</span><span class='keyword-chip' data-term='highly'>highly</span><span class='keyword-chip' data-term='selective'>selective</span><span class='keyword-chip' data-term='frame'>frame</span><span class='keyword-chip' data-term='extreme'>extreme</span><span class='keyword-chip' data-term='compression'>compression</span><span class='keyword-chip' data-term='One'>One</span><span class='keyword-chip' data-term='Token'>Token</span><span class='keyword-chip' data-term='Highly'>Highly</span><span class='keyword-chip' data-term='Selective'>Selective</span></div>
                   </div>
-                  <div class='paper-meta'>
-                    <div><span>发布时间</span><strong>2026-04-16 01:59:52</strong></div>
-                    <div><span>标签</span><strong>VLM / 长视频理解 / 压缩 / 效率</strong></div>
-                  </div>
-                  <p class='paper-summary'>论文提出可学习的逐层 token 压缩和基于问题相关性的帧选择，减少长视频中的冗余 token；同时通过局部注意力缓解长上下文的位置偏置，让模型能看更多帧。</p>
-                  
-                  <div class='paper-facts'>
-                    <div class='fact good'><span>实现概率</span><strong>79% —— 压缩思路比较工程化，但收益高度依赖模型与视频分布。</strong></div>
-                    <div class='fact bad'><span>开源</span><strong>不确定</strong></div>
-                    <div class='fact bad'><span>可部署</span><strong>不确定 —— 适合做 VLM 加速模块，但不属于单独产品。</strong></div>
-                  </div>
-                  
-    <div class='figure-card'>
-      <div class='figure-head'>
-        <span class='figure-title'>图像线索</span>
-        <span class='figure-note'>cached</span>
-      </div>
-      <a class='figure-link' href='assets/figs/2604.14149v1_v5.png' target='_blank' rel='noreferrer'>
-        <img class='figure-img' src='assets/figs/2604.14149v1_v5.png' alt='paper figure preview'>
-      </a>
-    </div>
-    
-                  
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>图像 + 问题</div>
-              <div class='pipeline-detail'>单图 / 多图 / 文本提示</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>视觉语言编码</div>
-              <div class='pipeline-detail'>区域、对象、关系、语义</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>推理</div>
-              <div class='pipeline-label'>跨模态推理</div>
-              <div class='pipeline-detail'>问答、检索、解释、决策</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>文本或结构化结果</div>
-              <div class='pipeline-detail'>答案、描述、工具调用</div>
-            </div>
-            
-            
-      </div>
-    </div>
-    
-                  <div class='tags'><span class='badge soft'>VLM</span><span class='badge soft'>长视频理解</span><span class='badge soft'>压缩</span></div>
-                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org/abs/2604.14149v1' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='archive/index.html'>返回归档</a></div>
-                </article>
+                </details>
                 
 </div></section>
-    <nav class='dock' aria-label='页面导航'>
-      <div class='dock-items'>
-        <a class='dock-item primary' href='./index.html'>首页</a>
-        <a class='dock-item' href='archive/index.html'>归档</a>
-        <a class='dock-item' href='#top'>顶部</a>
-      </div>
-    </nav>
+    <script>
+    (() => {
+      const cards = Array.from(document.querySelectorAll('[data-paper-card]'));
+      const sectionButtons = Array.from(document.querySelectorAll('[data-section]'));
+      const termButtons = Array.from(document.querySelectorAll('[data-term]'));
+      const filterButtons = Array.from(document.querySelectorAll('[data-filter]'));
+      const search = document.getElementById('paper-search');
+      const state = { mode: 'all', section: '', term: '', query: '' };
+
+      const lower = v => (v || '').toString().trim().toLowerCase();
+      const matches = (card) => {
+        const text = lower(card.dataset.search);
+        const tags = lower(card.dataset.tags);
+        const section = lower(card.dataset.section);
+        const impl = parseInt(card.dataset.impl || '0', 10);
+        const open = card.dataset.open || 'unknown';
+        const deploy = card.dataset.deploy || 'unknown';
+        if (state.mode === 'high' && impl < 80) return false;
+        if (state.mode === 'deploy' && deploy !== 'yes') return false;
+        if (state.mode === 'open' && open !== 'yes') return false;
+        if (state.section && section !== lower(state.section)) return false;
+        if (state.term && !(text.includes(lower(state.term)) || tags.includes(lower(state.term)))) return false;
+        if (state.query && !text.includes(lower(state.query))) return false;
+        return true;
+      };
+
+      const sync = () => {
+        cards.forEach(card => {
+          const visible = matches(card);
+          card.hidden = !visible;
+        });
+        filterButtons.forEach(btn => {
+          const mode = btn.dataset.filter || '';
+          const section = btn.dataset.section || '';
+          const term = btn.dataset.term || '';
+          const active = (mode && mode === state.mode) || (section && lower(section) === lower(state.section)) || (term && lower(term) === lower(state.term));
+          btn.classList.toggle('active', active);
+        });
+      };
+
+      filterButtons.forEach(btn => btn.addEventListener('click', () => {
+        const mode = btn.dataset.filter || '';
+        const section = btn.dataset.section || '';
+        const term = btn.dataset.term || '';
+        if (mode) {
+          if (mode === 'clear') {
+            state.mode = 'all'; state.section = ''; state.term = ''; state.query = '';
+            if (search) search.value = '';
+          } else {
+            state.mode = mode;
+            state.section = '';
+            state.term = '';
+          }
+        }
+        if (section) {
+          state.section = section;
+          state.term = '';
+          state.mode = 'all';
+        }
+        if (term) {
+          state.term = term;
+          state.section = '';
+          state.mode = 'all';
+        }
+        sync();
+      }));
+
+      termButtons.forEach(btn => btn.addEventListener('click', () => {
+        state.term = btn.dataset.term || '';
+        state.section = '';
+        state.mode = 'all';
+        sync();
+      }));
+
+      if (search) {
+        search.addEventListener('input', () => {
+          state.query = search.value || '';
+          sync();
+        });
+      }
+
+      sync();
+    })();
+    </script>
+    
   </div>
 </body>
 </html>
