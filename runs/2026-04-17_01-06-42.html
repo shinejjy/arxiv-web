@@ -136,9 +136,31 @@
     .paper-facts div { display: grid; gap: 3px; padding: 10px 12px; border-radius: 14px; background: rgba(247,249,252,.9); border: 1px solid rgba(0,0,0,.05); }
     .paper-facts span { font-size: .74rem; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); font-weight: 800; }
     .paper-facts strong { font-size: .92rem; line-height: 1.45; font-weight: 600; }
-    .paper-figure { margin: 12px 0 0; padding: 12px; border-radius: 16px; background: rgba(255,255,255,.76); border: 1px solid var(--line); }
+    .paper-facts .md p, .paper-facts .md ul, .insight p, .insight ul { margin: 0; }
+    .paper-facts .md ul, .insight ul { padding-left: 1.1em; }
+    .paper-facts .md li, .insight li { margin: 4px 0; }
+    .paper-facts .md code, .insight code { padding: 0 .3em; border-radius: 6px; background: rgba(0,0,0,.04); }
+    .paper-figure-link { display: block; margin-top: 12px; color: inherit; }
+    .paper-figure-link:active { transform: scale(.999); }
+    .paper-figure { margin: 0; padding: 12px; border-radius: 16px; background: rgba(255,255,255,.76); border: 1px solid var(--line); cursor: zoom-in; }
     .paper-figure img { display: block; width: 100%; height: auto; max-height: 340px; object-fit: contain; border-radius: 12px; background: #fff; }
     .paper-figure figcaption { margin-top: 8px; color: var(--muted); font-size: .84rem; line-height: 1.45; }
+    .paper-figure-modal {
+      position: fixed; inset: 0; display: none; align-items: center; justify-content: center; z-index: 9999;
+      background: rgba(15, 18, 22, .76); padding: 18px;
+    }
+    .paper-figure-modal.open { display: flex; }
+    .paper-figure-modal-inner {
+      position: relative; width: min(96vw, 1200px); height: min(92vh, 920px);
+      background: rgba(255,255,255,.98); border-radius: 18px; box-shadow: 0 30px 100px rgba(0,0,0,.35); overflow: hidden;
+      display: grid; grid-template-rows: 1fr auto;
+    }
+    .paper-figure-modal img { width: 100%; height: 100%; object-fit: contain; background: #fff; }
+    .paper-figure-modal-caption { padding: 10px 14px 14px; color: var(--muted); font-size: .92rem; border-top: 1px solid var(--line); }
+    .paper-figure-modal-close {
+      position: absolute; top: 10px; right: 10px; z-index: 2; border: 0; width: 38px; height: 38px; border-radius: 999px;
+      background: rgba(0,0,0,.72); color: #fff; font-size: 20px; cursor: pointer;
+    }
     .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
     .top3 { display: grid; gap: 10px; }
     .top3-item {
@@ -211,7 +233,7 @@
 
             <section class='section-block'>
               <div class='section-head'><h2>今天最值得重点看的 3 篇</h2><span>编辑优先级</span></div>
-              <div class='top3'><div class='top3-item'><span class='rank'>1</span><div class='top3-text'>1. **HiVLA** —— 结构最清楚，VLM 规划 + 低层动作专家的分层思路很强，适合做通用 manipulation 参考。</div></div><div class='top3-item'><span class='rank'>2</span><div class='top3-text'>2. **FeaXDrive** —— autonomous driving 里把“可行性”真正放到轨迹空间里建模，方法论很扎实。</div></div><div class='top3-item'><span class='rank'>3</span><div class='top3-text'>3. **ESCAPE** —— 长时程 mobile manipulation 的 memory + adaptive execution 方案非常有代表性，实验也硬。</div></div></div>
+              <div class='top3'><div class='top3-item'><span class='rank'>1</span><div class='top3-text'><p>1. <strong>HiVLA</strong> —— 结构最清楚，VLM 规划 + 低层动作专家的分层思路很强，适合做通用 manipulation 参考。</p></div></div><div class='top3-item'><span class='rank'>2</span><div class='top3-text'><p>2. <strong>FeaXDrive</strong> —— autonomous driving 里把“可行性”真正放到轨迹空间里建模，方法论很扎实。</p></div></div><div class='top3-item'><span class='rank'>3</span><div class='top3-text'><p>3. <strong>ESCAPE</strong> —— 长时程 mobile manipulation 的 memory + adaptive execution 方案非常有代表性，实验也硬。</p></div></div></div>
             </section>
             
 <section class='section-block'><div class='section-head'><h2>今日论文</h2><span>10 篇</span></div><div class='grid'>
@@ -227,16 +249,18 @@
                   </div>
                   
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>正文里它不是简单端到端 VLA，而是把高层语义规划和低层动作控制拆开：VLM 先做 task decomposition + visual grounding，输出子任务和目标框；再由 flow-matching DiT 动作专家结合全局图像、局部目标 crop 和语言技能信息生成动作。实验显示它在 RoboTwin 2.0 上比 H-RDT 和 π0 都强，尤其擅长长时程技能组合和小目标精细操作。</strong></div>
-                    <div><span>实现概率</span><strong>**78%**</strong></div>
-                    <div><span>开源</span><strong>**uncertain** —— 文中有项目页，但我没在正文里看到明确 repo 链接。</strong></div>
-                    <div><span>可部署</span><strong>**uncertain** —— real-world 结果不错，但整体是多模块系统，落地需要较多工程整合。</strong></div>
+                    <div><span>摘要总结</span><div class='md'><p>正文里它不是简单端到端 VLA，而是把高层语义规划和低层动作控制拆开：VLM 先做 task decomposition + visual grounding，输出子任务和目标框；再由 flow-matching DiT 动作专家结合全局图像、局部目标 crop 和语言技能信息生成动作。实验显示它在 RoboTwin 2.0 上比 H-RDT 和 π0 都强，尤其擅长长时程技能组合和小目标精细操作。</p></div></div>
+                    <div><span>实现概率</span><div class='md'><p><strong>78%</strong></p></div></div>
+                    <div><span>开源</span><div class='md'><p><strong>uncertain</strong> —— 文中有项目页，但我没在正文里看到明确 repo 链接。</p></div></div>
+                    <div><span>可部署</span><div class='md'><p><strong>uncertain</strong> —— real-world 结果不错，但整体是多模块系统，落地需要较多工程整合。</p></div></div>
                   </div>
                   
-                  <figure class='paper-figure'>
-                    <img src='../assets/figs/2604.14125v1.png' alt='HiVLA: A Visual-Grounded-Centric Hierarchical Embodied Manipulation System'>
-                    
-                  </figure>
+                  <a class='paper-figure-link' href='../assets/figs/2604.14125v1.png' target='_blank' rel='noreferrer' data-full='../assets/figs/2604.14125v1.png' data-alt='HiVLA: A Visual-Grounded-Centric Hierarchical Embodied Manipulation System'>
+                    <figure class='paper-figure'>
+                      <img src='../assets/figs/2604.14125v1.png' alt='HiVLA: A Visual-Grounded-Centric Hierarchical Embodied Manipulation System'>
+                      
+                    </figure>
+                  </a>
                 
                   <div class='tags'></div>
                 </article>
@@ -253,16 +277,18 @@
                   </div>
                   
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>这篇的核心是把 UMI 从纯视觉 SLAM 扩展成 wrist-mounted LiDAR + camera + IMU 的 3D 感知数据采集系统，用 LiDAR-centric SLAM 解决遮挡、动态场景和跟踪失败问题，生成更稳定的 metric-scale trajectory 和 3D 表示，再用同步后的 vision-action 数据训练下游策略。正文强调它不仅提升数据质量，还能支持原 UMI 很难做的 deformable object 和 articulated object 任务。</strong></div>
-                    <div><span>实现概率</span><strong>**82%**</strong></div>
-                    <div><span>开源</span><strong>**yes** —— 正文明确写了硬件和软件都 open-sourced。</strong></div>
-                    <div><span>可部署</span><strong>**yes** —— 这是一个可直接用于数据采集/策略训练的基础设施，实用性很强。</strong></div>
+                    <div><span>摘要总结</span><div class='md'><p>这篇的核心是把 UMI 从纯视觉 SLAM 扩展成 wrist-mounted LiDAR + camera + IMU 的 3D 感知数据采集系统，用 LiDAR-centric SLAM 解决遮挡、动态场景和跟踪失败问题，生成更稳定的 metric-scale trajectory 和 3D 表示，再用同步后的 vision-action 数据训练下游策略。正文强调它不仅提升数据质量，还能支持原 UMI 很难做的 deformable object 和 articulated object 任务。</p></div></div>
+                    <div><span>实现概率</span><div class='md'><p><strong>82%</strong></p></div></div>
+                    <div><span>开源</span><div class='md'><p><strong>yes</strong> —— 正文明确写了硬件和软件都 open-sourced。</p></div></div>
+                    <div><span>可部署</span><div class='md'><p><strong>yes</strong> —— 这是一个可直接用于数据采集/策略训练的基础设施，实用性很强。</p></div></div>
                   </div>
                   
-                  <figure class='paper-figure'>
-                    <img src='../assets/figs/2604.14089v1.png' alt='UMI-3D: Extending Universal Manipulation Interface from Vision-Limited to 3D Spatial Perception'>
-                    
-                  </figure>
+                  <a class='paper-figure-link' href='../assets/figs/2604.14089v1.png' target='_blank' rel='noreferrer' data-full='../assets/figs/2604.14089v1.png' data-alt='UMI-3D: Extending Universal Manipulation Interface from Vision-Limited to 3D Spatial Perception'>
+                    <figure class='paper-figure'>
+                      <img src='../assets/figs/2604.14089v1.png' alt='UMI-3D: Extending Universal Manipulation Interface from Vision-Limited to 3D Spatial Perception'>
+                      
+                    </figure>
+                  </a>
                 
                   <div class='tags'></div>
                 </article>
@@ -279,16 +305,18 @@
                   </div>
                   
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>正文里它是一个双系统长程操作框架：高层 VLM planner 维护结构化任务记忆，做目标分解、结果验证和失败后的反思式重规划；低层 VLA executor 在去干扰后的观测上做几何导向动作生成。实验在 RMBench 上把平均成功率做到 32.4%，显著高于最强基线 9.8%，尤其在 memory-intensive 子任务上提升更明显。</strong></div>
-                    <div><span>实现概率</span><strong>**70%**</strong></div>
-                    <div><span>开源</span><strong>**uncertain** —— 代码/项目线索不够明确，正文里没看到清晰 repo。</strong></div>
-                    <div><span>可部署</span><strong>**no** —— 更像研究型闭环框架，离直接产品化还需要较多整合。</strong></div>
+                    <div><span>摘要总结</span><div class='md'><p>正文里它是一个双系统长程操作框架：高层 VLM planner 维护结构化任务记忆，做目标分解、结果验证和失败后的反思式重规划；低层 VLA executor 在去干扰后的观测上做几何导向动作生成。实验在 RMBench 上把平均成功率做到 32.4%，显著高于最强基线 9.8%，尤其在 memory-intensive 子任务上提升更明显。</p></div></div>
+                    <div><span>实现概率</span><div class='md'><p><strong>70%</strong></p></div></div>
+                    <div><span>开源</span><div class='md'><p><strong>uncertain</strong> —— 代码/项目线索不够明确，正文里没看到清晰 repo。</p></div></div>
+                    <div><span>可部署</span><div class='md'><p><strong>no</strong> —— 更像研究型闭环框架，离直接产品化还需要较多整合。</p></div></div>
                   </div>
                   
-                  <figure class='paper-figure'>
-                    <img src='../assets/figs/2604.13942v1.png' alt='Goal2Skill: Long-Horizon Manipulation with Adaptive Planning and Reflection'>
-                    
-                  </figure>
+                  <a class='paper-figure-link' href='../assets/figs/2604.13942v1.png' target='_blank' rel='noreferrer' data-full='../assets/figs/2604.13942v1.png' data-alt='Goal2Skill: Long-Horizon Manipulation with Adaptive Planning and Reflection'>
+                    <figure class='paper-figure'>
+                      <img src='../assets/figs/2604.13942v1.png' alt='Goal2Skill: Long-Horizon Manipulation with Adaptive Planning and Reflection'>
+                      
+                    </figure>
+                  </a>
                 
                   <div class='tags'></div>
                 </article>
@@ -305,16 +333,18 @@
                   </div>
                   
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>这篇主要解决长时程 mobile manipulation 的遗忘、空间不一致和执行僵化。它用 Spatio-Temporal Fusion Mapping 构建 depth-free 的持续 3D episodic memory，再用 Memory-Driven Target Grounding 做精确 interaction mask，最后通过 Adaptive Execution Policy 在全局导航和局部操作之间动态切换。正文给出的 ALFRED 结果很强：seen / unseen success rate 分别 65.09% / 60.79%，无详细指导时也能保持 61.24% / 56.04%。</strong></div>
-                    <div><span>实现概率</span><strong>**76%**</strong></div>
-                    <div><span>开源</span><strong>**uncertain** —— 正文里没看到明确公开仓库。</strong></div>
-                    <div><span>可部署</span><strong>**uncertain** —— 有 real-world 风格的任务设置，但系统仍偏研究原型。</strong></div>
+                    <div><span>摘要总结</span><div class='md'><p>这篇主要解决长时程 mobile manipulation 的遗忘、空间不一致和执行僵化。它用 Spatio-Temporal Fusion Mapping 构建 depth-free 的持续 3D episodic memory，再用 Memory-Driven Target Grounding 做精确 interaction mask，最后通过 Adaptive Execution Policy 在全局导航和局部操作之间动态切换。正文给出的 ALFRED 结果很强：seen / unseen success rate 分别 65.09% / 60.79%，无详细指导时也能保持 61.24% / 56.04%。</p></div></div>
+                    <div><span>实现概率</span><div class='md'><p><strong>76%</strong></p></div></div>
+                    <div><span>开源</span><div class='md'><p><strong>uncertain</strong> —— 正文里没看到明确公开仓库。</p></div></div>
+                    <div><span>可部署</span><div class='md'><p><strong>uncertain</strong> —— 有 real-world 风格的任务设置，但系统仍偏研究原型。</p></div></div>
                   </div>
                   
-                  <figure class='paper-figure'>
-                    <img src='../assets/figs/2604.13633v1.png' alt='ESCAPE: Episodic Spatial Memory and Adaptive Execution Policy for Long-Horizon Mobile Manipulation'>
-                    
-                  </figure>
+                  <a class='paper-figure-link' href='../assets/figs/2604.13633v1.png' target='_blank' rel='noreferrer' data-full='../assets/figs/2604.13633v1.png' data-alt='ESCAPE: Episodic Spatial Memory and Adaptive Execution Policy for Long-Horizon Mobile Manipulation'>
+                    <figure class='paper-figure'>
+                      <img src='../assets/figs/2604.13633v1.png' alt='ESCAPE: Episodic Spatial Memory and Adaptive Execution Policy for Long-Horizon Mobile Manipulation'>
+                      
+                    </figure>
+                  </a>
                 
                   <div class='tags'></div>
                 </article>
@@ -331,16 +361,18 @@
                   </div>
                   
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>正文的重点是把 VLA 当作“短期辅助引导”而不是永久 imitation：VLAJS 用 directional action-consistency loss 在训练早期给 RL 提供稀疏但高层的动作方向建议，从而改善探索和信用分配，同时不限制后期的最终性能。实验里它比 PPO 和 distillation 类方法更省样本，多个任务里可减少 50% 以上环境交互，且在 clutter、背景变化和外部扰动下更稳。</strong></div>
-                    <div><span>实现概率</span><strong>**68%**</strong></div>
-                    <div><span>开源</span><strong>**uncertain** —— 看到方法和引用线索，但没看到清晰公开代码地址。</strong></div>
-                    <div><span>可部署</span><strong>**no** —— 这是训练策略/优化方法，本身不是现成部署栈。</strong></div>
+                    <div><span>摘要总结</span><div class='md'><p>正文的重点是把 VLA 当作“短期辅助引导”而不是永久 imitation：VLAJS 用 directional action-consistency loss 在训练早期给 RL 提供稀疏但高层的动作方向建议，从而改善探索和信用分配，同时不限制后期的最终性能。实验里它比 PPO 和 distillation 类方法更省样本，多个任务里可减少 50% 以上环境交互，且在 clutter、背景变化和外部扰动下更稳。</p></div></div>
+                    <div><span>实现概率</span><div class='md'><p><strong>68%</strong></p></div></div>
+                    <div><span>开源</span><div class='md'><p><strong>uncertain</strong> —— 看到方法和引用线索，但没看到清晰公开代码地址。</p></div></div>
+                    <div><span>可部署</span><div class='md'><p><strong>no</strong> —— 这是训练策略/优化方法，本身不是现成部署栈。</p></div></div>
                   </div>
                   
-                  <figure class='paper-figure'>
-                    <img src='../assets/figs/2604.13733v1.png' alt='Jump-Start Reinforcement Learning with Vision-Language-Action Regularization'>
-                    
-                  </figure>
+                  <a class='paper-figure-link' href='../assets/figs/2604.13733v1.png' target='_blank' rel='noreferrer' data-full='../assets/figs/2604.13733v1.png' data-alt='Jump-Start Reinforcement Learning with Vision-Language-Action Regularization'>
+                    <figure class='paper-figure'>
+                      <img src='../assets/figs/2604.13733v1.png' alt='Jump-Start Reinforcement Learning with Vision-Language-Action Regularization'>
+                      
+                    </figure>
+                  </a>
                 
                   <div class='tags'></div>
                 </article>
@@ -357,16 +389,18 @@
                   </div>
                   
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>正文是把 MPC 当作结构先验，再让 DRL 在无信号交叉口的多车互动中学习更灵活的策略。它比纯 MPC 和纯 end-to-end RL 都更稳，在三个 traffic density 下都更好，collision rate 降了 21%，success rate 比纯 MPC 提升 6.5%。这类方法的优点是把安全性和适应性分层处理，比较接近可落地驾驶栈。</strong></div>
-                    <div><span>实现概率</span><strong>**74%**</strong></div>
-                    <div><span>开源</span><strong>**yes** —— 正文明确写了 implementation code open-source。</strong></div>
-                    <div><span>可部署</span><strong>**yes** —— MPC backbone 很实用，已经是比较工程化的方案。</strong></div>
+                    <div><span>摘要总结</span><div class='md'><p>正文是把 MPC 当作结构先验，再让 DRL 在无信号交叉口的多车互动中学习更灵活的策略。它比纯 MPC 和纯 end-to-end RL 都更稳，在三个 traffic density 下都更好，collision rate 降了 21%，success rate 比纯 MPC 提升 6.5%。这类方法的优点是把安全性和适应性分层处理，比较接近可落地驾驶栈。</p></div></div>
+                    <div><span>实现概率</span><div class='md'><p><strong>74%</strong></p></div></div>
+                    <div><span>开源</span><div class='md'><p><strong>yes</strong> —— 正文明确写了 implementation code open-source。</p></div></div>
+                    <div><span>可部署</span><div class='md'><p><strong>yes</strong> —— MPC backbone 很实用，已经是比较工程化的方案。</p></div></div>
                   </div>
                   
-                  <figure class='paper-figure'>
-                    <img src='../assets/figs/2604.13891v1.png' alt='Beyond Conservative Automated Driving in Multi-Agent Scenarios via Coupled Model Predictive Control and Deep Reinforcement Learning'>
-                    
-                  </figure>
+                  <a class='paper-figure-link' href='../assets/figs/2604.13891v1.png' target='_blank' rel='noreferrer' data-full='../assets/figs/2604.13891v1.png' data-alt='Beyond Conservative Automated Driving in Multi-Agent Scenarios via Coupled Model Predictive Control and Deep Reinforcement Learning'>
+                    <figure class='paper-figure'>
+                      <img src='../assets/figs/2604.13891v1.png' alt='Beyond Conservative Automated Driving in Multi-Agent Scenarios via Coupled Model Predictive Control and Deep Reinforcement Learning'>
+                      
+                    </figure>
+                  </a>
                 
                   <div class='tags'></div>
                 </article>
@@ -383,16 +417,18 @@
                   </div>
                   
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>这篇的关键点是把扩散规划从“噪声中心”改成“轨迹中心”，直接围绕 clean trajectory 做可行性建模。正文里它同时做了三件事：训练时用自适应曲率约束压低局部几何不规则性，推理时用 drivable-area guidance 约束采样，后训练再用 feasibility-aware GRPO 进一步优化。它在 NAVSIM 上强调的是轨迹可行性和闭环规划表现同时提升，而不是只追单一 score。</strong></div>
-                    <div><span>实现概率</span><strong>**80%**</strong></div>
-                    <div><span>开源</span><strong>**uncertain** —— 文中更强调方法本身，没看到清晰公开仓库。</strong></div>
-                    <div><span>可部署</span><strong>**uncertain** —— 很适合接入 AD pipeline，但目前仍更像研究型规划器。</strong></div>
+                    <div><span>摘要总结</span><div class='md'><p>这篇的关键点是把扩散规划从“噪声中心”改成“轨迹中心”，直接围绕 clean trajectory 做可行性建模。正文里它同时做了三件事：训练时用自适应曲率约束压低局部几何不规则性，推理时用 drivable-area guidance 约束采样，后训练再用 feasibility-aware GRPO 进一步优化。它在 NAVSIM 上强调的是轨迹可行性和闭环规划表现同时提升，而不是只追单一 score。</p></div></div>
+                    <div><span>实现概率</span><div class='md'><p><strong>80%</strong></p></div></div>
+                    <div><span>开源</span><div class='md'><p><strong>uncertain</strong> —— 文中更强调方法本身，没看到清晰公开仓库。</p></div></div>
+                    <div><span>可部署</span><div class='md'><p><strong>uncertain</strong> —— 很适合接入 AD pipeline，但目前仍更像研究型规划器。</p></div></div>
                   </div>
                   
-                  <figure class='paper-figure'>
-                    <img src='../assets/figs/2604.12656v1.png' alt='FeaXDrive: Feasibility-aware Trajectory-Centric Diffusion Planning for End-to-End Autonomous Driving'>
-                    
-                  </figure>
+                  <a class='paper-figure-link' href='../assets/figs/2604.12656v1.png' target='_blank' rel='noreferrer' data-full='../assets/figs/2604.12656v1.png' data-alt='FeaXDrive: Feasibility-aware Trajectory-Centric Diffusion Planning for End-to-End Autonomous Driving'>
+                    <figure class='paper-figure'>
+                      <img src='../assets/figs/2604.12656v1.png' alt='FeaXDrive: Feasibility-aware Trajectory-Centric Diffusion Planning for End-to-End Autonomous Driving'>
+                      
+                    </figure>
+                  </a>
                 
                   <div class='tags'></div>
                 </article>
@@ -409,16 +445,18 @@
                   </div>
                   
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>正文里它解决的是双机器人长时程协同 VLN 的同步执行和在线重分工问题。方法上有三个核心：Semantic Visual Bus 共享紧凑语义状态，Event-driven Dialogue Replanning 根据新证据重分配子任务，Synchronous Parallel Execution 保证共享时钟下的并行推理。DeCoNavBench 由 1,213 个任务、176 个 HM3D 场景组成，整体 both-success rate 提升 69.2%，更适合 relay/handoff 这类协作任务。</strong></div>
-                    <div><span>实现概率</span><strong>**69%**</strong></div>
-                    <div><span>开源</span><strong>**uncertain** —— 文中有 benchmark 和方法设计，但没看到明确 repo。</strong></div>
-                    <div><span>可部署</span><strong>**no** —— 更偏协作导航研究基准和原型系统。</strong></div>
+                    <div><span>摘要总结</span><div class='md'><p>正文里它解决的是双机器人长时程协同 VLN 的同步执行和在线重分工问题。方法上有三个核心：Semantic Visual Bus 共享紧凑语义状态，Event-driven Dialogue Replanning 根据新证据重分配子任务，Synchronous Parallel Execution 保证共享时钟下的并行推理。DeCoNavBench 由 1,213 个任务、176 个 HM3D 场景组成，整体 both-success rate 提升 69.2%，更适合 relay/handoff 这类协作任务。</p></div></div>
+                    <div><span>实现概率</span><div class='md'><p><strong>69%</strong></p></div></div>
+                    <div><span>开源</span><div class='md'><p><strong>uncertain</strong> —— 文中有 benchmark 和方法设计，但没看到明确 repo。</p></div></div>
+                    <div><span>可部署</span><div class='md'><p><strong>no</strong> —— 更偏协作导航研究基准和原型系统。</p></div></div>
                   </div>
                   
-                  <figure class='paper-figure'>
-                    <img src='../assets/figs/2604.12486v1.png' alt='DeCoNav: Dialog enhanced Long-Horizon Collaborative Vision-Language Navigation'>
-                    
-                  </figure>
+                  <a class='paper-figure-link' href='../assets/figs/2604.12486v1.png' target='_blank' rel='noreferrer' data-full='../assets/figs/2604.12486v1.png' data-alt='DeCoNav: Dialog enhanced Long-Horizon Collaborative Vision-Language Navigation'>
+                    <figure class='paper-figure'>
+                      <img src='../assets/figs/2604.12486v1.png' alt='DeCoNav: Dialog enhanced Long-Horizon Collaborative Vision-Language Navigation'>
+                      
+                    </figure>
+                  </a>
                 
                   <div class='tags'></div>
                 </article>
@@ -435,16 +473,18 @@
                   </div>
                   
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>正文指出很多 end-to-end driving 系统其实过度依赖局部感知，几乎没真正利用 global navigation info。于是作者提出 Sequential Navigation Guidance：把全局路线拆成 navigation path + turn-by-turn 指令，并构建 SNG-QA 让全局导航和局部规划对齐。SNG-VLA 在正文里强调的是：不靠额外 perception loss，也能更准确地把导航信息吃进去，适合把真实地图/API 导航信息接进驾驶系统。</strong></div>
-                    <div><span>实现概率</span><strong>**77%**</strong></div>
-                    <div><span>开源</span><strong>**uncertain** —— 只有 project page，代码位还是空的。</strong></div>
-                    <div><span>可部署</span><strong>**yes** —— 这个思路很贴近真实导航 API 输入，工程接口比较自然。</strong></div>
+                    <div><span>摘要总结</span><div class='md'><p>正文指出很多 end-to-end driving 系统其实过度依赖局部感知，几乎没真正利用 global navigation info。于是作者提出 Sequential Navigation Guidance：把全局路线拆成 navigation path + turn-by-turn 指令，并构建 SNG-QA 让全局导航和局部规划对齐。SNG-VLA 在正文里强调的是：不靠额外 perception loss，也能更准确地把导航信息吃进去，适合把真实地图/API 导航信息接进驾驶系统。</p></div></div>
+                    <div><span>实现概率</span><div class='md'><p><strong>77%</strong></p></div></div>
+                    <div><span>开源</span><div class='md'><p><strong>uncertain</strong> —— 只有 project page，代码位还是空的。</p></div></div>
+                    <div><span>可部署</span><div class='md'><p><strong>yes</strong> —— 这个思路很贴近真实导航 API 输入，工程接口比较自然。</p></div></div>
                   </div>
                   
-                  <figure class='paper-figure'>
-                    <img src='../assets/figs/2604.12208v1.png' alt='Unveiling the Surprising Efficacy of Navigation Understanding in End-to-End Autonomous Driving'>
-                    
-                  </figure>
+                  <a class='paper-figure-link' href='../assets/figs/2604.12208v1.png' target='_blank' rel='noreferrer' data-full='../assets/figs/2604.12208v1.png' data-alt='Unveiling the Surprising Efficacy of Navigation Understanding in End-to-End Autonomous Driving'>
+                    <figure class='paper-figure'>
+                      <img src='../assets/figs/2604.12208v1.png' alt='Unveiling the Surprising Efficacy of Navigation Understanding in End-to-End Autonomous Driving'>
+                      
+                    </figure>
+                  </a>
                 
                   <div class='tags'></div>
                 </article>
@@ -461,21 +501,61 @@
                   </div>
                   
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>这篇很实用：先拿一个“并不完美但有结构先验”的 whole-body controller 去采数据，再用 offline RL 把这些 sub-optimal demonstrations stitching 成更好的策略。正文里它还把 IQL 扩展到 action-chunked diffusion policy（Q-chunking），并在真实 Tiago++ 上展示 cupboard / drawer 类任务的 sim-to-real 成功。对 mobile manipulation 来说，这是一个很强的“从传统控制到学习”桥接方案。</strong></div>
-                    <div><span>实现概率</span><strong>**79%**</strong></div>
-                    <div><span>开源</span><strong>**uncertain** —— 只有 project website 明确出现，正文里没看到清晰 repo。</strong></div>
-                    <div><span>可部署</span><strong>**yes** —— 已经做了 real-robot transfer，而且不依赖 teleop 数据。</strong></div>
+                    <div><span>摘要总结</span><div class='md'><p>这篇很实用：先拿一个“并不完美但有结构先验”的 whole-body controller 去采数据，再用 offline RL 把这些 sub-optimal demonstrations stitching 成更好的策略。正文里它还把 IQL 扩展到 action-chunked diffusion policy（Q-chunking），并在真实 Tiago++ 上展示 cupboard / drawer 类任务的 sim-to-real 成功。对 mobile manipulation 来说，这是一个很强的“从传统控制到学习”桥接方案。</p></div></div>
+                    <div><span>实现概率</span><div class='md'><p><strong>79%</strong></p></div></div>
+                    <div><span>开源</span><div class='md'><p><strong>uncertain</strong> —— 只有 project website 明确出现，正文里没看到清晰 repo。</p></div></div>
+                    <div><span>可部署</span><div class='md'><p><strong>yes</strong> —— 已经做了 real-robot transfer，而且不依赖 teleop 数据。</p></div></div>
                   </div>
                   
-                  <figure class='paper-figure'>
-                    <img src='../assets/figs/2604.12509v1.png' alt='Whole-Body Mobile Manipulation using Offline Reinforcement Learning on Sub-optimal Controllers'>
-                    
-                  </figure>
+                  <a class='paper-figure-link' href='../assets/figs/2604.12509v1.png' target='_blank' rel='noreferrer' data-full='../assets/figs/2604.12509v1.png' data-alt='Whole-Body Mobile Manipulation using Offline Reinforcement Learning on Sub-optimal Controllers'>
+                    <figure class='paper-figure'>
+                      <img src='../assets/figs/2604.12509v1.png' alt='Whole-Body Mobile Manipulation using Offline Reinforcement Learning on Sub-optimal Controllers'>
+                      
+                    </figure>
+                  </a>
                 
                   <div class='tags'></div>
                 </article>
                 
 </div></section>
   </div>
+  <div class='paper-figure-modal' id='paperFigureModal' aria-hidden='true'>
+    <div class='paper-figure-modal-inner' role='dialog' aria-modal='true' aria-label='论文图预览'>
+      <button class='paper-figure-modal-close' id='paperFigureModalClose' aria-label='关闭'>×</button>
+      <img id='paperFigureModalImg' alt=''>
+      <div class='paper-figure-modal-caption' id='paperFigureModalCaption'></div>
+    </div>
+  </div>
+  <script>
+  (() => {
+    const modal = document.getElementById('paperFigureModal');
+    const modalImg = document.getElementById('paperFigureModalImg');
+    const modalCaption = document.getElementById('paperFigureModalCaption');
+    const closeBtn = document.getElementById('paperFigureModalClose');
+    const open = (src, alt) => {
+      modalImg.src = src;
+      modalImg.alt = alt || '';
+      modalCaption.textContent = alt || '';
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+    };
+    const close = () => {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      modalImg.removeAttribute('src');
+    };
+    document.querySelectorAll('.paper-figure-link').forEach((el) => {
+      el.addEventListener('click', (ev) => {
+        const full = el.getAttribute('data-full') || el.getAttribute('href');
+        if (!full) return;
+        ev.preventDefault();
+        open(full, el.getAttribute('data-alt') || '');
+      });
+    });
+    closeBtn.addEventListener('click', close);
+    modal.addEventListener('click', (ev) => { if (ev.target === modal) close(); });
+    document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape') close(); });
+  })();
+  </script>
 </body>
 </html>
