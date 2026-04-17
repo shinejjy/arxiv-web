@@ -136,22 +136,9 @@
     .paper-facts div { display: grid; gap: 3px; padding: 10px 12px; border-radius: 14px; background: rgba(247,249,252,.9); border: 1px solid rgba(0,0,0,.05); }
     .paper-facts span { font-size: .74rem; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); font-weight: 800; }
     .paper-facts strong { font-size: .92rem; line-height: 1.45; font-weight: 600; }
-    .pipeline-card {
-      margin-top: 12px; padding: 14px; border-radius: 18px; background: linear-gradient(180deg, rgba(248,250,255,.96), rgba(255,255,255,.86));
-      border: 1px solid rgba(0,117,222,.10); box-shadow: inset 0 1px 0 rgba(255,255,255,.7);
-    }
-    .pipeline-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 12px; }
-    .pipeline-title { font-weight: 800; font-size: .88rem; color: var(--blue); letter-spacing: .02em; }
-    .pipeline-note { color: var(--muted); font-size: .8rem; }
-    .pipeline-flow { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; align-items: center; }
-    .pipeline-step {
-      padding: 10px 10px 9px; border-radius: 16px; background: rgba(255,255,255,.9); border: 1px solid rgba(0,0,0,.06);
-      min-height: 92px; display: grid; align-content: start; gap: 4px;
-    }
-    .pipeline-phase { font-size: .72rem; font-weight: 800; color: var(--blue); text-transform: uppercase; letter-spacing: .04em; }
-    .pipeline-label { font-size: .9rem; font-weight: 800; line-height: 1.35; }
-    .pipeline-detail { font-size: .8rem; color: var(--muted); line-height: 1.45; }
-    .pipeline-arrow { color: var(--soft); font-size: 1.2rem; font-weight: 800; text-align: center; }
+    .paper-figure { margin: 12px 0 0; padding: 12px; border-radius: 16px; background: rgba(255,255,255,.76); border: 1px solid var(--line); }
+    .paper-figure img { display: block; width: 100%; height: auto; max-height: 340px; object-fit: contain; border-radius: 12px; background: #fff; }
+    .paper-figure figcaption { margin-top: 8px; color: var(--muted); font-size: .84rem; line-height: 1.45; }
     .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
     .top3 { display: grid; gap: 10px; }
     .top3-item {
@@ -178,9 +165,6 @@
       .hero, .grid { grid-template-columns: 1fr; }
       .paper-meta { grid-template-columns: 1fr; }
       .topbar { position: static; border-radius: 20px; }
-      .pipeline-flow { grid-template-columns: 1fr; }
-      .pipeline-arrow { display: none; }
-      .pipeline-step { min-height: unset; }
     }
     @media (max-width: 560px) {
       .page { padding: 14px 12px 40px; }
@@ -220,8 +204,8 @@
         
 
             <section class='section-block'>
-              <div class='section-head'><h2>今日概览</h2><span>10 篇 · 4 个主题块</span></div>
-              <div class='section-chips'><span class='badge soft'>自动驾驶 3</span><span class='badge soft'>机械臂 / 操控 3</span><span class='badge soft'>VLA 2</span><span class='badge soft'>VLM 2</span></div>
+              <div class='section-head'><h2>今日概览</h2><span>10 篇 · 5 个主题块</span></div>
+              <div class='section-chips'><span class='badge soft'>今日论文 0</span><span class='badge soft'>自动驾驶 3</span><span class='badge soft'>机械臂 / 操控 3</span><span class='badge soft'>VLA 2</span><span class='badge soft'>VLM 2</span></div>
             </section>
             
 
@@ -236,6 +220,8 @@
               <div class='overall-card'>今天这批论文里，真正“方法强、可落地”的主线是：自动驾驶里的可解释组合规划、操控里的分层 VLA、以及把语义对齐引入 world model / MPC 的规划路线；VLM 侧更多是奖励设计和 benchmark，适合做实验和补齐评测，不太像直接上生产的系统。</div>
             </section>
             
+<section class='section-block'><div class='section-head'><h2>今日论文</h2><span>0 篇</span></div><div class='grid'>
+</div></section>
 <section class='section-block'><div class='section-head'><h2>自动驾驶</h2><span>3 篇</span></div><div class='grid'>
 
                 <article class='paper-card'>
@@ -247,52 +233,14 @@
                     <div><span>发布时间</span><strong>2026-04-15 21:23</strong></div>
                     <div><span>标签</span><strong>自动驾驶 / 规划 / 方法 / 安全</strong></div>
                   </div>
-                  
+                  <p class='insight'>规则与学习式规划器可以“拼装”而不是二选一；还给出可解释、可追踪的决策链。</p>
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>通过 arbitration graphs 把轨迹生成与验证/评分解耦，避免重新训练；在 nuPlan 和 interPlan 上都明显优于单独的规则或学习规划器。</strong></div>
-                    <div><span>实现概率</span><strong>72% —— 结构清晰、评测扎实，而且作者明确给出代码。</strong></div>
-                    <div><span>开源</span><strong>是</strong></div>
-                    <div><span>可部署</span><strong>是</strong></div>
+                    
+                    
+                    
+                    
                   </div>
                   
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>多模态传感器</div>
-              <div class='pipeline-detail'>相机 / 激光雷达 / 车道与地图</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>感知与世界模型</div>
-              <div class='pipeline-detail'>目标、车道、占用、未来状态</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>决策</div>
-              <div class='pipeline-label'>预测与规划</div>
-              <div class='pipeline-detail'>轨迹生成 / 风险评估 / 运动规划</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>控制执行</div>
-              <div class='pipeline-detail'>转向、加速、制动或轨迹点</div>
-            </div>
-            
-            
-      </div>
-    </div>
-    
                   <div class='tags'><span class='badge soft'>自动驾驶</span><span class='badge soft'>规划</span><span class='badge soft'>方法</span></div>
                 </article>
                 
@@ -306,52 +254,14 @@
                     <div><span>发布时间</span><strong>2026-04-14 10:34</strong></div>
                     <div><span>标签</span><strong>自动驾驶 / VLA / 方法 / 导航</strong></div>
                   </div>
-                  
+                  <p class='insight'>直接指出端到端驾驶常“只看局部、不看全局”；把导航信息结构化后再喂给模型，问题很对症。</p>
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>提出 Sequential Navigation Guidance（SNG）与 SNG-QA 数据集，并构造 SNG-VLA 融合局部规划和全局导航；摘要称在精确建模导航信息后取得 SOTA。</strong></div>
-                    <div><span>实现概率</span><strong>60% —— 思路明确，但是否能稳定落地仍取决于导航表示和数据扩展。</strong></div>
-                    <div><span>开源</span><strong>不确定</strong></div>
-                    <div><span>可部署</span><strong>不确定</strong></div>
+                    
+                    
+                    
+                    
                   </div>
                   
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>多模态传感器</div>
-              <div class='pipeline-detail'>相机 / 激光雷达 / 车道与地图</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>感知与世界模型</div>
-              <div class='pipeline-detail'>目标、车道、占用、未来状态</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>决策</div>
-              <div class='pipeline-label'>预测与规划</div>
-              <div class='pipeline-detail'>轨迹生成 / 风险评估 / 运动规划</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>控制执行</div>
-              <div class='pipeline-detail'>转向、加速、制动或轨迹点</div>
-            </div>
-            
-            
-      </div>
-    </div>
-    
                   <div class='tags'><span class='badge soft'>自动驾驶</span><span class='badge soft'>VLA</span><span class='badge soft'>方法</span></div>
                 </article>
                 
@@ -365,52 +275,14 @@
                     <div><span>发布时间</span><strong>2026-04-14 19:55</strong></div>
                     <div><span>标签</span><strong>自动驾驶 / 路径规划 / 方法 / 对比实验</strong></div>
                   </div>
-                  
+                  <p class='insight'>用一个很直接的“RL vs 最优控制”对照，强调实时性与可行域，不花哨但很工程。</p>
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>用 DDPG 在带禁区的路径规划中学习安全动作序列，并与 pseudo-spectral 最优控制比较；结果显示 RL 更快，但可行域与最优性都还有限。</strong></div>
-                    <div><span>实现概率</span><strong>48% —— 代码思路不复杂，但问题设定偏简化，离真实自动驾驶还有距离。</strong></div>
-                    <div><span>开源</span><strong>不确定</strong></div>
-                    <div><span>可部署</span><strong>不确定</strong></div>
+                    
+                    
+                    
+                    
                   </div>
                   
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>多模态传感器</div>
-              <div class='pipeline-detail'>相机 / 激光雷达 / 车道与地图</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>感知与世界模型</div>
-              <div class='pipeline-detail'>目标、车道、占用、未来状态</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>决策</div>
-              <div class='pipeline-label'>预测与规划</div>
-              <div class='pipeline-detail'>轨迹生成 / 风险评估 / 运动规划</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>控制执行</div>
-              <div class='pipeline-detail'>转向、加速、制动或轨迹点</div>
-            </div>
-            
-            
-      </div>
-    </div>
-    
                   <div class='tags'><span class='badge soft'>自动驾驶</span><span class='badge soft'>路径规划</span><span class='badge soft'>方法</span></div>
                 </article>
                 
@@ -426,52 +298,14 @@
                     <div><span>发布时间</span><strong>2026-04-16 01:50</strong></div>
                     <div><span>标签</span><strong>机械臂 / 操控 / VLA / 分层方法</strong></div>
                   </div>
-                  
+                  <p class='insight'>先做语义规划再做动作执行，明显是在解决“看懂”和“做对”之间的冲突。</p>
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>高层 VLM 负责任务分解和视觉定位，低层用 flow-matching DiT 做动作生成；作者强调在模拟和真实世界都优于端到端基线，尤其适合长程组合技能和小目标操作。</strong></div>
-                    <div><span>实现概率</span><strong>70% —— 分层设计很顺手，且有真实世界结果，复现价值高。</strong></div>
-                    <div><span>开源</span><strong>不确定</strong></div>
-                    <div><span>可部署</span><strong>是</strong></div>
+                    
+                    
+                    
+                    
                   </div>
                   
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>视觉与触觉</div>
-              <div class='pipeline-detail'>RGB / Depth / Proprioception / State</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>场景与物体解析</div>
-              <div class='pipeline-detail'>物体、位姿、可操作区域</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>决策</div>
-              <div class='pipeline-label'>技能或策略规划</div>
-              <div class='pipeline-detail'>抓取 / 放置 / 轨迹 / 任务分解</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>机械臂动作</div>
-              <div class='pipeline-detail'>末端位姿、关节控制、执行信号</div>
-            </div>
-            
-            
-      </div>
-    </div>
-    
                   <div class='tags'><span class='badge soft'>机械臂</span><span class='badge soft'>操控</span><span class='badge soft'>VLA</span></div>
                 </article>
                 
@@ -485,52 +319,14 @@
                     <div><span>发布时间</span><strong>2026-04-15 01:54</strong></div>
                     <div><span>标签</span><strong>机械臂 / 操控 / humanoid / 触觉 / 方法</strong></div>
                   </div>
-                  
+                  <p class='insight'>把“触觉未来预测”变成学习信号，重点解决接触丰富任务里最难的部分。</p>
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>结合 RL 稳定控制器、VR 远程操作数据采集和带 touch dreaming 的多模态 Transformer；在 5 个接触密集任务上，平均成功率相对强基线提升 90.9%。</strong></div>
-                    <div><span>实现概率</span><strong>74% —— 真实世界任务清楚，组件也比较标准，工程路线很明确。</strong></div>
-                    <div><span>开源</span><strong>不确定</strong></div>
-                    <div><span>可部署</span><strong>是</strong></div>
+                    
+                    
+                    
+                    
                   </div>
                   
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>视觉与触觉</div>
-              <div class='pipeline-detail'>RGB / Depth / Proprioception / State</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>场景与物体解析</div>
-              <div class='pipeline-detail'>物体、位姿、可操作区域</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>决策</div>
-              <div class='pipeline-label'>技能或策略规划</div>
-              <div class='pipeline-detail'>抓取 / 放置 / 轨迹 / 任务分解</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>机械臂动作</div>
-              <div class='pipeline-detail'>末端位姿、关节控制、执行信号</div>
-            </div>
-            
-            
-      </div>
-    </div>
-    
                   <div class='tags'><span class='badge soft'>机械臂</span><span class='badge soft'>操控</span><span class='badge soft'>humanoid</span></div>
                 </article>
                 
@@ -544,52 +340,14 @@
                     <div><span>发布时间</span><strong>2026-04-15 22:53</strong></div>
                     <div><span>标签</span><strong>机械臂 / 操控 / VLA / 长程规划</strong></div>
                   </div>
-                  
+                  <p class='insight'>长程操控的核心不是单步预测，而是“记忆 + 反思 + 纠错”。</p>
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>高层 VLM 负责结构化任务记忆、目标分解和失败校正，低层 VLA 负责 diffusion 式动作执行；在 RMBench 上平均成功率 32.4%，强于最强基线的 9.8%。</strong></div>
-                    <div><span>实现概率</span><strong>66% —— 体系化很强，但闭环稳定性和记忆模块的工程细节会决定上限。</strong></div>
-                    <div><span>开源</span><strong>不确定</strong></div>
-                    <div><span>可部署</span><strong>不确定</strong></div>
+                    
+                    
+                    
+                    
                   </div>
                   
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>多模态传感器</div>
-              <div class='pipeline-detail'>相机 / 激光雷达 / 车道与地图</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>感知与世界模型</div>
-              <div class='pipeline-detail'>目标、车道、占用、未来状态</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>决策</div>
-              <div class='pipeline-label'>预测与规划</div>
-              <div class='pipeline-detail'>轨迹生成 / 风险评估 / 运动规划</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>控制执行</div>
-              <div class='pipeline-detail'>转向、加速、制动或轨迹点</div>
-            </div>
-            
-            
-      </div>
-    </div>
-    
                   <div class='tags'><span class='badge soft'>机械臂</span><span class='badge soft'>操控</span><span class='badge soft'>VLA</span></div>
                 </article>
                 
@@ -605,52 +363,14 @@
                     <div><span>发布时间</span><strong>2026-04-14 01:25</strong></div>
                     <div><span>标签</span><strong>VLA / 世界模型 / 方法 / 规划</strong></div>
                   </div>
-                  
+                  <p class='insight'>把“目标图像”换成“语言指令”，再在对齐的 latent space 里做 MPC，语义泛化思路很漂亮。</p>
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>先学 grounded world model，再用与任务指令相似度来给动作轨迹打分；在 WISER 基准上成功率 87%，显著高于传统 VLA 的平均 22%。</strong></div>
-                    <div><span>实现概率</span><strong>78% —— 方法链条完整，性能也很强，属于今天最像“能直接抄”的路线之一。</strong></div>
-                    <div><span>开源</span><strong>不确定</strong></div>
-                    <div><span>可部署</span><strong>不确定</strong></div>
+                    
+                    
+                    
+                    
                   </div>
                   
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>多模态传感器</div>
-              <div class='pipeline-detail'>相机 / 激光雷达 / 车道与地图</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>感知与世界模型</div>
-              <div class='pipeline-detail'>目标、车道、占用、未来状态</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>决策</div>
-              <div class='pipeline-label'>预测与规划</div>
-              <div class='pipeline-detail'>轨迹生成 / 风险评估 / 运动规划</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>控制执行</div>
-              <div class='pipeline-detail'>转向、加速、制动或轨迹点</div>
-            </div>
-            
-            
-      </div>
-    </div>
-    
                   <div class='tags'><span class='badge soft'>VLA</span><span class='badge soft'>世界模型</span><span class='badge soft'>方法</span></div>
                 </article>
                 
@@ -664,52 +384,14 @@
                     <div><span>发布时间</span><strong>2026-04-15 19:17</strong></div>
                     <div><span>标签</span><strong>VLA / 强化学习 / 方法 / 操控</strong></div>
                   </div>
-                  
+                  <p class='insight'>不是单纯拿 VLA 端到端做控制，而是把它当先验来“扶一把” RL。</p>
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>在稀疏或不完美奖励下，把 VLA 正则项加到 RL 训练里，以改善探索和信用分配；目标是长程操控中的闭环控制。</strong></div>
-                    <div><span>实现概率</span><strong>63% —— 训练技巧型方法，复现门槛不高，但收益是否稳定要看任务和奖励设计。</strong></div>
-                    <div><span>开源</span><strong>不确定</strong></div>
-                    <div><span>可部署</span><strong>不确定</strong></div>
+                    
+                    
+                    
+                    
                   </div>
                   
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>视觉与触觉</div>
-              <div class='pipeline-detail'>RGB / Depth / Proprioception / State</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>场景与物体解析</div>
-              <div class='pipeline-detail'>物体、位姿、可操作区域</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>决策</div>
-              <div class='pipeline-label'>技能或策略规划</div>
-              <div class='pipeline-detail'>抓取 / 放置 / 轨迹 / 任务分解</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>机械臂动作</div>
-              <div class='pipeline-detail'>末端位姿、关节控制、执行信号</div>
-            </div>
-            
-            
-      </div>
-    </div>
-    
                   <div class='tags'><span class='badge soft'>VLA</span><span class='badge soft'>强化学习</span><span class='badge soft'>方法</span></div>
                 </article>
                 
@@ -725,52 +407,14 @@
                     <div><span>发布时间</span><strong>2026-04-15 23:36</strong></div>
                     <div><span>标签</span><strong>VLM / 奖励设计 / 方法 / 物理推理</strong></div>
                   </div>
-                  
+                  <p class='insight'>这篇很像“训练 VLM 时奖励怎么给”的实用手册，尤其适合想做物理推理的人。</p>
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>对 GRPO 训练中的四类奖励做系统消融：格式、准确率、综合 rubric、注意力奖励；结果显示奖励设计不会线性变好，且不同奖励会诱导不同推理偏好。</strong></div>
-                    <div><span>实现概率</span><strong>84% —— 依赖现成模型和明确奖励定义，最容易复现，也最容易改造成自己的实验。</strong></div>
-                    <div><span>开源</span><strong>不确定</strong></div>
-                    <div><span>可部署</span><strong>不确定</strong></div>
+                    
+                    
+                    
+                    
                   </div>
                   
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>图像 + 问题</div>
-              <div class='pipeline-detail'>单图 / 多图 / 文本提示</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>视觉语言编码</div>
-              <div class='pipeline-detail'>区域、对象、关系、语义</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>推理</div>
-              <div class='pipeline-label'>跨模态推理</div>
-              <div class='pipeline-detail'>问答、检索、解释、决策</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>文本或结构化结果</div>
-              <div class='pipeline-detail'>答案、描述、工具调用</div>
-            </div>
-            
-            
-      </div>
-    </div>
-    
                   <div class='tags'><span class='badge soft'>VLM</span><span class='badge soft'>奖励设计</span><span class='badge soft'>方法</span></div>
                 </article>
                 
@@ -784,52 +428,14 @@
                     <div><span>发布时间</span><strong>2026-04-15 15:57</strong></div>
                     <div><span>标签</span><strong>VLM / benchmark / 数据集 / 评测</strong></div>
                   </div>
-                  
+                  <p class='insight'>如果你关心“模型有没有真正理解跨模态冲突”，这是一篇很好的评测基准论文。</p>
                   <div class='paper-facts'>
-                    <div><span>摘要总结</span><strong>构建了 11.2K 长视频、39.4K 冲突事件的大规模基准 AVID，并给出 AVID-Qwen 基线；摘要显示当前 omni-modal 模型在时序定位和推理上仍有明显短板。</strong></div>
-                    <div><span>实现概率</span><strong>52% —— 做基准和评测体系相对直接，但它更像研究基础设施，不是即插即用的应用方案。</strong></div>
-                    <div><span>开源</span><strong>不确定</strong></div>
-                    <div><span>可部署</span><strong>不确定</strong></div>
+                    
+                    
+                    
+                    
                   </div>
                   
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>图像 + 问题</div>
-              <div class='pipeline-detail'>单图 / 多图 / 文本提示</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>视觉语言编码</div>
-              <div class='pipeline-detail'>区域、对象、关系、语义</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>推理</div>
-              <div class='pipeline-label'>跨模态推理</div>
-              <div class='pipeline-detail'>问答、检索、解释、决策</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>文本或结构化结果</div>
-              <div class='pipeline-detail'>答案、描述、工具调用</div>
-            </div>
-            
-            
-      </div>
-    </div>
-    
                   <div class='tags'><span class='badge soft'>VLM</span><span class='badge soft'>benchmark</span><span class='badge soft'>数据集</span></div>
                 </article>
                 
