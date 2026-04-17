@@ -62,10 +62,13 @@
     .figure-head { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; margin-bottom: 12px; }
     .figure-head strong { font-size: 1.02rem; }
     .figure-head span { color: var(--muted); font-size: .9rem; }
-    .figure-image { width: 100%; display: block; border-radius: 20px; overflow: hidden; background: rgba(255,255,255,.96); border: 1px solid rgba(0,0,0,.05); }
+    .figure-image {
+      width: 100%; display: block; border-radius: 20px; overflow: hidden; background: rgba(255,255,255,.96);
+      border: 1px solid rgba(0,0,0,.05); object-fit: contain; height: auto;
+    }
     .figure-caption { margin-top: 10px; color: var(--muted); font-size: .9rem; line-height: 1.6; }
-    .cloud-figure .figure-image { min-height: 200px; }
-    .framework-figure .figure-image { min-height: 160px; }
+    .cloud-figure .figure-image { min-height: 0; max-height: 420px; }
+    .framework-figure .figure-image { min-height: 0; max-height: 320px; }
     .cloud { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
     .cloud-empty { color: var(--muted); padding: 14px 4px; }
     .cloud-chip { display: inline-flex; align-items: baseline; gap: 8px; padding: 10px 14px; line-height: 1; --scale: 1; transform-origin: center; }
@@ -100,7 +103,7 @@
       margin-top: 12px; border-radius: 18px; overflow: hidden; background: linear-gradient(180deg, rgba(248,251,255,.96), rgba(255,255,255,.92));
       border: 1px solid rgba(0,0,0,.06);
     }
-    .paper-preview img { width: 100%; display: block; aspect-ratio: 3 / 2; object-fit: cover; }
+    .paper-preview img { width: 100%; display: block; aspect-ratio: 3 / 2; object-fit: contain; background: #fff; max-height: 360px; }
     .paper-preview-meta { display: flex; justify-content: space-between; gap: 8px; align-items: center; padding: 10px 12px; color: var(--muted); font-size: .82rem; }
     .paper-preview-meta strong { color: var(--text); font-size: .86rem; }
     .paper-preview-meta span { font-weight: 700; }
@@ -137,6 +140,8 @@
       .search-bar button { width: 100%; }
       .paper-top, .paper-actions { flex-direction: column; align-items: stretch; }
       .arxiv-link { align-self: flex-start; }
+      .figure-image, .paper-preview img { max-height: 260px; }
+      .paper-preview-meta { font-size: .76rem; }
     }
   </style>
 </head>
