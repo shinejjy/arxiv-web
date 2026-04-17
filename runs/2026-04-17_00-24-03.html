@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang='zh-CN'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <meta http-equiv='refresh' content='300'>
+  <title>arXiv 每日摘要</title>
+  <link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap' rel='stylesheet'>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f5f4;
+      --surface: rgba(255,255,255,.86);
+      --surface-strong: rgba(255,255,255,.96);
+      --text: rgba(0,0,0,.92);
+      --muted: #615d59;
+      --soft: #a39e98;
+      --line: rgba(0,0,0,.09);
+      --blue: #0075de;
+      --blue-bg: #f2f9ff;
+      --green: #1aae39;
+      --violet: #6d4aff;
+      --amber: #dd5b00;
+      --rose: #ff64c8;
+      --shadow: 0 24px 70px rgba(0,0,0,.08), 0 2px 10px rgba(0,0,0,.05);
+      --shadow-soft: 0 10px 28px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      --max: 1180px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(0,117,222,.14), transparent 26%),
+        radial-gradient(circle at top right, rgba(109,74,255,.12), transparent 20%),
+        linear-gradient(180deg, #fbfbfa 0%, var(--bg) 42%, #efeeec 100%);
+      min-height: 100vh;
+      line-height: 1.6;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    .page { max-width: var(--max); margin: 0 auto; padding: 24px 18px 56px; }
+    .topbar {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 12px; margin-bottom: 18px; padding: 10px 14px;
+      background: rgba(255,255,255,.55); backdrop-filter: blur(16px);
+      border: 1px solid var(--line); border-radius: 999px; box-shadow: 0 8px 24px rgba(0,0,0,.04);
+      position: sticky; top: 12px; z-index: 5;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -.02em; }
+    .brand-mark { width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--violet)); box-shadow: 0 0 0 6px rgba(0,117,222,.1); }
+    .topbar .hint { color: var(--muted); font-size: .92rem; }
+    .hero {
+      display: grid; grid-template-columns: 1.45fr .9fr; gap: 18px;
+      padding: 28px; border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.72));
+      border: 1px solid rgba(255,255,255,.8); box-shadow: var(--shadow);
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--blue); background: var(--blue-bg); padding: 8px 12px; border-radius: 999px;
+      margin-bottom: 14px;
+    }
+    h1 { margin: 0; font-size: clamp(2rem, 4vw, 3.4rem); line-height: 1.02; letter-spacing: -0.045em; }
+    .lede { margin: 14px 0 0; max-width: 58ch; color: var(--muted); font-size: 1.02rem; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+    .badge { display: inline-flex; align-items: center; border-radius: 999px; padding: 7px 12px; font-size: .86rem; font-weight: 700; border: 1px solid transparent; }
+    .badge.blue { color: #0056a8; background: var(--blue-bg); border-color: rgba(0,117,222,.12); }
+    .badge.green { color: #107426; background: rgba(26,174,57,.10); }
+    .badge.violet { color: #5234d6; background: rgba(109,74,255,.10); }
+    .badge.soft { color: var(--muted); background: rgba(255,255,255,.78); border-color: var(--line); }
+    .hero-panel { display: grid; gap: 12px; align-content: start; }
+    .stat-card, .card, .paper-card, .overall-card {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,.8);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(16px);
+    }
+    .stat-card { padding: 16px; border-radius: var(--radius-md); }
+    .stat-card span { display: block; color: var(--muted); font-size: .82rem; margin-bottom: 6px; }
+    .stat-card strong { font-size: 1rem; line-height: 1.35; }
+    .section-block { margin-top: 22px; }
+    .section-head {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+      margin-bottom: 12px; padding: 0 4px;
+    }
+    .section-head h2 { margin: 0; font-size: 1.15rem; letter-spacing: -.02em; }
+    .section-head span { color: var(--muted); font-size: .92rem; }
+    .section-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+    .section-chip {
+      flex: 1 1 220px; display: flex; justify-content: space-between; gap: 12px;
+      align-items: center; padding: 14px 16px; border-radius: 18px; background: rgba(255,255,255,.72);
+      border: 1px solid var(--line); box-shadow: 0 8px 24px rgba(0,0,0,.03);
+    }
+    .section-chip strong { font-size: .98rem; line-height: 1.35; }
+    .section-chip span { color: var(--muted); font-size: .9rem; white-space: nowrap; }
+    .section-chip.blue { background: linear-gradient(180deg, rgba(242,249,255,.95), rgba(255,255,255,.82)); }
+    .section-chip.green { background: linear-gradient(180deg, rgba(243,253,246,.95), rgba(255,255,255,.82)); }
+    .section-chip.violet { background: linear-gradient(180deg, rgba(245,242,255,.95), rgba(255,255,255,.82)); }
+    .section-chip.amber { background: linear-gradient(180deg, rgba(255,247,240,.95), rgba(255,255,255,.82)); }
+    .section-chip.rose { background: linear-gradient(180deg, rgba(255,244,251,.95), rgba(255,255,255,.82)); }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .paper-card {
+      padding: 18px; border-radius: var(--radius-lg); position: relative; overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.84));
+    }
+    .paper-card::before {
+      content: ''; position: absolute; left: 0; top: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--violet), var(--rose));
+      opacity: .9;
+    }
+    .paper-top { display: flex; justify-content: space-between; gap: 12px; align-items: start; margin-bottom: 10px; }
+    .paper-title { font-size: 1.02rem; font-weight: 800; line-height: 1.35; letter-spacing: -.02em; }
+    .paper-title a:hover { color: var(--blue); }
+    .arxiv-link {
+      flex: none; font-size: .78rem; font-weight: 800; color: var(--blue);
+      background: var(--blue-bg); border: 1px solid rgba(0,117,222,.12);
+      padding: 6px 10px; border-radius: 999px;
+    }
+    .paper-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
+    .paper-meta div {
+      padding: 10px 11px; border-radius: 14px; background: rgba(255,255,255,.74); border: 1px solid var(--line);
+    }
+    .paper-meta span { display: block; font-size: .78rem; color: var(--muted); margin-bottom: 2px; }
+    .paper-meta strong { font-size: .88rem; font-weight: 700; line-height: 1.45; }
+    .insight { margin: 10px 0 0; color: var(--text); font-size: .95rem; }
+    .paper-facts { display: grid; gap: 8px; margin-top: 12px; }
+    .paper-facts div { display: grid; gap: 3px; padding: 10px 12px; border-radius: 14px; background: rgba(247,249,252,.9); border: 1px solid rgba(0,0,0,.05); }
+    .paper-facts span { font-size: .74rem; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); font-weight: 800; }
+    .paper-facts strong { font-size: .92rem; line-height: 1.45; font-weight: 600; }
+    .paper-figure { margin: 12px 0 0; padding: 12px; border-radius: 16px; background: rgba(255,255,255,.76); border: 1px solid var(--line); }
+    .paper-figure img { display: block; width: 100%; height: auto; max-height: 340px; object-fit: contain; border-radius: 12px; background: #fff; }
+    .paper-figure figcaption { margin-top: 8px; color: var(--muted); font-size: .84rem; line-height: 1.45; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .top3 { display: grid; gap: 10px; }
+    .top3-item {
+      display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start;
+      padding: 14px 16px; border-radius: 16px; background: rgba(255,255,255,.76);
+      border: 1px solid var(--line);
+    }
+    .rank {
+      width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--blue), var(--violet)); color: white; font-weight: 800;
+    }
+    .top3-text { color: var(--text); font-size: .96rem; line-height: 1.5; }
+    .overall-card { padding: 18px; border-radius: 18px; color: var(--muted); font-size: .98rem; line-height: 1.7; }
+    .source { margin-top: 22px; color: var(--soft); font-size: .86rem; text-align: center; }
+    .hero-empty { display: block; }
+    .archive-grid { display: grid; gap: 14px; }
+    .archive-card { padding: 18px; border-radius: var(--radius-lg); background: var(--surface); border: 1px solid rgba(255,255,255,.8); box-shadow: var(--shadow-soft); }
+    .archive-head { display: flex; justify-content: space-between; gap: 12px; align-items: start; }
+    .archive-date { font-weight: 800; font-size: 1.03rem; }
+    .archive-meta { color: var(--muted); font-size: .92rem; margin-top: 4px; }
+    .archive-open { flex: none; color: var(--blue); background: var(--blue-bg); border: 1px solid rgba(0,117,222,.12); padding: 8px 12px; border-radius: 999px; font-weight: 800; }
+    .archive-top { margin-top: 12px; color: var(--text); line-height: 1.6; }
+    @media (max-width: 900px) {
+      .hero, .grid { grid-template-columns: 1fr; }
+      .paper-meta { grid-template-columns: 1fr; }
+      .topbar { position: static; border-radius: 20px; }
+    }
+    @media (max-width: 560px) {
+      .page { padding: 14px 12px 40px; }
+      .hero { padding: 20px; border-radius: 22px; }
+      .paper-card { padding: 16px; }
+      h1 { font-size: 2.05rem; }
+      .section-chip { flex-basis: 100%; }
+      .section-head { flex-direction: column; align-items: start; }
+      .archive-head { flex-direction: column; }
+    }
+    </style>
+</head>
+<body>
+  <div class='page'>
+    <header class='topbar'>
+      <div class='brand'><span class='brand-mark'></span>arXiv 每日摘要</div>
+      <div class='hint'>归档运行：2026-04-17 00:24:03</div>
+    </header>
+    
+        <section class='hero card'>
+          <div class='hero-copy'>
+            <div class='eyebrow'>arXiv 每日摘要</div>
+            <h1>arxiv-daily-autonomy-robotics-vlm-vla</h1>
+            <p class='lede'>聚焦自动驾驶、机械臂 / 操控、VLA 与 VLM。适合手机快速浏览，也保留完整历史详情。</p>
+            <div class='hero-badges'>
+              <a class='badge blue' href='../index.html'>回到首页</a>
+              <a class='badge violet' href='../archive/index.html'>历史归档</a>
+              <span class='badge green'>0 篇论文</span>
+            </div>
+          </div>
+          <div class='hero-panel'>
+            <div class='stat-card'><span>Job ID</span><strong>054d56957dbb</strong></div>
+            <div class='stat-card'><span>Run Time</span><strong>2026-04-17 00:24:03</strong></div>
+            <div class='stat-card'><span>Schedule</span><strong>0 0 * * *</strong></div>
+          </div>
+        </section>
+        
+
+            <section class='section-block'>
+              <div class='section-head'><h2>今日概览</h2><span>0 篇 · 12 个主题块</span></div>
+              <div class='section-chips'><span class='badge soft'>今日论文 0</span><span class='badge soft'>1) Beyond Conservative Automated Driving in Multi-Agent Scenarios via Coupled Model Predictive Control and Deep Reinforcement Learning 0</span><span class='badge soft'>2) Mosaic: An Extensible Framework for Composing Rule-Based and Learned Motion Planners 0</span><span class='badge soft'>3) Radar-Camera BEV Multi-Task Learning with Cross-Task Attention Bridge for Joint 3D Detection and Segmentation 0</span><span class='badge soft'>4) FastGrasp: Learning-based Whole-body Control method for Fast Dexterous Grasping with Mobile Manipulators 0</span><span class='badge soft'>5) Learning Versatile Humanoid Manipulation with Touch Dreaming 0</span><span class='badge soft'>6) UMI-3D: Extending Universal Manipulation Interface from Vision-Limited to 3D Spatial Perception 0</span><span class='badge soft'>7) HiVLA: A Visual-Grounded-Centric Hierarchical Embodied Manipulation System 0</span><span class='badge soft'>8) Goal2Skill: Long-Horizon Manipulation with Adaptive Planning and Reflection 0</span><span class='badge soft'>9) Don&#x27;t Let the Video Speak: Audio-Contrastive Preference Optimization for Audio-Visual Language Models 0</span><span class='badge soft'>10) One Token per Highly Selective Frame: Towards Extreme Compression for Long Video Understanding 0</span><span class='badge soft'>最值得重点看的 3 篇 0</span></div>
+            </section>
+            
+
+            <section class='section-block'>
+              <div class='section-head'><h2>整体判断</h2><span>今日总评</span></div>
+              <div class='overall-card'>今天这 10 篇的主线很清楚：**自动驾驶继续往混合式规划走，操控和 VLA 更强调分层、记忆、触觉和真实执行闭环，VLM 则集中在可靠性与 token 效率**。整体偏方法与系统落地，纯 survey 很少；优先看能把“推理—规划—执行”拆开的工作。</div>
+            </section>
+            
+<section class='section-block'><div class='section-head'><h2>今日论文</h2><span>0 篇</span></div><div class='grid'>
+</div></section>
+<section class='section-block'><div class='section-head'><h2>1) Beyond Conservative Automated Driving in Multi-Agent Scenarios via Coupled Model Predictive Control and Deep Reinforcement Learning</h2><span>0 篇</span></div><div class='grid'>
+</div></section>
+<section class='section-block'><div class='section-head'><h2>2) Mosaic: An Extensible Framework for Composing Rule-Based and Learned Motion Planners</h2><span>0 篇</span></div><div class='grid'>
+</div></section>
+<section class='section-block'><div class='section-head'><h2>3) Radar-Camera BEV Multi-Task Learning with Cross-Task Attention Bridge for Joint 3D Detection and Segmentation</h2><span>0 篇</span></div><div class='grid'>
+</div></section>
+<section class='section-block'><div class='section-head'><h2>4) FastGrasp: Learning-based Whole-body Control method for Fast Dexterous Grasping with Mobile Manipulators</h2><span>0 篇</span></div><div class='grid'>
+</div></section>
+<section class='section-block'><div class='section-head'><h2>5) Learning Versatile Humanoid Manipulation with Touch Dreaming</h2><span>0 篇</span></div><div class='grid'>
+</div></section>
+<section class='section-block'><div class='section-head'><h2>6) UMI-3D: Extending Universal Manipulation Interface from Vision-Limited to 3D Spatial Perception</h2><span>0 篇</span></div><div class='grid'>
+</div></section>
+<section class='section-block'><div class='section-head'><h2>7) HiVLA: A Visual-Grounded-Centric Hierarchical Embodied Manipulation System</h2><span>0 篇</span></div><div class='grid'>
+</div></section>
+<section class='section-block'><div class='section-head'><h2>8) Goal2Skill: Long-Horizon Manipulation with Adaptive Planning and Reflection</h2><span>0 篇</span></div><div class='grid'>
+</div></section>
+<section class='section-block'><div class='section-head'><h2>9) Don&#x27;t Let the Video Speak: Audio-Contrastive Preference Optimization for Audio-Visual Language Models</h2><span>0 篇</span></div><div class='grid'>
+</div></section>
+<section class='section-block'><div class='section-head'><h2>10) One Token per Highly Selective Frame: Towards Extreme Compression for Long Video Understanding</h2><span>0 篇</span></div><div class='grid'>
+</div></section>
+<section class='section-block'><div class='section-head'><h2>最值得重点看的 3 篇</h2><span>0 篇</span></div><div class='grid'>
+</div></section>
+  </div>
+</body>
+</html>
