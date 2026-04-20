@@ -182,22 +182,6 @@
     .figure-note { color: var(--muted); font-size: .8rem; }
     .figure-link { display: block; border-radius: 14px; overflow: hidden; border: 1px solid rgba(0,0,0,.05); background: rgba(255,255,255,.9); }
     .figure-img { display: block; width: 100%; height: auto; }
-    .pipeline-card {
-      margin-top: 12px; padding: 14px; border-radius: 18px; background: linear-gradient(180deg, rgba(248,250,255,.96), rgba(255,255,255,.86));
-      border: 1px solid rgba(0,117,222,.10); box-shadow: inset 0 1px 0 rgba(255,255,255,.7);
-    }
-    .pipeline-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 12px; }
-    .pipeline-title { font-weight: 800; font-size: .88rem; color: var(--blue); letter-spacing: .02em; }
-    .pipeline-note { color: var(--muted); font-size: .8rem; }
-    .pipeline-flow { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; align-items: center; }
-    .pipeline-step {
-      padding: 10px 10px 9px; border-radius: 16px; background: rgba(255,255,255,.9); border: 1px solid rgba(0,0,0,.06);
-      min-height: 92px; display: grid; align-content: start; gap: 4px;
-    }
-    .pipeline-phase { font-size: .72rem; font-weight: 800; color: var(--blue); text-transform: uppercase; letter-spacing: .04em; }
-    .pipeline-label { font-size: .9rem; font-weight: 800; line-height: 1.35; }
-    .pipeline-detail { font-size: .8rem; color: var(--muted); line-height: 1.45; }
-    .pipeline-arrow { color: var(--soft); font-size: 1.2rem; font-weight: 800; text-align: center; }
     .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
     .top3 { display: grid; gap: 10px; }
     .top3-item {
@@ -236,9 +220,6 @@
       .hero, .grid { grid-template-columns: 1fr; }
       .paper-meta { grid-template-columns: 1fr; }
       .topbar { position: static; border-radius: 20px; }
-      .pipeline-flow { grid-template-columns: 1fr; }
-      .pipeline-arrow { display: none; }
-      .pipeline-step { min-height: unset; }
       .hero-panel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 560px) {
@@ -334,45 +315,6 @@
       </a>
     </div>
     
-                  
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>视觉与触觉</div>
-              <div class='pipeline-detail'>RGB / Depth / Proprioception / State</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>场景与物体解析</div>
-              <div class='pipeline-detail'>物体、位姿、可操作区域</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>决策</div>
-              <div class='pipeline-label'>技能或策略规划</div>
-              <div class='pipeline-detail'>抓取 / 放置 / 轨迹 / 任务分解</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>机械臂动作</div>
-              <div class='pipeline-detail'>末端位姿、关节控制、执行信号</div>
-            </div>
-            
-            
-      </div>
-    </div>
-    
                   <div class='tags'><span class='badge soft'>机器人操控</span><span class='badge soft'>模仿学习</span><span class='badge soft'>动作表征</span></div>
                   <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org/abs/2604.15281' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='../archive/index.html'>返回归档</a></div>
                 </article>
@@ -405,45 +347,6 @@
       <a class='figure-link' href='assets/figs/2604.15023_v5.png' target='_blank' rel='noreferrer'>
         <img class='figure-img' src='assets/figs/2604.15023_v5.png' alt='paper figure preview'>
       </a>
-    </div>
-    
-                  
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>视觉与触觉</div>
-              <div class='pipeline-detail'>RGB / Depth / Proprioception / State</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>场景与物体解析</div>
-              <div class='pipeline-detail'>物体、位姿、可操作区域</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>决策</div>
-              <div class='pipeline-label'>技能或策略规划</div>
-              <div class='pipeline-detail'>抓取 / 放置 / 轨迹 / 任务分解</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>机械臂动作</div>
-              <div class='pipeline-detail'>末端位姿、关节控制、执行信号</div>
-            </div>
-            
-            
-      </div>
     </div>
     
                   <div class='tags'><span class='badge soft'>移动操控</span><span class='badge soft'>视觉运动策略</span></div>
@@ -480,45 +383,6 @@
       </a>
     </div>
     
-                  
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>多模态传感器</div>
-              <div class='pipeline-detail'>相机 / 激光雷达 / 车道与地图</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>感知与世界模型</div>
-              <div class='pipeline-detail'>目标、车道、占用、未来状态</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>决策</div>
-              <div class='pipeline-label'>预测与规划</div>
-              <div class='pipeline-detail'>轨迹生成 / 风险评估 / 运动规划</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>控制执行</div>
-              <div class='pipeline-detail'>转向、加速、制动或轨迹点</div>
-            </div>
-            
-            
-      </div>
-    </div>
-    
                   <div class='tags'><span class='badge soft'>VLA</span><span class='badge soft'>Embodied AI</span><span class='badge soft'>规划控制</span></div>
                   <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org/abs/2604.14732' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='../archive/index.html'>返回归档</a></div>
                 </article>
@@ -549,45 +413,6 @@
       <a class='figure-link' href='assets/figs/2604.13654_v5.png' target='_blank' rel='noreferrer'>
         <img class='figure-img' src='assets/figs/2604.13654_v5.png' alt='paper figure preview'>
       </a>
-    </div>
-    
-                  
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>视觉 + 语言</div>
-              <div class='pipeline-detail'>图像、文本指令、历史上下文</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>多模态编码</div>
-              <div class='pipeline-detail'>对齐视觉语义与任务目标</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>决策</div>
-              <div class='pipeline-label'>动作生成</div>
-              <div class='pipeline-detail'>离散 token / 连续控制 / 计划</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>机器人动作</div>
-              <div class='pipeline-detail'>可执行指令或控制序列</div>
-            </div>
-            
-            
-      </div>
     </div>
     
                   <div class='tags'><span class='badge soft'>VLA</span><span class='badge soft'>Embodied AI</span><span class='badge soft'>规划控制</span></div>
@@ -624,45 +449,6 @@
       </a>
     </div>
     
-                  
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>多模态传感器</div>
-              <div class='pipeline-detail'>相机 / 激光雷达 / 车道与地图</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>感知与世界模型</div>
-              <div class='pipeline-detail'>目标、车道、占用、未来状态</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>决策</div>
-              <div class='pipeline-label'>预测与规划</div>
-              <div class='pipeline-detail'>轨迹生成 / 风险评估 / 运动规划</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>控制执行</div>
-              <div class='pipeline-detail'>转向、加速、制动或轨迹点</div>
-            </div>
-            
-            
-      </div>
-    </div>
-    
                   <div class='tags'><span class='badge soft'>Autonomy</span><span class='badge soft'>Robotics</span><span class='badge soft'>VLM-VLA</span></div>
                   <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org/abs/2604.14454' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='../archive/index.html'>返回归档</a></div>
                 </article>
@@ -693,45 +479,6 @@
       <a class='figure-link' href='assets/figs/2604.14399_v5.png' target='_blank' rel='noreferrer'>
         <img class='figure-img' src='assets/figs/2604.14399_v5.png' alt='paper figure preview'>
       </a>
-    </div>
-    
-                  
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>多模态传感器</div>
-              <div class='pipeline-detail'>相机 / 激光雷达 / 车道与地图</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>感知与世界模型</div>
-              <div class='pipeline-detail'>目标、车道、占用、未来状态</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>决策</div>
-              <div class='pipeline-label'>预测与规划</div>
-              <div class='pipeline-detail'>轨迹生成 / 风险评估 / 运动规划</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>控制执行</div>
-              <div class='pipeline-detail'>转向、加速、制动或轨迹点</div>
-            </div>
-            
-            
-      </div>
     </div>
     
                   <div class='tags'><span class='badge soft'>Autonomy</span><span class='badge soft'>Robotics</span><span class='badge soft'>VLM-VLA</span></div>
@@ -766,45 +513,6 @@
       </a>
     </div>
     
-                  
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>多模态传感器</div>
-              <div class='pipeline-detail'>相机 / 激光雷达 / 车道与地图</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>感知与世界模型</div>
-              <div class='pipeline-detail'>目标、车道、占用、未来状态</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>决策</div>
-              <div class='pipeline-label'>预测与规划</div>
-              <div class='pipeline-detail'>轨迹生成 / 风险评估 / 运动规划</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>控制执行</div>
-              <div class='pipeline-detail'>转向、加速、制动或轨迹点</div>
-            </div>
-            
-            
-      </div>
-    </div>
-    
                   <div class='tags'><span class='badge soft'>Autonomy</span><span class='badge soft'>Robotics</span><span class='badge soft'>VLM-VLA</span></div>
                   <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org/abs/2604.13942' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='../archive/index.html'>返回归档</a></div>
                 </article>
@@ -835,45 +543,6 @@
       <a class='figure-link' href='assets/figs/2604.13853_v5.png' target='_blank' rel='noreferrer'>
         <img class='figure-img' src='assets/figs/2604.13853_v5.png' alt='paper figure preview'>
       </a>
-    </div>
-    
-                  
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>多模态传感器</div>
-              <div class='pipeline-detail'>相机 / 激光雷达 / 车道与地图</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>感知与世界模型</div>
-              <div class='pipeline-detail'>目标、车道、占用、未来状态</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>决策</div>
-              <div class='pipeline-label'>预测与规划</div>
-              <div class='pipeline-detail'>轨迹生成 / 风险评估 / 运动规划</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>控制执行</div>
-              <div class='pipeline-detail'>转向、加速、制动或轨迹点</div>
-            </div>
-            
-            
-      </div>
     </div>
     
                   <div class='tags'><span class='badge soft'>Autonomy</span><span class='badge soft'>Robotics</span><span class='badge soft'>VLM-VLA</span></div>
@@ -908,45 +577,6 @@
       </a>
     </div>
     
-                  
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>视觉与触觉</div>
-              <div class='pipeline-detail'>RGB / Depth / Proprioception / State</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>场景与物体解析</div>
-              <div class='pipeline-detail'>物体、位姿、可操作区域</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>决策</div>
-              <div class='pipeline-label'>技能或策略规划</div>
-              <div class='pipeline-detail'>抓取 / 放置 / 轨迹 / 任务分解</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>机械臂动作</div>
-              <div class='pipeline-detail'>末端位姿、关节控制、执行信号</div>
-            </div>
-            
-            
-      </div>
-    </div>
-    
                   <div class='tags'><span class='badge soft'>Autonomy</span><span class='badge soft'>Robotics</span><span class='badge soft'>VLM-VLA</span></div>
                   <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org/abs/2604.13800' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='../archive/index.html'>返回归档</a></div>
                 </article>
@@ -979,45 +609,6 @@
       <a class='figure-link' href='assets/figs/2604.14565_v5.png' target='_blank' rel='noreferrer'>
         <img class='figure-img' src='assets/figs/2604.14565_v5.png' alt='paper figure preview'>
       </a>
-    </div>
-    
-                  
-    <div class='pipeline-card'>
-      <div class='pipeline-head'>
-        <span class='pipeline-title'>Pipeline 图</span>
-        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
-      </div>
-      <div class='pipeline-flow'>
-        
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输入</div>
-              <div class='pipeline-label'>视觉与触觉</div>
-              <div class='pipeline-detail'>RGB / Depth / Proprioception / State</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>理解</div>
-              <div class='pipeline-label'>场景与物体解析</div>
-              <div class='pipeline-detail'>物体、位姿、可操作区域</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>决策</div>
-              <div class='pipeline-label'>技能或策略规划</div>
-              <div class='pipeline-detail'>抓取 / 放置 / 轨迹 / 任务分解</div>
-            </div>
-            <div class='pipeline-arrow'>→</div>
-            
-            <div class='pipeline-step'>
-              <div class='pipeline-phase'>输出</div>
-              <div class='pipeline-label'>机械臂动作</div>
-              <div class='pipeline-detail'>末端位姿、关节控制、执行信号</div>
-            </div>
-            
-            
-      </div>
     </div>
     
                   <div class='tags'><span class='badge soft'>人形机器人</span><span class='badge soft'>技能切换</span><span class='badge soft'>控制</span></div>

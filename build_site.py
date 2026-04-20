@@ -826,7 +826,6 @@ def build_run_detail(run: dict, home_link: str = "index.html", archive_link: str
                     {f"<div class='fact {fact_class(p.get('deploy'))}'><span>可部署</span><strong>{esc(p.get('deploy'))}</strong></div>" if p.get('deploy') else ""}
                   </div>
                   {render_figure_html(p)}
-                  {render_pipeline_html(sec['title'], p)}
                   <div class='tags'>{tag_html}</div>
                   <div class='paper-actions'><a class='paper-action primary' href='{arxiv_url}' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='{archive_link}'>{'返回归档'}</a></div>
                 </article>
@@ -1102,22 +1101,6 @@ def build_css() -> str:
     .figure-note { color: var(--muted); font-size: .8rem; }
     .figure-link { display: block; border-radius: 14px; overflow: hidden; border: 1px solid rgba(0,0,0,.05); background: rgba(255,255,255,.9); }
     .figure-img { display: block; width: 100%; height: auto; }
-    .pipeline-card {
-      margin-top: 12px; padding: 14px; border-radius: 18px; background: linear-gradient(180deg, rgba(248,250,255,.96), rgba(255,255,255,.86));
-      border: 1px solid rgba(0,117,222,.10); box-shadow: inset 0 1px 0 rgba(255,255,255,.7);
-    }
-    .pipeline-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 12px; }
-    .pipeline-title { font-weight: 800; font-size: .88rem; color: var(--blue); letter-spacing: .02em; }
-    .pipeline-note { color: var(--muted); font-size: .8rem; }
-    .pipeline-flow { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; align-items: center; }
-    .pipeline-step {
-      padding: 10px 10px 9px; border-radius: 16px; background: rgba(255,255,255,.9); border: 1px solid rgba(0,0,0,.06);
-      min-height: 92px; display: grid; align-content: start; gap: 4px;
-    }
-    .pipeline-phase { font-size: .72rem; font-weight: 800; color: var(--blue); text-transform: uppercase; letter-spacing: .04em; }
-    .pipeline-label { font-size: .9rem; font-weight: 800; line-height: 1.35; }
-    .pipeline-detail { font-size: .8rem; color: var(--muted); line-height: 1.45; }
-    .pipeline-arrow { color: var(--soft); font-size: 1.2rem; font-weight: 800; text-align: center; }
     .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
     .top3 { display: grid; gap: 10px; }
     .top3-item {
@@ -1156,9 +1139,6 @@ def build_css() -> str:
       .hero, .grid { grid-template-columns: 1fr; }
       .paper-meta { grid-template-columns: 1fr; }
       .topbar { position: static; border-radius: 20px; }
-      .pipeline-flow { grid-template-columns: 1fr; }
-      .pipeline-arrow { display: none; }
-      .pipeline-step { min-height: unset; }
       .hero-panel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 560px) {
