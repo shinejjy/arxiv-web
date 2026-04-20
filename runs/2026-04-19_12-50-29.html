@@ -272,21 +272,753 @@
             <div class='hero-badges'>
               <a class='badge blue' href='../index.html'>回到首页</a>
               <a class='badge violet' href='../archive/index.html'>历史归档</a>
-              <span class='badge green'>0 篇论文</span>
+              <span class='badge green'>10 篇论文</span>
             </div>
           </div>
           <div class='hero-panel'>
             <div class='stat-card'><span>Job ID</span><strong>054d56957dbb</strong></div>
             <div class='stat-card'><span>Run Time</span><strong>2026-04-19 12:50:29</strong></div>
             <div class='stat-card'><span>Schedule</span><strong>0 0 * * *</strong></div>
-            <div class='stat-card'><span>主题块</span><strong>0 个</strong></div>
+            <div class='stat-card'><span>主题块</span><strong>2 个</strong></div>
           </div>
         </section>
         <section class='section-block'>
           <div class='section-head'><h2>快速跳转</h2><span>滑动即可切换模块</span></div>
-          <div class='section-rail'><a class='rail-chip' href='#overview'>概览</a><a class='rail-chip' href='#top3'>重点 3 篇</a><a class='rail-chip' href='#overall'>总评</a></div>
+          <div class='section-rail'><a class='rail-chip' href='#overview'>概览</a><a class='rail-chip' href='#top3'>重点 3 篇</a><a class='rail-chip' href='#overall'>总评</a><a class='rail-chip' href='#autonomous-driving_robotics_embodied-ai'>autonomous-driving / robotics / embodied-ai</a><a class='rail-chip' href='#robotics_embodied-ai'>robotics / embodied-ai</a></div>
         </section>
         
+
+            <section class='section-block' id='overview'>
+              <div class='section-head'><h2>今日概览</h2><span>10 篇 · 2 个主题块</span></div>
+              <div class='section-chips'><span class='badge soft'>autonomous-driving / robotics / embodied-ai 2</span><span class='badge soft'>robotics / embodied-ai 8</span></div>
+            </section>
+            
+
+            <section class='section-block' id='top3'>
+              <div class='section-head'><h2>今天最值得重点看的 3 篇</h2><span>编辑优先级</span></div>
+              <div class='top3'><div class='top3-item'><span class='rank'>1</span><div class='top3-text'>RAD-2 (2604.15308v1) — 自动驾驶闭环 RL + 生成器-判别器，实验和系统味都最强。</div></div><div class='top3-item'><span class='rank'>2</span><div class='top3-text'>R3D (2604.15281v1) — 3D policy learning 的结构化改进，方法图和表述都很清楚。</div></div><div class='top3-item'><span class='rank'>3</span><div class='top3-text'>DockAnywhere (2604.15023v1) — mobile manipulation 数据效率问题，工程可用性高。</div></div></div>
+            </section>
+            
+
+            <section class='section-block' id='overall'>
+              <div class='section-head'><h2>整体判断</h2><span>今日总评</span></div>
+              <div class='overall-card'>整体判断：这批里最值得读的是自动驾驶、3D policy learning、移动操作和安全人机协作这几篇；图证据和方法图都已按要求走完 source 优先、PDF 兜底流程。</div>
+            </section>
+            
+<section class='section-block' id='autonomous-driving_robotics_embodied-ai'><div class='section-head'><h2>autonomous-driving / robotics / embodied-ai</h2><span>2 篇</span></div><div class='grid'>
+
+                <article class='paper-card'>
+                  <div class='paper-top'>
+                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.15308v1' target='_blank' rel='noreferrer'>RAD-2: Scaling Reinforcement Learning in a Generator-Discriminator Framework</a></div>
+                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.15308v1' target='_blank' rel='noreferrer'>2604.15308v1</a>
+                  </div>
+                  <div class='paper-meta'>
+                    
+                    <div><span>标签</span><strong>autonomous-driving / robotics / embodied-ai</strong></div>
+                  </div>
+                  <p class='paper-summary'>提出生成器-判别器式闭环规划框架，用 diffusion generator 产出多模态轨迹候选，再用 RL 优化的 discriminator 进行重排序，并引入 temporally consistent group relative policy optimization 与 on-policy generator optimization；配套 BEV-Warp 提升大规模闭环训练效率，摘要声称在碰撞率和真实道路部署上都有提升。</p>
+                  
+                  <div class='paper-facts'>
+                    <div class='fact neutral'><span>实现概率</span><strong>70%</strong></div>
+                    <div class='fact bad'><span>开源</span><strong>no（未在 source/metadata 中明确看到代码仓库，仅有项目页）</strong></div>
+                    <div class='fact bad'><span>可部署</span><strong>uncertain（有真实部署叙述，但还需看工程细节与代码）</strong></div>
+                  </div>
+                  
+    <div class='figure-card'>
+      <div class='figure-head'>
+        <span class='figure-title'>图像线索</span>
+        <span class='figure-note'>cached</span>
+      </div>
+      <a class='figure-link' href='assets/figs/2604.15308v1_v5.png' target='_blank' rel='noreferrer'>
+        <img class='figure-img' src='assets/figs/2604.15308v1_v5.png' alt='paper figure preview'>
+      </a>
+    </div>
+    
+                  
+    <div class='pipeline-card'>
+      <div class='pipeline-head'>
+        <span class='pipeline-title'>Pipeline 图</span>
+        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
+      </div>
+      <div class='pipeline-flow'>
+        
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>输入</div>
+              <div class='pipeline-label'>多模态传感器</div>
+              <div class='pipeline-detail'>相机 / 激光雷达 / 车道与地图</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>理解</div>
+              <div class='pipeline-label'>感知与世界模型</div>
+              <div class='pipeline-detail'>目标、车道、占用、未来状态</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>决策</div>
+              <div class='pipeline-label'>预测与规划</div>
+              <div class='pipeline-detail'>轨迹生成 / 风险评估 / 运动规划</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>输出</div>
+              <div class='pipeline-label'>控制执行</div>
+              <div class='pipeline-detail'>转向、加速、制动或轨迹点</div>
+            </div>
+            
+            
+      </div>
+    </div>
+    
+                  <div class='tags'><span class='badge soft'>autonomous-driving</span><span class='badge soft'>robotics</span><span class='badge soft'>embodied-ai</span></div>
+                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org/abs/2604.15308v1' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='../archive/index.html'>返回归档</a></div>
+                </article>
+                
+
+                <article class='paper-card'>
+                  <div class='paper-top'>
+                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.15291v1' target='_blank' rel='noreferrer'>AD4AD: Benchmarking Visual Anomaly Detection Models for Safer Autonomous Driving</a></div>
+                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.15291v1' target='_blank' rel='noreferrer'>2604.15291v1</a>
+                  </div>
+                  <div class='paper-meta'>
+                    
+                    <div><span>标签</span><strong>autonomous-driving / robotics / embodied-ai</strong></div>
+                  </div>
+                  <p class='paper-summary'>这是面向自动驾驶安全的视觉异常检测 benchmark，主要比较不同 VAD 模型在异常/失败案例下的表现；从 source 里可以看到 anomaly maps 的对比图，属于 benchmark/analysis 型工作。</p>
+                  
+                  <div class='paper-facts'>
+                    <div class='fact neutral'><span>实现概率</span><strong>70%</strong></div>
+                    <div class='fact bad'><span>开源</span><strong>no（未见明确 repo）</strong></div>
+                    <div class='fact good'><span>可部署</span><strong>no（这是评测基准，不是可直接上车的规划/控制系统）</strong></div>
+                  </div>
+                  
+    <div class='figure-card'>
+      <div class='figure-head'>
+        <span class='figure-title'>图像线索</span>
+        <span class='figure-note'>cached</span>
+      </div>
+      <a class='figure-link' href='assets/figs/2604.15291v1_v5.png' target='_blank' rel='noreferrer'>
+        <img class='figure-img' src='assets/figs/2604.15291v1_v5.png' alt='paper figure preview'>
+      </a>
+    </div>
+    
+                  
+    <div class='pipeline-card'>
+      <div class='pipeline-head'>
+        <span class='pipeline-title'>Pipeline 图</span>
+        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
+      </div>
+      <div class='pipeline-flow'>
+        
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>输入</div>
+              <div class='pipeline-label'>多模态传感器</div>
+              <div class='pipeline-detail'>相机 / 激光雷达 / 车道与地图</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>理解</div>
+              <div class='pipeline-label'>感知与世界模型</div>
+              <div class='pipeline-detail'>目标、车道、占用、未来状态</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>决策</div>
+              <div class='pipeline-label'>预测与规划</div>
+              <div class='pipeline-detail'>轨迹生成 / 风险评估 / 运动规划</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>输出</div>
+              <div class='pipeline-label'>控制执行</div>
+              <div class='pipeline-detail'>转向、加速、制动或轨迹点</div>
+            </div>
+            
+            
+      </div>
+    </div>
+    
+                  <div class='tags'><span class='badge soft'>autonomous-driving</span><span class='badge soft'>robotics</span><span class='badge soft'>embodied-ai</span></div>
+                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org/abs/2604.15291v1' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='../archive/index.html'>返回归档</a></div>
+                </article>
+                
+</div></section>
+<section class='section-block' id='robotics_embodied-ai'><div class='section-head'><h2>robotics / embodied-ai</h2><span>8 篇</span></div><div class='grid'>
+
+                <article class='paper-card'>
+                  <div class='paper-top'>
+                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.15023v1' target='_blank' rel='noreferrer'>DockAnywhere: Data-Efficient Visuomotor Policy Learning for Mobile Manipulation via Novel Demonstration Generation</a></div>
+                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.15023v1' target='_blank' rel='noreferrer'>2604.15023v1</a>
+                  </div>
+                  <div class='paper-meta'>
+                    
+                    <div><span>标签</span><strong>robotics / embodied-ai</strong></div>
+                  </div>
+                  <p class='paper-summary'>面向 mobile manipulation，提出通过新型 demonstration generation 来缓解两阶段“先导航到 docking point 再固定基座操作”的数据效率问题；从 source 看，核心图是完整 pipeline，强调从单个源示范生成多样化示范并用于 visuomotor policy learning。</p>
+                  
+                  <div class='paper-facts'>
+                    <div class='fact neutral'><span>实现概率</span><strong>70%</strong></div>
+                    <div class='fact bad'><span>开源</span><strong>no（未见明确 repo）</strong></div>
+                    <div class='fact good'><span>可部署</span><strong>uncertain（方法偏工程可落地，但部署仍依赖系统集成）</strong></div>
+                  </div>
+                  
+    <div class='figure-card'>
+      <div class='figure-head'>
+        <span class='figure-title'>图像线索</span>
+        <span class='figure-note'>cached</span>
+      </div>
+      <a class='figure-link' href='assets/figs/2604.15023v1_v5.png' target='_blank' rel='noreferrer'>
+        <img class='figure-img' src='assets/figs/2604.15023v1_v5.png' alt='paper figure preview'>
+      </a>
+    </div>
+    
+                  
+    <div class='pipeline-card'>
+      <div class='pipeline-head'>
+        <span class='pipeline-title'>Pipeline 图</span>
+        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
+      </div>
+      <div class='pipeline-flow'>
+        
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>输入</div>
+              <div class='pipeline-label'>视觉与触觉</div>
+              <div class='pipeline-detail'>RGB / Depth / Proprioception / State</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>理解</div>
+              <div class='pipeline-label'>场景与物体解析</div>
+              <div class='pipeline-detail'>物体、位姿、可操作区域</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>决策</div>
+              <div class='pipeline-label'>技能或策略规划</div>
+              <div class='pipeline-detail'>抓取 / 放置 / 轨迹 / 任务分解</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>输出</div>
+              <div class='pipeline-label'>机械臂动作</div>
+              <div class='pipeline-detail'>末端位姿、关节控制、执行信号</div>
+            </div>
+            
+            
+      </div>
+    </div>
+    
+                  <div class='tags'><span class='badge soft'>robotics</span><span class='badge soft'>embodied-ai</span></div>
+                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org/abs/2604.15023v1' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='../archive/index.html'>返回归档</a></div>
+                </article>
+                
+
+                <article class='paper-card'>
+                  <div class='paper-top'>
+                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.15052v1' target='_blank' rel='noreferrer'>CAVERS: Multimodal SLAM Data from a Natural Karstic Cave with Ground Truth Motion Capture</a></div>
+                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.15052v1' target='_blank' rel='noreferrer'>2604.15052v1</a>
+                  </div>
+                  <div class='paper-meta'>
+                    
+                    <div><span>标签</span><strong>robotics / embodied-ai</strong></div>
+                  </div>
+                  <p class='paper-summary'>主要是一个 cave 场景下的多模态 SLAM 数据集，包含视觉、深度、热成像、LiDAR 和 motion capture 参考；来源文本明确强调自然洞穴环境的极端挑战，更偏数据集/基准而不是直接算法。</p>
+                  
+                  <div class='paper-facts'>
+                    <div class='fact neutral'><span>实现概率</span><strong>70%</strong></div>
+                    <div class='fact good'><span>开源</span><strong>no（未见代码/数据开源声明，不能擅自认定）</strong></div>
+                    <div class='fact good'><span>可部署</span><strong>no（这是数据集与评测资源，不是可直接部署策略）</strong></div>
+                  </div>
+                  
+    <div class='figure-card'>
+      <div class='figure-head'>
+        <span class='figure-title'>图像线索</span>
+        <span class='figure-note'>cached</span>
+      </div>
+      <a class='figure-link' href='assets/figs/2604.15052v1_v5.png' target='_blank' rel='noreferrer'>
+        <img class='figure-img' src='assets/figs/2604.15052v1_v5.png' alt='paper figure preview'>
+      </a>
+    </div>
+    
+                  
+    <div class='pipeline-card'>
+      <div class='pipeline-head'>
+        <span class='pipeline-title'>Pipeline 图</span>
+        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
+      </div>
+      <div class='pipeline-flow'>
+        
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>输入</div>
+              <div class='pipeline-label'>视觉与触觉</div>
+              <div class='pipeline-detail'>RGB / Depth / Proprioception / State</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>理解</div>
+              <div class='pipeline-label'>场景与物体解析</div>
+              <div class='pipeline-detail'>物体、位姿、可操作区域</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>决策</div>
+              <div class='pipeline-label'>技能或策略规划</div>
+              <div class='pipeline-detail'>抓取 / 放置 / 轨迹 / 任务分解</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>输出</div>
+              <div class='pipeline-label'>机械臂动作</div>
+              <div class='pipeline-detail'>末端位姿、关节控制、执行信号</div>
+            </div>
+            
+            
+      </div>
+    </div>
+    
+                  <div class='tags'><span class='badge soft'>robotics</span><span class='badge soft'>embodied-ai</span></div>
+                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org/abs/2604.15052v1' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='../archive/index.html'>返回归档</a></div>
+                </article>
+                
+
+                <article class='paper-card'>
+                  <div class='paper-top'>
+                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.15289v1' target='_blank' rel='noreferrer'>Abstract Sim2Real through Approximate Information States</a></div>
+                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.15289v1' target='_blank' rel='noreferrer'>2604.15289v1</a>
+                  </div>
+                  <div class='paper-meta'>
+                    
+                    <div><span>标签</span><strong>robotics / embodied-ai</strong></div>
+                  </div>
+                  <p class='paper-summary'>研究 abstract simulator 下的 sim2real，核心是用 approximate information states 让机器人在更抽象但更易构建的模拟器里进行 RL；source 中能看到不同方法在 PointMaze 到 AntMaze 等迁移上的轨迹对比图。</p>
+                  
+                  <div class='paper-facts'>
+                    <div class='fact neutral'><span>实现概率</span><strong>70%</strong></div>
+                    <div class='fact bad'><span>开源</span><strong>no（未见明确 repo）</strong></div>
+                    <div class='fact bad'><span>可部署</span><strong>no（偏理论/方法研究，离直接工程部署还有距离）</strong></div>
+                  </div>
+                  
+    <div class='figure-card'>
+      <div class='figure-head'>
+        <span class='figure-title'>图像线索</span>
+        <span class='figure-note'>cached</span>
+      </div>
+      <a class='figure-link' href='assets/figs/2604.15289v1_v5.png' target='_blank' rel='noreferrer'>
+        <img class='figure-img' src='assets/figs/2604.15289v1_v5.png' alt='paper figure preview'>
+      </a>
+    </div>
+    
+                  
+    <div class='pipeline-card'>
+      <div class='pipeline-head'>
+        <span class='pipeline-title'>Pipeline 图</span>
+        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
+      </div>
+      <div class='pipeline-flow'>
+        
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>输入</div>
+              <div class='pipeline-label'>视觉与触觉</div>
+              <div class='pipeline-detail'>RGB / Depth / Proprioception / State</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>理解</div>
+              <div class='pipeline-label'>场景与物体解析</div>
+              <div class='pipeline-detail'>物体、位姿、可操作区域</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>决策</div>
+              <div class='pipeline-label'>技能或策略规划</div>
+              <div class='pipeline-detail'>抓取 / 放置 / 轨迹 / 任务分解</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>输出</div>
+              <div class='pipeline-label'>机械臂动作</div>
+              <div class='pipeline-detail'>末端位姿、关节控制、执行信号</div>
+            </div>
+            
+            
+      </div>
+    </div>
+    
+                  <div class='tags'><span class='badge soft'>robotics</span><span class='badge soft'>embodied-ai</span></div>
+                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org/abs/2604.15289v1' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='../archive/index.html'>返回归档</a></div>
+                </article>
+                
+
+                <article class='paper-card'>
+                  <div class='paper-top'>
+                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.15221v1' target='_blank' rel='noreferrer'>Vision-Based Safe Human-Robot Collaboration with Uncertainty Guarantees</a></div>
+                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.15221v1' target='_blank' rel='noreferrer'>2604.15221v1</a>
+                  </div>
+                  <div class='paper-meta'>
+                    
+                    <div><span>标签</span><strong>robotics / embodied-ai</strong></div>
+                  </div>
+                  <p class='paper-summary'>提出 vision-based 人体姿态估计和运动预测框架，把 aleatoric uncertainty、OOD detection 和 conformal prediction 结合起来，为 human-robot collaboration 提供可证明的安全性保证；source 中方法总览图非常明确。</p>
+                  
+                  <div class='paper-facts'>
+                    <div class='fact neutral'><span>实现概率</span><strong>70%</strong></div>
+                    <div class='fact good'><span>开源</span><strong>no（未见明确开源信息）</strong></div>
+                    <div class='fact bad'><span>可部署</span><strong>uncertain（有安全保障框架，但实际部署取决于传感器与系统集成）</strong></div>
+                  </div>
+                  
+    <div class='figure-card'>
+      <div class='figure-head'>
+        <span class='figure-title'>图像线索</span>
+        <span class='figure-note'>cached</span>
+      </div>
+      <a class='figure-link' href='assets/figs/2604.15221v1_v5.png' target='_blank' rel='noreferrer'>
+        <img class='figure-img' src='assets/figs/2604.15221v1_v5.png' alt='paper figure preview'>
+      </a>
+    </div>
+    
+                  
+    <div class='pipeline-card'>
+      <div class='pipeline-head'>
+        <span class='pipeline-title'>Pipeline 图</span>
+        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
+      </div>
+      <div class='pipeline-flow'>
+        
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>输入</div>
+              <div class='pipeline-label'>视觉与触觉</div>
+              <div class='pipeline-detail'>RGB / Depth / Proprioception / State</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>理解</div>
+              <div class='pipeline-label'>场景与物体解析</div>
+              <div class='pipeline-detail'>物体、位姿、可操作区域</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>决策</div>
+              <div class='pipeline-label'>技能或策略规划</div>
+              <div class='pipeline-detail'>抓取 / 放置 / 轨迹 / 任务分解</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>输出</div>
+              <div class='pipeline-label'>机械臂动作</div>
+              <div class='pipeline-detail'>末端位姿、关节控制、执行信号</div>
+            </div>
+            
+            
+      </div>
+    </div>
+    
+                  <div class='tags'><span class='badge soft'>robotics</span><span class='badge soft'>embodied-ai</span></div>
+                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org/abs/2604.15221v1' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='../archive/index.html'>返回归档</a></div>
+                </article>
+                
+
+                <article class='paper-card'>
+                  <div class='paper-top'>
+                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.15215v1' target='_blank' rel='noreferrer'>A Hierarchical Spatiotemporal Action Tokenizer for In-Context Imitation Learning in Robotics</a></div>
+                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.15215v1' target='_blank' rel='noreferrer'>2604.15215v1</a>
+                  </div>
+                  <div class='paper-meta'>
+                    
+                    <div><span>标签</span><strong>robotics / embodied-ai</strong></div>
+                  </div>
+                  <p class='paper-summary'>提出两级 vector quantization 的 hierarchical spatiotemporal action tokenizer，用于 in-context imitation learning；source 中的主图清楚展示 observation/action tokenizer 结构。</p>
+                  
+                  <div class='paper-facts'>
+                    <div class='fact neutral'><span>实现概率</span><strong>70%</strong></div>
+                    <div class='fact bad'><span>开源</span><strong>no（未见明确 repo）</strong></div>
+                    <div class='fact bad'><span>可部署</span><strong>no（更像方法/表征学习模块，部署需接入现有机器人栈）</strong></div>
+                  </div>
+                  
+    <div class='figure-card'>
+      <div class='figure-head'>
+        <span class='figure-title'>图像线索</span>
+        <span class='figure-note'>cached</span>
+      </div>
+      <a class='figure-link' href='assets/figs/2604.15215v1_v5.png' target='_blank' rel='noreferrer'>
+        <img class='figure-img' src='assets/figs/2604.15215v1_v5.png' alt='paper figure preview'>
+      </a>
+    </div>
+    
+                  
+    <div class='pipeline-card'>
+      <div class='pipeline-head'>
+        <span class='pipeline-title'>Pipeline 图</span>
+        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
+      </div>
+      <div class='pipeline-flow'>
+        
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>输入</div>
+              <div class='pipeline-label'>视觉与触觉</div>
+              <div class='pipeline-detail'>RGB / Depth / Proprioception / State</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>理解</div>
+              <div class='pipeline-label'>场景与物体解析</div>
+              <div class='pipeline-detail'>物体、位姿、可操作区域</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>决策</div>
+              <div class='pipeline-label'>技能或策略规划</div>
+              <div class='pipeline-detail'>抓取 / 放置 / 轨迹 / 任务分解</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>输出</div>
+              <div class='pipeline-label'>机械臂动作</div>
+              <div class='pipeline-detail'>末端位姿、关节控制、执行信号</div>
+            </div>
+            
+            
+      </div>
+    </div>
+    
+                  <div class='tags'><span class='badge soft'>robotics</span><span class='badge soft'>embodied-ai</span></div>
+                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org/abs/2604.15215v1' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='../archive/index.html'>返回归档</a></div>
+                </article>
+                
+
+                <article class='paper-card'>
+                  <div class='paper-top'>
+                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.15168v1' target='_blank' rel='noreferrer'>Dual Pose-Graph Semantic Localization for Vision-Based Autonomous Drone Racing</a></div>
+                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.15168v1' target='_blank' rel='noreferrer'>2604.15168v1</a>
+                  </div>
+                  <div class='paper-meta'>
+                    
+                    <div><span>标签</span><strong>robotics / embodied-ai</strong></div>
+                  </div>
+                  <p class='paper-summary'>针对无人机竞速的高动态定位问题，提出 dual pose-graph semantic localization；source 中不仅有系统总览图，还有 gate detection pipeline 和 graph architecture，且正文强调真实竞赛场景的 onboard/online 飞行验证。</p>
+                  
+                  <div class='paper-facts'>
+                    <div class='fact neutral'><span>实现概率</span><strong>70%</strong></div>
+                    <div class='fact bad'><span>开源</span><strong>no（未见明确 repo）</strong></div>
+                    <div class='fact bad'><span>可部署</span><strong>uncertain（有实飞验证，但通用部署仍需具体平台适配）</strong></div>
+                  </div>
+                  
+    <div class='figure-card'>
+      <div class='figure-head'>
+        <span class='figure-title'>图像线索</span>
+        <span class='figure-note'>cached</span>
+      </div>
+      <a class='figure-link' href='assets/figs/2604.15168v1_v5.png' target='_blank' rel='noreferrer'>
+        <img class='figure-img' src='assets/figs/2604.15168v1_v5.png' alt='paper figure preview'>
+      </a>
+    </div>
+    
+                  
+    <div class='pipeline-card'>
+      <div class='pipeline-head'>
+        <span class='pipeline-title'>Pipeline 图</span>
+        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
+      </div>
+      <div class='pipeline-flow'>
+        
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>输入</div>
+              <div class='pipeline-label'>多模态传感器</div>
+              <div class='pipeline-detail'>相机 / 激光雷达 / 车道与地图</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>理解</div>
+              <div class='pipeline-label'>感知与世界模型</div>
+              <div class='pipeline-detail'>目标、车道、占用、未来状态</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>决策</div>
+              <div class='pipeline-label'>预测与规划</div>
+              <div class='pipeline-detail'>轨迹生成 / 风险评估 / 运动规划</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>输出</div>
+              <div class='pipeline-label'>控制执行</div>
+              <div class='pipeline-detail'>转向、加速、制动或轨迹点</div>
+            </div>
+            
+            
+      </div>
+    </div>
+    
+                  <div class='tags'><span class='badge soft'>robotics</span><span class='badge soft'>embodied-ai</span></div>
+                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org/abs/2604.15168v1' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='../archive/index.html'>返回归档</a></div>
+                </article>
+                
+
+                <article class='paper-card'>
+                  <div class='paper-top'>
+                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.15281v1' target='_blank' rel='noreferrer'>R3D: Revisiting 3D Policy Learning</a></div>
+                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.15281v1' target='_blank' rel='noreferrer'>2604.15281v1</a>
+                  </div>
+                  <div class='paper-meta'>
+                    
+                    <div><span>标签</span><strong>robotics / embodied-ai</strong></div>
+                  </div>
+                  <p class='paper-summary'>针对 3D policy learning 的不稳定与过拟合问题，提出更强的 3D encoder + Diffusion Transformer action decoder，并保留空间分辨率；source 中的 pipeline 图非常清楚，正文也强调 cross-embodiment transfer。</p>
+                  
+                  <div class='paper-facts'>
+                    <div class='fact neutral'><span>实现概率</span><strong>70%</strong></div>
+                    <div class='fact bad'><span>开源</span><strong>no（未见明确 repo）</strong></div>
+                    <div class='fact bad'><span>可部署</span><strong>uncertain（结构清晰，但实际部署取决于 3D 感知与动作接口）</strong></div>
+                  </div>
+                  
+    <div class='figure-card'>
+      <div class='figure-head'>
+        <span class='figure-title'>图像线索</span>
+        <span class='figure-note'>cached</span>
+      </div>
+      <a class='figure-link' href='assets/figs/2604.15281v1_v5.png' target='_blank' rel='noreferrer'>
+        <img class='figure-img' src='assets/figs/2604.15281v1_v5.png' alt='paper figure preview'>
+      </a>
+    </div>
+    
+                  
+    <div class='pipeline-card'>
+      <div class='pipeline-head'>
+        <span class='pipeline-title'>Pipeline 图</span>
+        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
+      </div>
+      <div class='pipeline-flow'>
+        
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>输入</div>
+              <div class='pipeline-label'>视觉与触觉</div>
+              <div class='pipeline-detail'>RGB / Depth / Proprioception / State</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>理解</div>
+              <div class='pipeline-label'>场景与物体解析</div>
+              <div class='pipeline-detail'>物体、位姿、可操作区域</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>决策</div>
+              <div class='pipeline-label'>技能或策略规划</div>
+              <div class='pipeline-detail'>抓取 / 放置 / 轨迹 / 任务分解</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>输出</div>
+              <div class='pipeline-label'>机械臂动作</div>
+              <div class='pipeline-detail'>末端位姿、关节控制、执行信号</div>
+            </div>
+            
+            
+      </div>
+    </div>
+    
+                  <div class='tags'><span class='badge soft'>robotics</span><span class='badge soft'>embodied-ai</span></div>
+                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org/abs/2604.15281v1' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='../archive/index.html'>返回归档</a></div>
+                </article>
+                
+
+                <article class='paper-card'>
+                  <div class='paper-top'>
+                    <div class='paper-title'><a href='https://arxiv.org/abs/2604.15076v1' target='_blank' rel='noreferrer'>NEAT-NC: NEAT guided Navigation Cells for Robot Path Planning</a></div>
+                    <a class='arxiv-link' href='https://arxiv.org/abs/2604.15076v1' target='_blank' rel='noreferrer'>2604.15076v1</a>
+                  </div>
+                  <div class='paper-meta'>
+                    
+                    <div><span>标签</span><strong>robotics / embodied-ai</strong></div>
+                  </div>
+                  <p class='paper-summary'>基于 NEAT 和“navigation cells”构建路径规划框架，强调生物启发式记忆与导航；但 source 扫描未找到可同步的主方法图，PDF 前 6 页也没有拿到明确的 pipeline/overview 图。</p>
+                  
+                  <div class='paper-facts'>
+                    <div class='fact neutral'><span>实现概率</span><strong>70%</strong></div>
+                    <div class='fact bad'><span>开源</span><strong>no（未见明确 repo）</strong></div>
+                    <div class='fact bad'><span>可部署</span><strong>no（偏启发式/研究性方法，缺少工程部署证据）</strong></div>
+                  </div>
+                  
+    <div class='figure-card'>
+      <div class='figure-head'>
+        <span class='figure-title'>图像线索</span>
+        <span class='figure-note'>cached</span>
+      </div>
+      <a class='figure-link' href='assets/figs/2604.15076v1_v5.png' target='_blank' rel='noreferrer'>
+        <img class='figure-img' src='assets/figs/2604.15076v1_v5.png' alt='paper figure preview'>
+      </a>
+    </div>
+    
+                  
+    <div class='pipeline-card'>
+      <div class='pipeline-head'>
+        <span class='pipeline-title'>Pipeline 图</span>
+        <span class='pipeline-note'>基于标题 / 标签 / 摘要自动归纳</span>
+      </div>
+      <div class='pipeline-flow'>
+        
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>输入</div>
+              <div class='pipeline-label'>多模态传感器</div>
+              <div class='pipeline-detail'>相机 / 激光雷达 / 车道与地图</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>理解</div>
+              <div class='pipeline-label'>感知与世界模型</div>
+              <div class='pipeline-detail'>目标、车道、占用、未来状态</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>决策</div>
+              <div class='pipeline-label'>预测与规划</div>
+              <div class='pipeline-detail'>轨迹生成 / 风险评估 / 运动规划</div>
+            </div>
+            <div class='pipeline-arrow'>→</div>
+            
+            <div class='pipeline-step'>
+              <div class='pipeline-phase'>输出</div>
+              <div class='pipeline-label'>控制执行</div>
+              <div class='pipeline-detail'>转向、加速、制动或轨迹点</div>
+            </div>
+            
+            
+      </div>
+    </div>
+    
+                  <div class='tags'><span class='badge soft'>robotics</span><span class='badge soft'>embodied-ai</span></div>
+                  <div class='paper-actions'><a class='paper-action primary' href='https://arxiv.org/abs/2604.15076v1' target='_blank' rel='noreferrer'>打开 arXiv</a><a class='paper-action' href='../archive/index.html'>返回归档</a></div>
+                </article>
+                
+</div></section>
     <nav class='dock' aria-label='页面导航'>
       <div class='dock-items'>
         <a class='dock-item primary' href='../index.html'>首页</a>
